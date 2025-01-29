@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                container: {
+                    padding: '20px',
+                    center: true,
+                },
+
+                extend: {
+                    spacing: {
+                        12.5: '50px',
+                        14.5: '58px',
+                        22.5: '90px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+
+</head>
+
+<body>
+
+    <!-- Start Grid Section ----------------------------------------------------------------------------------------->
+    <section class="py-22.5">
+        <div class="container">
+            <div class="mb-12 text-center">
+                <h2 class="text-[#3D116E] font-bold text-[40px] leading-[1.21] mb-3">Early years curriculums</h2>
+                <p class="font-normal text-xl text-[#1D0C3A]">Nurture young minds!</p>
+            </div>
+
+            <div class="grid max-sm:grid-cols-1 sm:max-lg:grid-cols-2 lg:grid-cols-3 gap-x-9 gap-y-12">
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/apps.svg" class="max-w-[68px] max-h-[68px]" alt="apps">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Match learning to little ones: Ages 3-5!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Blend play, social-emotional growth, and gentle academics in curricula for ages 3-5, tailoring to this key stage.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/pen.svg" class="max-w-[68px] max-h-[68px]" alt="pen">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Embrace child-centered learning approaches!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Prioritize curricula that follow the child's lead, fostering self-esteem and passion for discovery through exploration.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/hand.svg" class="max-w-[68px] max-h-[68px]" alt="hand">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Champion hands-on discovery in learning!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Seek curricula rich in tactile experiences, from sensory play to creative arts, to engage young minds actively.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/scissors.svg" class="max-w-[68px] max-h-[68px]" alt="scissors">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Tailor learning to each child's growth!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Choose curricula matching current abilities while gently stretching young minds, ensuring engagement and progress.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/cycle.svg" class="max-w-[68px] max-h-[68px]" alt="cycle">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Prioritize playful learning in curricula!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Embrace curricula that weave play into education, nurturing creativity, social skills, and joyful discovery.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-3.5">
+                        <img src="images/book.svg" class="max-w-[68px] max-h-[68px]" alt="book">
+                    </div>
+
+                    <div class="space-y-3 lg:max-w-[372px]">
+                        <h3 class="text-[#3D116E] font-bold text-2xl leading-[1.21]">Equip for diverse learning experiences!</h3>
+                        <p class="font-normal text-lg leading-[1.4] text-[#1D0C3A]">Select curricula with varied tools, from books to hands-on materials, supporting multifaceted exploration and growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Grid Section ----------------------------------------------------------------------------------------->
+
+    <!-- Start Grid Section ----------------------------------------------------------------------------------------->
+    <section class="py-40 relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-md:w-11/12 md:max-lg:w-4/5 lg:w-[58%]">
+            <img src="images/bg-circle.svg" class="w-full" alt="bg-circle">
+        </div>
+
+        <div class="container relative">
+            <div class="mb-12 text-center">
+                <h2 class="text-[#3D116E] font-bold text-[40px] leading-[1.21]">Trusted Resources</h2>
+            </div>
+
+            <div class="flex items-center justify-center flex-wrap max-sm:gap-y-8 sm:gap-y-12.5 max-w-[666px] mx-auto -mx-[25px] max-sm:[&>*]:w-max sm:max-md:[&>*]:w-1/2 max-md:[&>*]:w-1/2 md:[&>*]:w-1/3 [&>*]:px-[25px]">
+                <div class="flex items-center justify-center">
+                    <img src="images/logo-1.png" class="block max-sm:max-w-32 sm:max-w-[172px] max-sm:max-h-16 sm:max-h-[92px]" alt="logo-1">
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="images/logo-2.png" class="block max-sm:max-w-32 sm:max-w-[172px] max-sm:max-h-16 sm:max-h-[92px]" alt="logo-2">
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="images/logo-3.png" class="block max-sm:max-w-32 sm:max-w-[172px] max-sm:max-h-16 sm:max-h-[92px]" alt="logo-3">
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="images/logo-4.png" class="block max-sm:max-w-32 sm:max-w-[172px] max-sm:max-h-16 sm:max-h-[92px]" alt="logo-4">
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="images/logo-5.png" class="block max-sm:max-w-32 sm:max-w-[172px] max-sm:max-h-16 sm:max-h-[92px]" alt="logo-5">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Grid Section ----------------------------------------------------------------------------------------->
+
+    <!-- Start Grid Section ----------------------------------------------------------------------------------------->
+    <section class="py-22.5 text-center">
+        <div class="container">
+            <div class="mb-12">
+                <h2 class="text-[#3D116E] font-bold text-[40px] leading-[1.21] mb-3">Trusted Resources</h2>
+                <p class="font-normal text-xl text-[#1D0C3A]">Your Provincial Guide</p>
+            </div>
+
+            <div class="text-center flex justify-center flex-wrap max-md:gap-y-10 md:gap-y-14.5 -mx-[29px] [&>*]:px-[29px] mb-12">
+                <div>
+                    <div class="mb-2">
+                        <img src="images/dog.svg" class="mx-auto max-w-12 max-h-12" alt="dog">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">Alberta</h5>
+                        <p>Play, Participate <br> & Possibilities</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/cake.svg" class="mx-auto max-w-12 max-h-12" alt="cake">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">British Columbia</h5>
+                        <p>Guide to Early <br> Learning</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/box.svg" class="mx-auto max-w-12 max-h-12" alt="box">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">Manitoba</h5>
+                        <p>Early Returns for <br> Young Learners</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/apps-2.svg" class="mx-auto max-w-12 max-h-12" alt="apps-2">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">New Brunswick</h5>
+                        <p>Early Learning <br> Framework</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/process.svg" class="mx-auto max-w-12 max-h-12" alt="process">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">Ontario</h5>
+                        <p>Early Learning <br> for Every Child <br> (ELECT)</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/bulb.svg" class="mx-auto max-w-12 max-h-12" alt="bulb">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">Québec</h5>
+                        <p>Meeting Early <br> Childhood Needs</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-2">
+                        <img src="images/telescope.svg" class="mx-auto max-w-12 max-h-12" alt="telescope">
+                    </div>
+
+                    <div class="space-y-2 text-sm leading-[1.21]">
+                        <h5 class="font-bold">Saskatchewan</h5>
+                        <p>Play and <br> Exploration Guide</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="javascript:viod(0);" class="bg-[#FF8620] text-white rounded-md p-4 font-semibold text-base leading-[1.21]">Book your free Demo!</a>
+        </div>
+    </section>
+    <!-- End Grid Section ----------------------------------------------------------------------------------------->
+
+    <script src=" main.js">
+    </script>
+
+</body>
+
+</html>
