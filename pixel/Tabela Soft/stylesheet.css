@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "tabela Soft";
+  src: url("tabelaSoft-Light.eot");
+  src: url("tabelaSoft-Light.eot?#iefix") format("embedded-opentype"),
+    url("tabelaSoft-Light.woff2") format("woff2"),
+    url("tabelaSoft-Light.woff") format("woff"),
+    url("tabelaSoft-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tabela Soft";
+  src: url("tabelaSoft-Regular.eot");
+  src: url("tabelaSoft-Regular.eot?#iefix") format("embedded-opentype"),
+    url("tabelaSoft-Regular.woff2") format("woff2"),
+    url("tabelaSoft-Regular.woff") format("woff"),
+    url("tabelaSoft-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tabela Soft";
+  src: url("tabelaSoft-Medium.eot");
+  src: url("tabelaSoft-Medium.eot?#iefix") format("embedded-opentype"),
+    url("tabelaSoft-Medium.woff2") format("woff2"),
+    url("tabelaSoft-Medium.woff") format("woff"),
+    url("tabelaSoft-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tabela Soft";
+  src: url("tabelaSoft-Bold.eot");
+  src: url("tabelaSoft-Bold.eot?#iefix") format("embedded-opentype"),
+    url("tabelaSoft-Bold.woff2") format("woff2"),
+    url("tabelaSoft-Bold.woff") format("woff"),
+    url("tabelaSoft-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tabela Soft";
+  src: url("tabelaSoft-Black.eot");
+  src: url("tabelaSoft-Black.eot?#iefix") format("embedded-opentype"),
+    url("tabelaSoft-Black.woff2") format("woff2"),
+    url("tabelaSoft-Black.woff") format("woff"),
+    url("tabelaSoft-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
