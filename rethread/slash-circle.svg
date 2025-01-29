@@ -1,0 +1,14 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="slash-circle-01" clip-path="url(#clip0_14793_21538)">
+<path id="Icon" d="M4.10768 4.10835L15.891 15.8917M18.3327 10C18.3327 14.6024 14.6017 18.3334 9.99935 18.3334C5.39698 18.3334 1.66602 14.6024 1.66602 10C1.66602 5.39765 5.39698 1.66669 9.99935 1.66669C14.6017 1.66669 18.3327 5.39765 18.3327 10Z" stroke="url(#paint0_linear_14793_21538)" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_14793_21538" x1="1.66602" y1="10" x2="18.3327" y2="10" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0040C1"/>
+<stop offset="1" stop-color="#4F7471"/>
+</linearGradient>
+<clipPath id="clip0_14793_21538">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>

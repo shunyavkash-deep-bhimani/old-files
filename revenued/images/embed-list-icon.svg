@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8">
+	<title>embed-list-icon</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(7.968,0,0,5.334,0,2.667)">
+			<stop offset="0" stop-color="#0040ba"/>
+			<stop offset="1" stop-color="#04c49e"/>
+		</linearGradient>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(7.968,0,0,8,0,4)">
+			<stop offset="0" stop-color="#a4c3ff"/>
+			<stop offset="1" stop-color="#04c49e"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: url(#g2) } 
+	</style>
+	<path class="s0" d="m2.7 5.3q-0.2 0-0.3-0.1l-2.2-1.6c-0.2-0.2-0.3-0.5-0.1-0.7 0.2-0.3 0.5-0.3 0.7-0.1l1.8 1.4 4.5-4.1c0.2-0.2 0.6-0.1 0.7 0.1 0.2 0.2 0.2 0.5 0 0.7l-4.8 4.3q-0.2 0.1-0.3 0.1z"/>
+	<path class="s1" d="m7.5 8h-7c-0.3 0-0.5-0.2-0.5-0.5v-4.3c0-0.3 0.2-0.5 0.5-0.5 0.3 0 0.5 0.2 0.5 0.5v3.8h6v-6.5c0-0.3 0.2-0.5 0.5-0.5 0.2 0 0.5 0.2 0.5 0.5v7c0 0.3-0.3 0.5-0.5 0.5z"/>
+</svg>

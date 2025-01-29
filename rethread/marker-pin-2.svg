@@ -1,0 +1,11 @@
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="marker-pin-06">
+<path id="Icon" d="M13.8327 11.1454C16.7759 11.724 18.8327 13.0456 18.8327 14.5833C18.8327 16.6544 15.1017 18.3333 10.4993 18.3333C5.89698 18.3333 2.16602 16.6544 2.16602 14.5833C2.16602 13.0456 4.22284 11.724 7.16602 11.1454M10.4993 14.1667V7.5M10.4993 7.5C11.8801 7.5 12.9993 6.38071 12.9993 5C12.9993 3.61929 11.8801 2.5 10.4993 2.5C9.11864 2.5 7.99935 3.61929 7.99935 5C7.99935 6.38071 9.11864 7.5 10.4993 7.5Z" stroke="url(#paint0_linear_14793_21532)" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_14793_21532" x1="2.16602" y1="10.4167" x2="18.8327" y2="10.4167" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0040C1"/>
+<stop offset="1" stop-color="#4F7471"/>
+</linearGradient>
+</defs>
+</svg>

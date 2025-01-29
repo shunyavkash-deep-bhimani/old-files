@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Medium.eot');
+    src: url('VanguardCF-Medium.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Medium.woff2') format('woff2'),
+        url('VanguardCF-Medium.woff') format('woff'),
+        url('VanguardCF-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-ExtraBold.eot');
+    src: url('VanguardCF-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-ExtraBold.woff2') format('woff2'),
+        url('VanguardCF-ExtraBold.woff') format('woff'),
+        url('VanguardCF-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-DemiBoldOblique.eot');
+    src: url('VanguardCF-DemiBoldOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-DemiBoldOblique.woff2') format('woff2'),
+        url('VanguardCF-DemiBoldOblique.woff') format('woff'),
+        url('VanguardCF-DemiBoldOblique.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Light.eot');
+    src: url('VanguardCF-Light.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Light.woff2') format('woff2'),
+        url('VanguardCF-Light.woff') format('woff'),
+        url('VanguardCF-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Regular.eot');
+    src: url('VanguardCF-Regular.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Regular.woff2') format('woff2'),
+        url('VanguardCF-Regular.woff') format('woff'),
+        url('VanguardCF-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-LightOblique.eot');
+    src: url('VanguardCF-LightOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-LightOblique.woff2') format('woff2'),
+        url('VanguardCF-LightOblique.woff') format('woff'),
+        url('VanguardCF-LightOblique.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-BoldOblique.eot');
+    src: url('VanguardCF-BoldOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-BoldOblique.woff2') format('woff2'),
+        url('VanguardCF-BoldOblique.woff') format('woff'),
+        url('VanguardCF-BoldOblique.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-ExtraBoldOblique.eot');
+    src: url('VanguardCF-ExtraBoldOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-ExtraBoldOblique.woff2') format('woff2'),
+        url('VanguardCF-ExtraBoldOblique.woff') format('woff'),
+        url('VanguardCF-ExtraBoldOblique.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-MediumOblique.eot');
+    src: url('VanguardCF-MediumOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-MediumOblique.woff2') format('woff2'),
+        url('VanguardCF-MediumOblique.woff') format('woff'),
+        url('VanguardCF-MediumOblique.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-RegularOblique.eot');
+    src: url('VanguardCF-RegularOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-RegularOblique.woff2') format('woff2'),
+        url('VanguardCF-RegularOblique.woff') format('woff'),
+        url('VanguardCF-RegularOblique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Heavy.eot');
+    src: url('VanguardCF-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Heavy.woff2') format('woff2'),
+        url('VanguardCF-Heavy.woff') format('woff'),
+        url('VanguardCF-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-DemiBold.eot');
+    src: url('VanguardCF-DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-DemiBold.woff2') format('woff2'),
+        url('VanguardCF-DemiBold.woff') format('woff'),
+        url('VanguardCF-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-HeavyOblique.eot');
+    src: url('VanguardCF-HeavyOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-HeavyOblique.woff2') format('woff2'),
+        url('VanguardCF-HeavyOblique.woff') format('woff'),
+        url('VanguardCF-HeavyOblique.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Bold.eot');
+    src: url('VanguardCF-Bold.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Bold.woff2') format('woff2'),
+        url('VanguardCF-Bold.woff') format('woff'),
+        url('VanguardCF-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-Thin.eot');
+    src: url('VanguardCF-Thin.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-Thin.woff2') format('woff2'),
+        url('VanguardCF-Thin.woff') format('woff'),
+        url('VanguardCF-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vanguard CF';
+    src: url('VanguardCF-ThinOblique.eot');
+    src: url('VanguardCF-ThinOblique.eot?#iefix') format('embedded-opentype'),
+        url('VanguardCF-ThinOblique.woff2') format('woff2'),
+        url('VanguardCF-ThinOblique.woff') format('woff'),
+        url('VanguardCF-ThinOblique.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

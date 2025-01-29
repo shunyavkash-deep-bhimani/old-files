@@ -1,0 +1,78 @@
+/* Start Two-col Section ********************************************************************/
+@media screen and (max-width: 991px) {
+  .two-col-wrapper .two-col-content {
+    width: 50%;
+    max-width: unset;
+  }
+
+  .two-col-wrapper .img-content {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .two-col-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .two-col-wrapper .two-col-content {
+    width: 100%;
+  }
+
+  .two-col-wrapper .img-content {
+    width: 100%;
+  }
+}
+/* End Two-col Section ********************************************************************/
+
+/* Start Work Process Section ********************************************************************/
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .work-process-wrapper {
+    gap: 16px;
+  }
+
+  .process-item-wrapper:nth-child(2) .process-item:before {
+    right: calc(100% - 70px);
+    top: -14px;
+    width: 80%;
+  }
+
+  .process-item-wrapper:nth-child(2) .process-item:after {
+    left: calc(100% - 65px);
+    top: 72px;
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .work-process-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 0;
+    row-gap: 30px;
+    margin: 0 -25px;
+  }
+
+  .process-item-wrapper {
+    max-width: unset;
+    padding: 0 15px;
+    width: calc(100% / 2);
+  }
+
+  .process-item-wrapper:nth-child(2) .process-item:before,
+  .process-item-wrapper:nth-child(2) .process-item:after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .work-process-wrapper {
+    margin: 0;
+  }
+
+  .process-item-wrapper {
+    padding: 0;
+    width: 100%;
+  }
+}
+/* End Work Process Section ********************************************************************/

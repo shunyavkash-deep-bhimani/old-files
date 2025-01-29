@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #405084;
+}
+
+.sidebar {
+  max-width: 300px;
+  margin-left: auto;
+  height: 100vh;
+  padding: 12px;
+  background-color: white;
+}
+
+.sidebar > *:not(:first-child) {
+  margin-top: 26px;
+}
+
+.details-label {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.banner-img-content {
+  height: 170px;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #f6f6f6;
+}
+
+.banner-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.richtext {
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.15;
+  padding: 10px;
+  background-color: #f6f6f6;
+  border: 1px solid #dedede;
+  opacity: 80%;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f6f6f6;
+}
+
+.logo-img {
+  max-height: 40px;
+  max-width: 40px;
+  display: block;
+}
+
+.img-name {
+  font-size: 13px;
+  line-height: 1;
+  opacity: 70%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+}
+
+.multiple-images {
+  padding-left: 16px;
+}
+
+.img-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.multiple-images .img-item {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.multiple-images .img-item:not(:first-child) {
+  border-top: 1px solid #dedede;
+}
+
+.multiple-images .img-item:first-child {
+  padding-top: 0;
+}
+
+.multiple-images .img-item:last-child {
+  padding-bottom: 0;
+}
+
+.item-img-content {
+  height: 30px;
+  width: 30px;
+}
+
+.item-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.multiple-links {
+  padding-left: 16px;
+}
+
+.multiple-links .img-item {
+  max-width: max-content;
+  gap: 10px;
+}
+
+.multiple-links .img-item:not(:first-child) {
+  margin-top: 10px;
+}
+
+.item-link-content {
+  width: 12px;
+  aspect-ratio: 1 / 1;
+}
+
+.item-link {
+  height: auto;
+  width: 100%;
+  display: block;
+}

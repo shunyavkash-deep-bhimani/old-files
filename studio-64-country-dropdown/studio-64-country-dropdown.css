@@ -1,0 +1,59 @@
+.iti__dropdown-content {
+  background-color: #002649;
+  margin-top: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(242, 242, 247, 0.6);
+}
+
+.iti__search-input {
+  padding: 8px 16px;
+  background-color: transparent;
+  font-size: 30px;
+  line-height: 24px;
+  font-weight: 400;
+  color: white;
+  outline: 0;
+}
+
+.iti__search-input::placeholder {
+  color: rgba(242, 242, 247, 0.3);
+}
+
+.iti__country-list {
+  padding: 0 16px 16px;
+}
+
+.iti__country {
+  border-radius: 4px;
+  background-color: rgba(242, 242, 247, 0.1);
+  box-shadow: rgba(242, 242, 247, 0.6) 0px 0px 0px 1px inset;
+  color: rgb(242, 242, 247);
+  min-height: 40px;
+  padding-block: 4px;
+  transition-duration: 0.1s;
+  transition-property: background-color, color, border-color, opacity,
+    box-shadow;
+  transition-timing-function: ease-out;
+  word-break: break-word;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.iti__country:hover {
+  background-color: rgba(242, 242, 247, 0.3);
+}
+
+.iti__country:not(:first-child) {
+  margin-top: 4px;
+}
+
+.iti__flag {
+  box-shadow: rgba(255, 255, 255, 0.6) 0px 0px 0px 1px;
+  border-radius: 4px;
+}
+
+.iti__dial-code {
+  margin-left: auto;
+  color: currentColor;
+}

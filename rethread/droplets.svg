@@ -1,0 +1,11 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="droplets-02">
+<path id="Icon" d="M9.99984 17.9166C11.5469 17.9166 13.0307 17.3021 14.1246 16.2081C15.2186 15.1141 15.8332 13.6304 15.8332 12.0833C15.8332 10.4166 14.9998 8.83331 13.3332 7.49998C11.6665 6.16665 10.4165 4.16665 9.99984 2.08331C9.58317 4.16665 8.33317 6.16665 6.6665 7.49998C4.99984 8.83331 4.1665 10.4166 4.1665 12.0833C4.1665 13.6304 4.78109 15.1141 5.87505 16.2081C6.96901 17.3021 8.45274 17.9166 9.99984 17.9166Z" stroke="url(#paint0_linear_14117_270519)" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_14117_270519" x1="4.1665" y1="9.99998" x2="15.8332" y2="9.99998" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0040C1"/>
+<stop offset="1" stop-color="#4F7471"/>
+</linearGradient>
+</defs>
+</svg>

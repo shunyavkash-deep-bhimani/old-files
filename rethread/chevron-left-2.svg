@@ -1,0 +1,7 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24" width="25" height="24">
+	<g id="chevron-right">
+		<path id="Icon" fill-rule="evenodd" fill= "none" stroke= "#344054" stroke-linecap= "round" stroke-linejoin= "round" stroke-width= "2" d="m16 6l-6 6 6 6"/>
+		<text style="transform: matrix(1,0,0,1,19,-9)" >
+		</text>
+	</g>
+</svg>
