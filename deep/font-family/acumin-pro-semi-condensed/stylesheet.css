@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Acumin Pro SemiCondensed';
+    src: url('AcuminProSemiCond-Bold.eot');
+    src: url('AcuminProSemiCond-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProSemiCond-Bold.woff2') format('woff2'),
+        url('AcuminProSemiCond-Bold.woff') format('woff'),
+        url('AcuminProSemiCond-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

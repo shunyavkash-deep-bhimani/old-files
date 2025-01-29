@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-ExtraLight.eot');
+    src: url('AcuminProWide-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-ExtraLight.woff2') format('woff2'),
+        url('AcuminProWide-ExtraLight.woff') format('woff'),
+        url('AcuminProWide-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Thin.eot');
+    src: url('AcuminProWide-Thin.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Thin.woff2') format('woff2'),
+        url('AcuminProWide-Thin.woff') format('woff'),
+        url('AcuminProWide-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-UltraBlack.eot');
+    src: url('AcuminProWide-UltraBlack.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-UltraBlack.woff2') format('woff2'),
+        url('AcuminProWide-UltraBlack.woff') format('woff'),
+        url('AcuminProWide-UltraBlack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Bold.eot');
+    src: url('AcuminProWide-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Bold.woff2') format('woff2'),
+        url('AcuminProWide-Bold.woff') format('woff'),
+        url('AcuminProWide-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Black.eot');
+    src: url('AcuminProWide-Black.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Black.woff2') format('woff2'),
+        url('AcuminProWide-Black.woff') format('woff'),
+        url('AcuminProWide-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Light.eot');
+    src: url('AcuminProWide-Light.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Light.woff2') format('woff2'),
+        url('AcuminProWide-Light.woff') format('woff'),
+        url('AcuminProWide-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Medium.eot');
+    src: url('AcuminProWide-Medium.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Medium.woff2') format('woff2'),
+        url('AcuminProWide-Medium.woff') format('woff'),
+        url('AcuminProWide-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Semibold.eot');
+    src: url('AcuminProWide-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Semibold.woff2') format('woff2'),
+        url('AcuminProWide-Semibold.woff') format('woff'),
+        url('AcuminProWide-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acumin Pro Wide';
+    src: url('AcuminProWide-Regular.eot');
+    src: url('AcuminProWide-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AcuminProWide-Regular.woff2') format('woff2'),
+        url('AcuminProWide-Regular.woff') format('woff'),
+        url('AcuminProWide-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

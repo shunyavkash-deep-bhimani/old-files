@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Transducer';
+    src: url('Transducer-Bold.eot');
+    src: url('Transducer-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Transducer-Bold.woff2') format('woff2'),
+        url('Transducer-Bold.woff') format('woff'),
+        url('Transducer-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Transducer';
+    src: url('Transducer-Medium.eot');
+    src: url('Transducer-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Transducer-Medium.woff2') format('woff2'),
+        url('Transducer-Medium.woff') format('woff'),
+        url('Transducer-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

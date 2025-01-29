@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-Bold.eot');
+    src: url('Gabarito-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-Bold.woff2') format('woff2'),
+        url('Gabarito-Bold.woff') format('woff'),
+        url('Gabarito-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-Black.eot');
+    src: url('Gabarito-Black.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-Black.woff2') format('woff2'),
+        url('Gabarito-Black.woff') format('woff'),
+        url('Gabarito-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-ExtraBold.eot');
+    src: url('Gabarito-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-ExtraBold.woff2') format('woff2'),
+        url('Gabarito-ExtraBold.woff') format('woff'),
+        url('Gabarito-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-Medium.eot');
+    src: url('Gabarito-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-Medium.woff2') format('woff2'),
+        url('Gabarito-Medium.woff') format('woff'),
+        url('Gabarito-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-Regular.eot');
+    src: url('Gabarito-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-Regular.woff2') format('woff2'),
+        url('Gabarito-Regular.woff') format('woff'),
+        url('Gabarito-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-Regular_1.eot');
+    src: url('Gabarito-Regular_1.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-Regular_1.woff2') format('woff2'),
+        url('Gabarito-Regular_1.woff') format('woff'),
+        url('Gabarito-Regular_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gabarito';
+    src: url('Gabarito-SemiBold.eot');
+    src: url('Gabarito-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Gabarito-SemiBold.woff2') format('woff2'),
+        url('Gabarito-SemiBold.woff') format('woff'),
+        url('Gabarito-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
