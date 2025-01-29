@@ -1,0 +1,401 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.font-heading {
+  font-family: "Inter", serif;
+}
+
+.font-body {
+  font-family: "Outfit", serif;
+}
+
+body {
+  font-family: "Inter", serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", serif;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.container {
+  max-width: 1310px;
+  width: 100%;
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  line-height: 1.14;
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 1.277;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.333;
+}
+
+.richtext span {
+  color: currentColor;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  display: block;
+}
+
+.richtext {
+  margin-bottom: 48px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+  border-radius: 100px;
+  line-height: 1.333;
+  font-size: 18px;
+  text-decoration: none;
+  max-width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 36px;
+  color: currentColor;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  font-family: "Outfit", serif;
+}
+
+.btn span {
+  display: block;
+}
+
+.btn-primary {
+  border-color: #526cff;
+  background-color: #526cff;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  border-color: white;
+  background-color: white;
+  color: #526cff;
+}
+
+.btn-white-outline {
+  border-color: white;
+  background-color: transparent;
+  color: white;
+}
+
+.btn-white-outline:hover {
+  background-color: white;
+  color: #526cff;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #526cff;
+  border-color: #ffffff;
+}
+
+.btn-white:hover {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  padding: 96px 88px;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #f5fcfc;
+}
+
+.hero-bg-img-content {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.54);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 630px;
+}
+
+.hero-content.text-left {
+  text-align: left;
+  margin-right: auto;
+}
+.hero-content.text-left .btn-group-wrapper {
+  justify-content: start;
+}
+
+.hero-content.text-center {
+  text-align: center;
+  margin-inline: auto;
+}
+.hero-content.text-center .btn-group-wrapper {
+  justify-content: center;
+}
+
+.hero-content.text-right {
+  text-align: right;
+  margin-left: auto;
+}
+.hero-content.text-right .btn-group-wrapper {
+  justify-content: end;
+}
+
+.btn-group-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.two-col-section {
+  margin-block: 40px;
+}
+
+.two-col-wrapper {
+  display: flex;
+  background-color: #526cff;
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.two-col-wrapper > * {
+  width: 50%;
+}
+
+.two-col-img-content {
+  height: 500px;
+  min-height: 100%;
+}
+
+.two-col-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+  max-width: 554px;
+  margin-inline: auto;
+}
+
+.testimonial-section {
+  margin-top: 56px;
+  margin-bottom: 92px;
+}
+
+.testimonial-slider-wrapper {
+  display: flex;
+  background-color: #526cff;
+  border-radius: 8px;
+  color: white;
+  position: relative;
+}
+
+.testimonial-img-content {
+  width: 41%;
+  border-radius: 8px 0 0 8px;
+  overflow: hidden;
+}
+
+.testimonial-img-content img {
+  height: 422px;
+  min-height: 100%;
+}
+
+.testimonial-content-wrapper {
+  width: 59%;
+  max-width: 640px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  position: static;
+}
+
+.testimonial-content {
+  padding: 40px;
+}
+
+.testimonial-content .author-name {
+  margin-bottom: 8px;
+}
+
+.testimonial-section .splide__pagination {
+  bottom: auto;
+  top: 100%;
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.testimonial-section .splide__pagination__page {
+  margin: 0;
+  height: 10px;
+  width: 10px;
+  background-color: rgb(0, 0, 0, 0.23);
+  opacity: 1;
+  display: block;
+  transition: all 0.3s ease-in-out;
+}
+
+.testimonial-section .splide__pagination__page.is-active {
+  background-color: #526cff;
+  transform: scale(1);
+}
+
+@media screen and (max-width: 1023px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .hero-content-wrapper {
+    padding: 56px 48px;
+  }
+
+  .testimonial-slider-wrapper > * {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 46px;
+  }
+
+  .two-col-wrapper {
+    flex-direction: column;
+  }
+
+  .two-col-wrapper > * {
+    width: 100%;
+  }
+
+  .two-col-content {
+    max-width: 100%;
+  }
+
+  .testimonial-slider-wrapper {
+    flex-direction: column;
+  }
+
+  .testimonial-slider-wrapper > * {
+    width: 100%;
+  }
+
+  .testimonial-content-wrapper {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .richtext {
+    margin-bottom: 28px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 13px 30px;
+  }
+
+  .hero-content-wrapper {
+    padding: 36px 28px;
+    margin-inline: -15px;
+    border-radius: 0;
+  }
+
+  .two-col-section {
+    margin-block: 30px;
+  }
+
+  .two-col-wrapper {
+    margin-inline: -15px;
+    border-radius: 0;
+  }
+
+  .two-col-img-content {
+    height: 350px;
+  }
+
+  .two-col-content {
+    padding: 30px;
+  }
+
+  .testimonial-section {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .testimonial-slider-wrapper {
+    margin-inline: -15px;
+    border-radius: 0;
+  }
+
+  .testimonial-content {
+    padding: 30px;
+  }
+
+  .testimonial-content .author-name {
+    margin-bottom: 4px;
+  }
+
+  .testimonial-section .splide__pagination {
+    gap: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .two-col-wrapper.order-reverse {
+    flex-direction: row-reverse;
+  }
+}
