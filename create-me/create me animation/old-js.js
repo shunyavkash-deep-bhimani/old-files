@@ -6,6 +6,7 @@ import "https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquer
 $(document).ready(function () {
   $("select").niceSelect();
 });
+
 // <!-- End Nice Select------------------------------------------------------------------------------------------------>
 
 // Start header height---------------------------------------------------------------------------------------------
@@ -23,6 +24,7 @@ window.addEventListener("resize", updateHeaderHeight);
 // End header height--------------------------------------------------------------------------------------------------
 
 // <!-- AUTO-ROTATING TABS -->
+
 // Function to rotate tabs
 function initializeTabRotator() {
   // Find all tab containers with the ms-code-rotate-tabs attribute
@@ -78,8 +80,9 @@ function initializeTabRotator() {
 
     function switchToTab(index) {
       // Fade out current tab
-      tabPanes[currentIndex].style.transition =
-        `opacity ${FADE_OUT_DURATION}ms ${EASING_FUNCTION}`;
+      tabPanes[
+        currentIndex
+      ].style.transition = `opacity ${FADE_OUT_DURATION}ms ${EASING_FUNCTION}`;
       tabPanes[currentIndex].style.opacity = "0";
 
       setTimeout(() => {
@@ -99,8 +102,9 @@ function initializeTabRotator() {
         tabPanes[currentIndex].classList.add("w--tab-active");
 
         // Fade in new tab
-        tabPanes[currentIndex].style.transition =
-          `opacity ${FADE_IN_DURATION}ms ${EASING_FUNCTION}`;
+        tabPanes[
+          currentIndex
+        ].style.transition = `opacity ${FADE_IN_DURATION}ms ${EASING_FUNCTION}`;
         tabPanes[currentIndex].style.opacity = "1";
 
         // Update the data-current attribute on the parent w-tabs element
@@ -275,7 +279,8 @@ if (textAnimationFullScreen.length) {
     let span = project.getElementsByClassName("word");
 
     // Set `start` dynamically: "top 10%" for the first, "top 40%" for others
-    let startPosition = i === 0 ? "top 10%" : "top 55%";
+    //let startPosition = i === 0 ? "top 10%" : "top 55%";
+    let startPosition = "top 55%";
 
     gsap.fromTo(
       span,
@@ -326,7 +331,7 @@ if (heroTitleAnimation.length) {
         end: "bottom 0%",
         // markers: true,
       },
-      delay: 1.35,
+      delay: 3,
     });
 
     // Add 1-second delay to the timeline
@@ -447,7 +452,7 @@ if (scaleAnimationElement.length) {
 }
 // End Scale Animation---------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 let milestoneItemImgContent = Array.from(
   document.querySelectorAll(".milestone-item-img-content")
 );
@@ -477,7 +482,7 @@ if (milestoneItemImgContent.length) {
       });
     });
 }
-//-------------------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 
 // Start Video Revel Animation---------------------------------------------------------------------------------
 let revelVideoContent = Array.from(
@@ -566,7 +571,7 @@ if (bgGradientImg.length) {
 }
 // End Gradient Scale Animation---------------------------------------------------------------------------------
 
-// Start Sticky Gradient change position Animation---------------------------------------------------------------------
+// Start Sticky Gradient change position Animation-----------------------------------------------------------------
 let stickyGradientSections = Array.from(
   document.querySelectorAll(".sticky-gradient-section")
 );
@@ -592,8 +597,9 @@ if (stickyGradientSections.length) {
     trigger: ".sticky-gradient-section",
     start: "top top",
     end: "bottom bottom",
+    // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
     pin: ".sticky-gradient-wrapper",
-    //markers: true,
+    markers: true,
   });
 
   // Positions for sticky-gradient-2
@@ -652,7 +658,7 @@ if (stickyGradientSections.length) {
       pin: true,
       pinSpacing: false,
       id: i + 1,
-      //markers: true,
+      markers: true,
       toggleActions: "play reverse play reverse",
 
       onUpdate: (self) => {
@@ -728,7 +734,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const contentWrappers = stickySection.querySelectorAll(
     ".sticky-gradient-section .w-container > div"
   );
-  const navDotsContainer = stickySection.querySelector(".nav-dots");
+  const navDotsContainer = stickySection.querySelector(
+    ".sticky-gradient-nav-dots"
+  );
 
   // Create navigation dots dynamically
   contentWrappers.forEach((wrapper, index) => {
@@ -750,8 +758,6 @@ document.addEventListener("DOMContentLoaded", () => {
       target.scrollIntoView({ behavior: "smooth" });
 
       setTimeout(() => {
-        ScrollTrigger.refresh(); // Ensure GSAP animations trigger
-
         setTimeout(() => {
           window.scrollBy(0, 2); // Scroll 2px down
         }, 1000); // 1 second delay
@@ -814,9 +820,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // End Sticky Gradient change position Animation---------------------------------------------------------------------
 
 // Start Sticky Section Animation---------------------------------------------------------------------------------
-let columnWrapper = Array.from(document.querySelectorAll(".column-wrapper"));
+let columnWrapper = document.querySelector(".column-wrapper");
 
-if (columnWrapper.length) {
+if (columnWrapper) {
   const images = gsap.utils.toArray(".column-content.image");
   const titleContainers = gsap.utils.toArray(".column.left .column-content");
 
@@ -828,7 +834,7 @@ if (columnWrapper.length) {
   ScrollTrigger.create({
     trigger: ".column-wrapper",
     start: "top top",
-    end: "+=" + (images.length - 1) * 110 + "%",
+    end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
     pin: ".column.right",
     //markers: true,
   });
@@ -838,9 +844,6 @@ if (columnWrapper.length) {
       trigger: title,
       start: "top 60%",
       end: "top 70%",
-      //markers: {
-      //indent: 150 * (i + 1),
-      //},
       id: i + 1,
       onEnter: () => {
         gsap.to(images, {
@@ -970,7 +973,9 @@ if (btnHover.length) {
 }
 // End Btn Hover Animation-----------------------------------------------------------------------------------------
 
-// <!-- Start Splide JS-------------------------------------------------------------------------------------------------->
+import "https://rglhpcjp-5500.inc1.devtunnels.ms/createMe-animatiom.js";
+
+// /* <!-- Start Splide JS--------------------------------------------------------------------------------------------------> */
 import "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js";
 
 let splide = Array.from(document.querySelectorAll(".splide"));
@@ -987,4 +992,5 @@ if (splide.length) {
     splide.mount();
   });
 }
-// <!-- End Splide JS-------------------------------------------------------------------------------------------------->
+
+// /* <!-- End Splide JS--------------------------------------------------------------------------------------------------> */

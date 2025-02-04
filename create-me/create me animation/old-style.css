@@ -1,5 +1,10 @@
-/* <!-- Splide CSS --> */
+/* <meta name="msvalidate.01" content="ACEF1A6BE3A530F3598FF24A50368405" /> */
+
+/* Splide CSS */
 @import "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css";
+/* section.sticky-gradient-section.theme-text-shadow .pin-spacer {
+  z-index: 1 !important;
+  } */
 
 .hero-title .word {
   opacity: 0;
