@@ -2,9 +2,14 @@
 
 /* Splide CSS */
 @import "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css";
+
 /* section.sticky-gradient-section.theme-text-shadow .pin-spacer {
   z-index: 1 !important;
-  } */
+} */
+
+.animation-content-wrapper-2 .content-item .word {
+  transform: none !important;
+}
 
 .hero-title .word {
   opacity: 0;
@@ -234,6 +239,24 @@ a.nav-dots-items.active {
   }
 
   .card-grid .card-description {
+    font-size: 18px;
+  }
+
+  .animation-scroll-section .hero-title {
+    font-size: 56px;
+    margin-bottom: 68px;
+  }
+
+  .animation-scroll-section .hero-description {
+    font-size: 28px;
+  }
+
+  .animation-scroll-section .content-img-content {
+    max-width: 90px;
+    height: 90px;
+  }
+
+  .animation-scroll-section .content-title {
     font-size: 18px;
   }
 }

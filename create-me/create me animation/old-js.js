@@ -402,7 +402,7 @@ if (textAnimation2.length) {
 }
 // End Text & icon Revel 2 Animation------------------------------------------
 
-// Start Text & icon Revel 3 Animation------------------------------------------
+// Start Text & icon Revel Title Animation------------------------------------------
 let titleAnimation = Array.from(document.querySelectorAll(".title-animation"));
 
 if (titleAnimation.length) {
@@ -425,6 +425,54 @@ if (titleAnimation.length) {
       },
     });
   }
+}
+// End Text & icon Revel Title Animation------------------------------------------
+
+// Start Text & icon Revel 3 Animation------------------------------------------
+let textAnimation3 = Array.from(document.querySelectorAll(".textanimation3"));
+
+if (textAnimation3.length) {
+  let typeSplit = new SplitType(".textanimation3", {
+    types: "words",
+    tagName: "span",
+  });
+
+  let projects = gsap.utils.toArray(".textanimation3");
+
+  projects.forEach((project, i) => {
+    let span = project.getElementsByClassName("word");
+    gsap.fromTo(
+      span,
+      {
+        opacity: 0,
+        y: "110%",
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+        y: 0,
+        stagger: 0.015,
+        delay: 0.1,
+        scrollTrigger: {
+          trigger: project,
+          start:
+            i === 0
+              ? "top 60%"
+              : window.innerWidth <= 767
+              ? "top 60%"
+              : "top top",
+          end:
+            i === 0
+              ? "bottom 10%"
+              : window.innerWidth <= 767
+              ? "bottom 10%"
+              : "bottom bottom",
+          //markers: true,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
 }
 // End Text & icon Revel 3 Animation------------------------------------------
 // End Text & icon Revel Animation---------------------------------------------------------------------------------
@@ -576,247 +624,256 @@ let stickyGradientSections = Array.from(
   document.querySelectorAll(".sticky-gradient-section")
 );
 
-stickyGradientSections.forEach((stickyGradientSection) => {
-  stickyGradientSection.querySelectorAll(".sticky-gradient-content-wrapper");
-
-  let contentLength = Array.from(
-    stickyGradientSection.querySelectorAll(".sticky-gradient-content")
-  ).length;
-
-  stickyGradientSection.style.minHeight = 100 * contentLength + 100 + "vh";
-});
-
 if (stickyGradientSections.length) {
-  const stickyGradient = gsap.utils.toArray(".sticky-gradient");
-  const stickyGradientContent = gsap.utils.toArray(
-    ".sticky-gradient-content-wrapper"
-  );
+  stickyGradientSections.forEach((stickyGradientSection) => {
+    stickyGradientSection.querySelectorAll(".sticky-gradient-content-wrapper");
 
-  // Pin the sticky section
-  ScrollTrigger.create({
-    trigger: ".sticky-gradient-section",
-    start: "top top",
-    end: "bottom bottom",
-    // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
-    pin: ".sticky-gradient-wrapper",
-    markers: true,
+    let contentLength = Array.from(
+      stickyGradientSection.querySelectorAll(".sticky-gradient-content")
+    ).length;
+
+    stickyGradientSection.style.minHeight = 100 * contentLength + 100 + "vh";
   });
 
-  // Positions for sticky-gradient-2
-  const gradientGreen = [
-    { top: "-30%", right: "-40%" }, // index 0
-    { top: "30%", right: "-40%" }, // index 1
-    { right: "0%", top: "30%" }, // index 2
-    { right: "30%", top: "30%" }, // index 3
-    { top: "-30%", right: "30%" }, // index 4
-    { right: "0%", top: "-30%" }, // index 5
-  ];
+  if (stickyGradientSections.length) {
+    const stickyGradient = gsap.utils.toArray(".sticky-gradient");
+    const stickyGradientContent = gsap.utils.toArray(
+      ".sticky-gradient-content-wrapper"
+    );
 
-  // Positions for sticky-gradient:not(.sticky-gradient-2)
-  const gradientBlue = [
-    { top: "30%", left: "-40%" }, // index 0
-    { top: "-30%", left: "-40%" }, // index 1
-    { left: "0%", top: "-30%" }, // index 2
-    { left: "30%", top: "-30%" }, // index 3
-    { left: "30%", top: "30%" }, // index 4
-    { left: "0%", top: "30%" }, // index 5
-  ];
+    // Pin the sticky section
+    ScrollTrigger.create({
+      trigger: ".sticky-gradient-section",
+      start: "top top",
+      end: "bottom bottom",
+      // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
+      pin: ".sticky-gradient-wrapper",
+      markers: true,
+    });
 
-  // Common animation function to interpolate the positions
-  function animateGradientOnScroll(stickyElement, startPos, endPos, progress) {
-    gsap.to(stickyElement, {
-      top: gsap.utils.interpolate(startPos.top, endPos.top, progress),
-      [stickyElement.classList.contains("sticky-gradient-2")
-        ? "right"
-        : "left"]: gsap.utils.interpolate(
-        startPos[
-          stickyElement.classList.contains("sticky-gradient-2")
-            ? "right"
-            : "left"
-        ],
-        endPos[
-          stickyElement.classList.contains("sticky-gradient-2")
-            ? "right"
-            : "left"
-        ],
-        progress
-      ),
-      duration: 0.3,
-      ease: "none",
+    // Positions for sticky-gradient-2
+    const gradientGreen = [
+      { top: "-30%", right: "-40%" }, // index 0
+      { top: "30%", right: "-40%" }, // index 1
+      { right: "0%", top: "30%" }, // index 2
+      { right: "30%", top: "30%" }, // index 3
+      { top: "-30%", right: "30%" }, // index 4
+      { right: "0%", top: "-30%" }, // index 5
+    ];
+
+    // Positions for sticky-gradient:not(.sticky-gradient-2)
+    const gradientBlue = [
+      { top: "30%", left: "-40%" }, // index 0
+      { top: "-30%", left: "-40%" }, // index 1
+      { left: "0%", top: "-30%" }, // index 2
+      { left: "30%", top: "-30%" }, // index 3
+      { left: "30%", top: "30%" }, // index 4
+      { left: "0%", top: "30%" }, // index 5
+    ];
+
+    // Common animation function to interpolate the positions
+    function animateGradientOnScroll(
+      stickyElement,
+      startPos,
+      endPos,
+      progress
+    ) {
+      gsap.to(stickyElement, {
+        top: gsap.utils.interpolate(startPos.top, endPos.top, progress),
+        [stickyElement.classList.contains("sticky-gradient-2")
+          ? "right"
+          : "left"]: gsap.utils.interpolate(
+          startPos[
+            stickyElement.classList.contains("sticky-gradient-2")
+              ? "right"
+              : "left"
+          ],
+          endPos[
+            stickyElement.classList.contains("sticky-gradient-2")
+              ? "right"
+              : "left"
+          ],
+          progress
+        ),
+        duration: 0.3,
+        ease: "none",
+      });
+    }
+
+    stickyGradientContent.forEach((title, i) => {
+      gsap.set(title, {
+        opacity: i === 0 ? 1 : 0, // First element visible initially
+      });
+
+      ScrollTrigger.create({
+        trigger: title,
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+        id: i + 1,
+        markers: true,
+        toggleActions: "play reverse play reverse",
+
+        onUpdate: (self) => {
+          let progress = self.progress; // Get the scroll progress
+
+          let stickyGradient2 = gsap.utils.toArray(
+            ".sticky-gradient.sticky-gradient-2"
+          )[0];
+          let stickyGradientNot2 = gsap.utils.toArray(
+            ".sticky-gradient:not(.sticky-gradient-2)"
+          )[0];
+
+          // Animate the gradient positions based on scroll progress
+          animateGradientOnScroll(
+            stickyGradient2,
+            gradientGreen[i],
+            gradientGreen[(i + 1) % gradientGreen.length],
+            progress
+          );
+          animateGradientOnScroll(
+            stickyGradientNot2,
+            gradientBlue[i],
+            gradientBlue[(i + 1) % gradientBlue.length],
+            progress
+          );
+        },
+
+        onEnter: () => {
+          gsap.to(title, {
+            opacity: 1,
+            zIndex: 1,
+            duration: 1,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onLeave: () => {
+          gsap.to(title, {
+            opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
+            zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
+            duration: 0,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onEnterBack: () => {
+          gsap.to(title, {
+            opacity: 1,
+            zIndex: 1,
+            duration: 1,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onLeaveBack: () => {
+          gsap.to(title, {
+            opacity: i === 0 ? 1 : 0,
+            zIndex: i === 0 ? 1 : 0,
+            duration: 0,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+      });
     });
   }
 
-  stickyGradientContent.forEach((title, i) => {
-    gsap.set(title, {
-      opacity: i === 0 ? 1 : 0, // First element visible initially
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    const stickySection = document.querySelector(".sticky-gradient-section");
+    const contentWrappers = stickySection.querySelectorAll(
+      ".sticky-gradient-section .w-container > div"
+    );
+    const navDotsContainer = stickySection.querySelector(
+      ".sticky-gradient-nav-dots"
+    );
 
-    ScrollTrigger.create({
-      trigger: title,
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-      pinSpacing: false,
-      id: i + 1,
-      markers: true,
-      toggleActions: "play reverse play reverse",
+    // Create navigation dots dynamically
+    contentWrappers.forEach((wrapper, index) => {
+      // Assign unique ID to each .sticky-gradient-content-wrapper
+      wrapper.setAttribute("id", `sticky-gradient-${index + 1}`);
 
-      onUpdate: (self) => {
-        let progress = self.progress; // Get the scroll progress
+      // Create navigation dot
+      const navDot = document.createElement("a");
+      navDot.classList.add("nav-dots-items");
+      navDot.setAttribute("href", `#sticky-gradient-${index + 1}`);
+      navDotsContainer.appendChild(navDot);
 
-        let stickyGradient2 = gsap.utils.toArray(
-          ".sticky-gradient.sticky-gradient-2"
-        )[0];
-        let stickyGradientNot2 = gsap.utils.toArray(
-          ".sticky-gradient:not(.sticky-gradient-2)"
-        )[0];
+      // Add click event to scroll to the section smoothly
+      navDot.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent default anchor link behavior
+        const target = document.querySelector(navDot.getAttribute("href"));
 
-        // Animate the gradient positions based on scroll progress
-        animateGradientOnScroll(
-          stickyGradient2,
-          gradientGreen[i],
-          gradientGreen[(i + 1) % gradientGreen.length],
-          progress
-        );
-        animateGradientOnScroll(
-          stickyGradientNot2,
-          gradientBlue[i],
-          gradientBlue[(i + 1) % gradientBlue.length],
-          progress
-        );
-      },
+        // Smoothly scroll to the section
+        target.scrollIntoView({ behavior: "smooth" });
 
-      onEnter: () => {
-        gsap.to(title, {
-          opacity: 1,
-          zIndex: 1,
-          duration: 1,
-          ease: "power1.inOut",
-          overwrite: "auto",
-        });
-      },
-
-      onLeave: () => {
-        gsap.to(title, {
-          opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
-          zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
-          duration: 0,
-          ease: "power1.inOut",
-          overwrite: "auto",
-        });
-      },
-
-      onEnterBack: () => {
-        gsap.to(title, {
-          opacity: 1,
-          zIndex: 1,
-          duration: 1,
-          ease: "power1.inOut",
-          overwrite: "auto",
-        });
-      },
-
-      onLeaveBack: () => {
-        gsap.to(title, {
-          opacity: i === 0 ? 1 : 0,
-          zIndex: i === 0 ? 1 : 0,
-          duration: 0,
-          ease: "power1.inOut",
-          overwrite: "auto",
-        });
-      },
-    });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const stickySection = document.querySelector(".sticky-gradient-section");
-  const contentWrappers = stickySection.querySelectorAll(
-    ".sticky-gradient-section .w-container > div"
-  );
-  const navDotsContainer = stickySection.querySelector(
-    ".sticky-gradient-nav-dots"
-  );
-
-  // Create navigation dots dynamically
-  contentWrappers.forEach((wrapper, index) => {
-    // Assign unique ID to each .sticky-gradient-content-wrapper
-    wrapper.setAttribute("id", `sticky-gradient-${index + 1}`);
-
-    // Create navigation dot
-    const navDot = document.createElement("a");
-    navDot.classList.add("nav-dots-items");
-    navDot.setAttribute("href", `#sticky-gradient-${index + 1}`);
-    navDotsContainer.appendChild(navDot);
-
-    // Add click event to scroll to the section smoothly
-    navDot.addEventListener("click", (event) => {
-      event.preventDefault(); // Prevent default anchor link behavior
-      const target = document.querySelector(navDot.getAttribute("href"));
-
-      // Smoothly scroll to the section
-      target.scrollIntoView({ behavior: "smooth" });
-
-      setTimeout(() => {
         setTimeout(() => {
-          window.scrollBy(0, 2); // Scroll 2px down
-        }, 1000); // 1 second delay
-      }, 1000); // Delay for the duration of the smooth scroll
+          setTimeout(() => {
+            window.scrollBy(0, 2); // Scroll 2px down
+          }, 1000); // 1 second delay
+        }, 1000); // Delay for the duration of the smooth scroll
+      });
     });
-  });
 
-  // Intersection Observer to track visibility
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute("id");
+    // Intersection Observer to track visibility
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute("id");
+          const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
+
+          // Trigger when 100% of the section is in view
+          if (entry.isIntersecting && entry.intersectionRatio === 1) {
+            navDotsContainer
+              .querySelectorAll(".nav-dots-items")
+              .forEach((dot) => {
+                dot.classList.remove("active");
+              });
+            navDot.classList.add("active");
+          }
+        });
+      },
+      {
+        root: null, // Use the viewport as the root
+        threshold: 1, // Trigger when 100% of the section is visible
+      }
+    );
+
+    // Observe each .sticky-gradient-content-wrapper
+    contentWrappers.forEach((wrapper) => observer.observe(wrapper));
+
+    // Update active nav dot on scroll (even for partial visibility)
+    window.addEventListener("scroll", () => {
+      let activeDotFound = false; // Flag to prevent multiple active dots
+
+      contentWrappers.forEach((wrapper) => {
+        const rect = wrapper.getBoundingClientRect();
+        const id = wrapper.getAttribute("id");
         const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
 
-        // Trigger when 100% of the section is in view
-        if (entry.isIntersecting && entry.intersectionRatio === 1) {
+        if (
+          rect.top <= window.innerHeight &&
+          rect.bottom >= 0 &&
+          !activeDotFound
+        ) {
+          // Section is visible (even partially)
           navDotsContainer
             .querySelectorAll(".nav-dots-items")
             .forEach((dot) => {
               dot.classList.remove("active");
             });
           navDot.classList.add("active");
+
+          activeDotFound = true; // Stop once we find the first active dot
         }
       });
-    },
-    {
-      root: null, // Use the viewport as the root
-      threshold: 1, // Trigger when 100% of the section is visible
-    }
-  );
-
-  // Observe each .sticky-gradient-content-wrapper
-  contentWrappers.forEach((wrapper) => observer.observe(wrapper));
-
-  // Update active nav dot on scroll (even for partial visibility)
-  window.addEventListener("scroll", () => {
-    let activeDotFound = false; // Flag to prevent multiple active dots
-
-    contentWrappers.forEach((wrapper) => {
-      const rect = wrapper.getBoundingClientRect();
-      const id = wrapper.getAttribute("id");
-      const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
-
-      if (
-        rect.top <= window.innerHeight &&
-        rect.bottom >= 0 &&
-        !activeDotFound
-      ) {
-        // Section is visible (even partially)
-        navDotsContainer.querySelectorAll(".nav-dots-items").forEach((dot) => {
-          dot.classList.remove("active");
-        });
-        navDot.classList.add("active");
-
-        activeDotFound = true; // Stop once we find the first active dot
-      }
     });
   });
-});
+}
 // End Sticky Gradient change position Animation---------------------------------------------------------------------
 
 // Start Sticky Section Animation---------------------------------------------------------------------------------
@@ -872,6 +929,7 @@ if (columnWrapper) {
 let swipeAnimationTrigger = Array.from(
   document.querySelectorAll(".swipe-animation-trigger")
 );
+
 if (window.innerWidth > 991 && swipeAnimationTrigger.length) {
   let allowScroll = true; // sometimes we want to ignore scroll-related stuff, like when an Observer-based section is transitioning.
   let scrollTimeout = gsap.delayedCall(0.1, () => (allowScroll = true)).pause(); // controls how long we should wait after an Observer-based animation is initiated before we allow another scroll-related action
@@ -972,6 +1030,418 @@ if (btnHover.length) {
   });
 }
 // End Btn Hover Animation-----------------------------------------------------------------------------------------
+
+// Start Icon Content New Page Animation-----------------------------------------------------------------------------------------
+let animationScrollSections = document.querySelectorAll(
+  ".animation-scroll-section"
+);
+
+if (animationScrollSections.length) {
+  if (window.innerWidth > 767) {
+    // Start set section height
+    animationScrollSections.forEach((animationScrollSection) => {
+      let contentLength = Array.from(
+        animationScrollSection.querySelectorAll(".hero-section")
+      ).length;
+
+      animationScrollSection.style.minHeight = 100 * contentLength + 100 + "vh";
+    });
+    // End set section height
+
+    const animationScrollItem = gsap.utils.toArray(
+      ".animation-scroll-section .hero-section"
+    );
+
+    // Set default values = Index 0
+    gsap.set(".bar-wrapper-1", { width: "0%" });
+    gsap.set(".animation-dot-wrapper", { left: "0%" });
+
+    // Set default values = Index 1
+    gsap.set(".animation-content-wrapper-2", {
+      transform: "translateY(100%)",
+      opacity: 0,
+    });
+    const contentItems = gsap.utils.toArray(
+      ".animation-content-wrapper-2 .content-item"
+    );
+    gsap.set(contentItems, {
+      transform: (index) => (index === 0 ? "" : "translateY(100%)"),
+    });
+    gsap.set(".bar-wrapper-2", { width: "0%" });
+    gsap.set(".dot-wrapper-2", { left: "0%" });
+
+    // Set default values = Index 2
+    gsap.set(".img-hide-wrapper-1", { width: "100%" });
+    gsap.set(".img-hide-wrapper-2", { width: "100%" });
+
+    animationScrollItem.forEach((title, i) => {
+      gsap.set(title, {
+        opacity: i === 0 ? 1 : 0, // First element visible initially
+      });
+
+      ScrollTrigger.create({
+        trigger: title,
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+        id: i + 1,
+        //markers: true,
+        toggleActions: "play reverse play reverse",
+
+        onEnter: () => {
+          gsap.to(title, {
+            opacity: 1,
+            zIndex: 1,
+            duration: 1,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onLeave: () => {
+          gsap.to(title, {
+            opacity: animationScrollItem.length - 1 === i ? 1 : 0,
+            zIndex: animationScrollItem.length - 1 === i ? 1 : 0,
+            duration: 0,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onEnterBack: () => {
+          gsap.to(title, {
+            opacity: 1,
+            zIndex: 1,
+            duration: 1,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+
+        onLeaveBack: () => {
+          gsap.to(title, {
+            opacity: i === 0 ? 1 : 0,
+            zIndex: i === 0 ? 1 : 0,
+            duration: 0,
+            ease: "power1.inOut",
+            overwrite: "auto",
+          });
+        },
+      });
+
+      if (i === 0) {
+        gsap.to(".bar-wrapper-1", {
+          width: "100%",
+          ease: "none", // Smoothly follows scroll
+          scrollTrigger: {
+            trigger: title,
+            start: "top top",
+            end: "bottom 10%",
+            scrub: 1, // Animates while scrolling
+            //   markers: true,
+          },
+        });
+
+        gsap.to(".animation-dot-wrapper", {
+          left: "100%",
+          ease: "none", // Smoothly follows scroll
+          scrollTrigger: {
+            trigger: title,
+            start: "top top",
+            end: "bottom 10%",
+            scrub: 1, // Animates while scrolling
+            // markers: true,
+          },
+        });
+      }
+
+      if (i === 1) {
+        gsap.to(".animation-content-wrapper-2", {
+          duration: 1,
+          y: 0,
+          opacity: 1,
+          stagger: 0.015,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: title,
+            start: "top top",
+            end: "bottom bottom",
+            //markers: true,
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        gsap.to(".bar-wrapper-2", {
+          width: "100%",
+          ease: "none", // Smoothly follows scroll
+          scrollTrigger: {
+            trigger: title,
+            start: "top top",
+            end: "bottom 10%",
+            scrub: 1, // Animates while scrolling
+            //markers: true,
+            onUpdate: (self) => {
+              let progress = self.progress; // Get the scroll progress (0 to 1)
+
+              console.log(progress);
+
+              // Calculate the progress for each dot
+              if (progress <= 0.33) {
+                gsap.to(".animation-2-dot-wrapper-2", {
+                  left: progress * 101 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-3", {
+                  left: progress * 101 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  left: progress * 101 + "%",
+                });
+              }
+
+              if (progress > 0.33 && progress <= 0.66) {
+                gsap.to(".animation-2-dot-wrapper-3", {
+                  left: progress * 101 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  left: progress * 101 + "%",
+                });
+              }
+
+              if (progress > 0.66 && progress <= 1) {
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  left: progress * 100 + "%",
+                });
+              }
+
+              // Handle visibility and translation based on progress
+              if (progress >= 0.33 && progress < 0.66) {
+                gsap.to(contentItems[1], {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1,
+                });
+              } else if (progress >= 0.66 && progress < 1) {
+                gsap.to(contentItems[2], {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1,
+                });
+              } else if (progress >= 1) {
+                gsap.to(contentItems[3], {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1,
+                });
+              }
+
+              // Reverse the animation based on scroll progress
+              if (progress < 0.33) {
+                gsap.to(contentItems[1], {
+                  y: "100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              } else if (progress < 0.66) {
+                gsap.to(contentItems[2], {
+                  y: "100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              } else if (progress < 1) {
+                gsap.to(contentItems[3], {
+                  y: "100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              }
+            },
+          },
+        });
+      }
+
+      if (i === 2) {
+        // Create a GSAP timeline
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: title,
+            start: "top top",
+            end: "bottom 10%",
+            scrub: 1, // Animates while scrolling
+            //markers: true,
+          },
+        });
+
+        // Add the first animation to the timeline
+        tl.to(".img-hide-wrapper-1", {
+          width: "0%",
+          ease: "none", // Smoothly follows scroll
+        });
+
+        // Add the second animation to start after the first one finishes
+        tl.to(
+          ".img-hide-wrapper-2",
+          {
+            width: "0%",
+            ease: "none", // Smoothly follows scroll
+          },
+          "-=0"
+        ); // The second animation starts immediately after the first
+      }
+    });
+  } else {
+    const animationScrollItem = gsap.utils.toArray(
+      ".animation-scroll-section .hero-section"
+    );
+
+    // Set default values = Index 0
+    gsap.set(".bar-wrapper-1", { height: "0%" });
+    gsap.set(".animation-dot-wrapper", { top: "0%" });
+
+    // Set default values = Index 1
+    const contentItems = gsap.utils.toArray(
+      ".animation-content-wrapper-2 .content-item"
+    );
+    gsap.set(contentItems, {
+      transform: (index) => (index === 0 ? "" : "translateX(-100%)"),
+    });
+    gsap.set(".bar-wrapper-2", { height: "0%" });
+    gsap.set(".dot-wrapper-2", { top: "0%" });
+
+    // Set default values = Index 2
+    gsap.set(".img-hide-wrapper", { height: "100%" });
+
+    animationScrollItem.forEach((title, i) => {
+      ScrollTrigger.create({
+        trigger: title,
+        start: "top 50%",
+        end: "bottom 50%",
+        id: i + 1,
+        // markers: true,
+      });
+
+      if (i === 0) {
+        gsap.to(".bar-wrapper-1", {
+          height: "100%",
+          ease: "none", // Smoothly follows scroll
+          scrollTrigger: {
+            trigger: ".animation-content-wrapper",
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 1, // Animates while scrolling
+            // markers: true,
+          },
+        });
+
+        gsap.to(".animation-dot-wrapper", {
+          top: "100%",
+          ease: "none", // Smoothly follows scroll
+          scrollTrigger: {
+            trigger: ".animation-content-wrapper",
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 1, // Animates while scrolling
+            // markers: true,
+          },
+        });
+      }
+
+      if (i === 1) {
+        gsap.to(".bar-wrapper-2", {
+          height: "100%", // Change width to height for vertical animation
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".animation-content-wrapper-2",
+            start: "top 60%",
+            end: "bottom 60%",
+            scrub: 1,
+            // markers: true,
+            onUpdate: (self) => {
+              let progress = self.progress; // Get scroll progress (0 to 1)
+
+              console.log(progress);
+
+              // Move dots vertically instead of horizontally
+              if (progress < 0.33) {
+                gsap.to(".animation-2-dot-wrapper-2", {
+                  top: progress * 100 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-3", {
+                  top: progress * 100 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  top: progress * 100 + "%",
+                });
+              }
+
+              if (progress >= 0.33 && progress < 0.66) {
+                gsap.to(".animation-2-dot-wrapper-3", {
+                  top: progress * 100 + "%",
+                });
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  top: progress * 100 + "%",
+                });
+              }
+
+              if (progress >= 0.66 && progress <= 1) {
+                gsap.to(".animation-2-dot-wrapper-4", {
+                  top: progress * 100 + "%",
+                });
+              }
+
+              // Handle visibility and vertical movement of content items
+              if (progress >= 0.33 && progress < 0.66) {
+                gsap.to(contentItems[1], { x: 0, opacity: 1, duration: 1 });
+              } else if (progress >= 0.66 && progress < 1) {
+                gsap.to(contentItems[2], { x: 0, opacity: 1, duration: 1 });
+              } else if (progress >= 1) {
+                gsap.to(contentItems[3], { x: 0, opacity: 1, duration: 1 });
+              }
+
+              // Reverse the animation when scrolling back
+              if (progress < 0.33) {
+                gsap.to(contentItems[1], {
+                  x: "-100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              } else if (progress < 0.66) {
+                gsap.to(contentItems[2], {
+                  x: "-100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              } else if (progress < 1) {
+                gsap.to(contentItems[3], {
+                  x: "-100%",
+                  opacity: 0,
+                  duration: 1,
+                });
+              }
+            },
+          },
+        });
+      }
+
+      if (i === 2) {
+        gsap.utils.toArray(".img-hide-wrapper").forEach((element) => {
+          gsap.to(element, {
+            height: "0%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: element, // Uses each wrapper as the trigger
+              start: "top 60%",
+              end: "bottom 60%",
+              scrub: 1,
+              // markers: true,
+            },
+          });
+        });
+      }
+    });
+  }
+}
+// End Icon Content New Page Animation-----------------------------------------------------------------------------------------
 
 import "https://rglhpcjp-5500.inc1.devtunnels.ms/createMe-animatiom.js";
 
