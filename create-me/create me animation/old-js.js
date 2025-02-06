@@ -1137,7 +1137,7 @@ if (animationScrollSections.length) {
           scrollTrigger: {
             trigger: title,
             start: "top top",
-            end: "bottom 10%",
+            end: "bottom 20%",
             scrub: 1, // Animates while scrolling
             //   markers: true,
           },
@@ -1149,7 +1149,7 @@ if (animationScrollSections.length) {
           scrollTrigger: {
             trigger: title,
             start: "top top",
-            end: "bottom 10%",
+            end: "bottom 20%",
             scrub: 1, // Animates while scrolling
             // markers: true,
           },
@@ -1178,7 +1178,7 @@ if (animationScrollSections.length) {
           scrollTrigger: {
             trigger: title,
             start: "top top",
-            end: "bottom 10%",
+            end: "bottom 20%",
             scrub: 1, // Animates while scrolling
             //markers: true,
             onUpdate: (self) => {
@@ -1266,7 +1266,7 @@ if (animationScrollSections.length) {
           scrollTrigger: {
             trigger: title,
             start: "top top",
-            end: "bottom 10%",
+            end: "bottom 20%",
             scrub: 1, // Animates while scrolling
             //markers: true,
           },
