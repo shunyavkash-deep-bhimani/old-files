@@ -1,0 +1,7 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 22" width="12" height="22">
+	<title>solid-arrow-line</title>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<path class="s0" d="m12.1 12.1c0.6-0.6 0.6-1.6 0-2.2l-9.6-9.5c-0.6-0.6-1.5-0.6-2.1 0-0.6 0.6-0.6 1.5 0 2.1l8.5 8.5-8.5 8.5c-0.6 0.6-0.6 1.5 0 2.1 0.6 0.6 1.5 0.6 2.1 0zm-1231.1 0.4h1230l0.1-3h-1230z"/>
+</svg>

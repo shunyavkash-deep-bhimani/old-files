@@ -6,10 +6,30 @@ import "https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquer
 $(document).ready(function () {
   $("select").niceSelect();
 });
-
 // <!-- End Nice Select------------------------------------------------------------------------------------------------>
 
-// Start header height---------------------------------------------------------------------------------------------
+// <!-- Start Home top bar--------------------------------------------------------------------------------------------->
+const marquee = document.querySelector(".marquee");
+const container = document.querySelector(".marquee-container");
+
+container.addEventListener("mouseenter", () => {
+  marquee.style.animationPlayState = "paused";
+});
+
+container.addEventListener("mouseleave", () => {
+  marquee.style.animationPlayState = "running";
+});
+
+container.addEventListener("focus", () => {
+  marquee.style.animationPlayState = "paused";
+});
+
+container.addEventListener("blur", () => {
+  marquee.style.animationPlayState = "running";
+});
+// <!-- End Home top bar--------------------------------------------------------------------------------------------->
+
+// <!-- Start header height------------------------------------------------------------------------------------------>
 const header = document.querySelector("header");
 
 function updateHeaderHeight() {
@@ -21,10 +41,9 @@ function updateHeaderHeight() {
 }
 updateHeaderHeight();
 window.addEventListener("resize", updateHeaderHeight);
-// End header height--------------------------------------------------------------------------------------------------
+// <!-- End header height------------------------------------------------------------------------------------------>
 
-// <!-- AUTO-ROTATING TABS -->
-
+// <!-- Start auto-rotating tabs ------------------------------------------------------------------------------------>
 // Function to rotate tabs
 function initializeTabRotator() {
   // Find all tab containers with the ms-code-rotate-tabs attribute
@@ -144,8 +163,9 @@ function initializeTabRotator() {
 
 // Run the function when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initializeTabRotator);
+// <!-- End auto-rotating tabs ------------------------------------------------------------------------------------>
 
-// Start Accordion--------------------------------------------------------------------------------------------------
+// <!-- Start Accordion---------------------------------------------------------------------------------------------->
 $(".accordion-item.show > .accordion-content").slideDown();
 
 $(".accordion-title").click(function (e) {
@@ -158,15 +178,10 @@ $(".accordion-title").click(function (e) {
   if (currentItem.hasClass("show")) {
     // Collapse the current accordion item
     currentItem.removeClass("show");
-    $(this).children(".accordion-dropdown").removeClass("show");
     $(this).siblings(".accordion-content").slideUp();
   } else {
     // Collapse only sibling accordion items at the same level
     currentItem.siblings(".accordion-item").removeClass("show");
-    currentItem
-      .siblings(".accordion-item")
-      .find(".accordion-dropdown")
-      .removeClass("show");
     currentItem
       .siblings(".accordion-item")
       .find(".accordion-content")
@@ -174,12 +189,34 @@ $(".accordion-title").click(function (e) {
 
     // Expand the current accordion item
     currentItem.addClass("show");
-    $(this).children(".accordion-dropdown").addClass("show");
     $(this).siblings(".accordion-content").slideDown();
   }
 });
-// End Accordion--------------------------------------------------------------------------------------------------
 
+$(".inner-accordion-title").click(function (e) {
+  e.stopPropagation();
+
+  $(".accordion-item").removeClass("show");
+  $(".accordion-content").slideUp();
+
+  let mainCollapsibleId = parseInt($(this).attr("data-main-collapsible-id"));
+  let childCollapsibleId = parseInt($(this).attr("data-child-collapsible-id"));
+
+  // Select the correct parent collapsible
+  const parentCollapsible = $(".faqs-parent-item").eq(mainCollapsibleId);
+  parentCollapsible.addClass("show");
+  parentCollapsible.children(".accordion-content").first().slideDown();
+
+  // Find the correct child collapsible
+  let selectedAccordionItem = $(
+    parentCollapsible.find(".accordion-item")[childCollapsibleId]
+  );
+  selectedAccordionItem.addClass("show");
+  selectedAccordionItem.children(".accordion-content").first().slideDown();
+});
+// <!-- End Accordion---------------------------------------------------------------------------------------------->
+
+// <!-- Start gsap animation--------------------------------------------------------------------------------------------->
 import "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
 import "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js";
 import "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js";
@@ -440,7 +477,13 @@ if (textAnimation3.length) {
   let projects = gsap.utils.toArray(".textanimation3");
 
   projects.forEach((project, i) => {
+    // If window.innerHeight is greater than 829, skip the scrollTrigger
+    if (window.innerWidth > 767 && window.innerHeight <= 830) {
+      return; // Skip the animation for this element
+    }
+
     let span = project.getElementsByClassName("word");
+
     gsap.fromTo(
       span,
       {
@@ -455,6 +498,22 @@ if (textAnimation3.length) {
         delay: 0.1,
         scrollTrigger: {
           trigger: project,
+          //   start:
+          //     i === 0
+          //       ? "top 60%"
+          //       : window.innerWidth <= 767
+          //       ? "top 60%"
+          //       : window.innerHeight <= 830
+          //       ? "top 60%"
+          //       : "top top",
+          //   end:
+          //     i === 0
+          //       ? "bottom 10%"
+          //       : window.innerWidth <= 767
+          //       ? "bottom 10%"
+          //       : window.innerHeight <= 830
+          //       ? "bottom 10%"
+          //                     : "bottom bottom",
           start:
             i === 0
               ? "top 60%"
@@ -467,7 +526,7 @@ if (textAnimation3.length) {
               : window.innerWidth <= 767
               ? "bottom 10%"
               : "bottom bottom",
-          //markers: true,
+          //   markers: true,
           toggleActions: "play none none reverse",
         },
       }
@@ -476,29 +535,6 @@ if (textAnimation3.length) {
 }
 // End Text & icon Revel 3 Animation------------------------------------------
 // End Text & icon Revel Animation---------------------------------------------------------------------------------
-
-// Start Scale Animation---------------------------------------------------------------------------------
-let scaleAnimationElement = Array.from(
-  document.querySelectorAll(".scale-animation-element")
-);
-
-if (scaleAnimationElement.length) {
-  gsap.from(".scale-animation-element", {
-    scrollTrigger: {
-      trigger: ".scale-animation-trigger",
-      scrub: 1,
-      //markers: true,
-      start: "top 100%",
-      end: "bottom 100%",
-    },
-    scaleX: 0,
-    scaleY: 0,
-    transformOrigin: "bottom center",
-    duration: 1,
-    ease: "power1.inOut",
-  });
-}
-// End Scale Animation---------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
 let milestoneItemImgContent = Array.from(
@@ -577,48 +613,6 @@ if (revelVideoContent.length) {
 }
 // End Video Revel Animation---------------------------------------------------------------------------------
 
-// Start Gradient Scale Animation---------------------------------------------------------------------------------
-let bgGradientImg = Array.from(document.querySelectorAll(".bg-gradient-img"));
-
-if (bgGradientImg.length) {
-  gsap.from(".bg-gradient-img", {
-    scrollTrigger: {
-      trigger: ".gradient-banner-animation",
-      scrub: 1,
-      //markers: true,
-      start: "top 55%",
-      end: "bottom 100%",
-    },
-    y: 200,
-    x: 300,
-    scaleX: 0.85,
-    scaleY: 0.85,
-    transformOrigin: "bottom right",
-    duration: 1,
-    ease: "power1.inOut",
-  });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      scrub: 1,
-      pin: true,
-      trigger: ".gradient-banner-animation",
-      start: "50% 50%",
-      end: "bottom 50%",
-    },
-  });
-
-  tl.from(".bg-gradient-img", {
-    y: 400,
-    x: 400,
-  });
-  tl.to(".bg-gradient-img", {
-    y: 0,
-    x: 0,
-  });
-}
-// End Gradient Scale Animation---------------------------------------------------------------------------------
-
 // Start Sticky Gradient change position Animation-----------------------------------------------------------------
 let stickyGradientSections = Array.from(
   document.querySelectorAll(".sticky-gradient-section")
@@ -632,7 +626,7 @@ if (stickyGradientSections.length) {
       stickyGradientSection.querySelectorAll(".sticky-gradient-content")
     ).length;
 
-    stickyGradientSection.style.minHeight = 100 * contentLength + 100 + "vh";
+    stickyGradientSection.style.minHeight = 50 * contentLength + 50 + "vh";
   });
 
   if (stickyGradientSections.length) {
@@ -648,7 +642,7 @@ if (stickyGradientSections.length) {
       end: "bottom bottom",
       // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
       pin: ".sticky-gradient-wrapper",
-      markers: true,
+      //markers: true,
     });
 
     // Positions for sticky-gradient-2
@@ -712,7 +706,7 @@ if (stickyGradientSections.length) {
         pin: true,
         pinSpacing: false,
         id: i + 1,
-        markers: true,
+        //markers: true,
         toggleActions: "play reverse play reverse",
 
         onUpdate: (self) => {
@@ -924,526 +918,7 @@ if (columnWrapper) {
   });
 }
 // End Sticky Section Animation---------------------------------------------------------------------------------
-
-// Start Swipe Animation-----------------------------------------------------------------------------------------
-let swipeAnimationTrigger = Array.from(
-  document.querySelectorAll(".swipe-animation-trigger")
-);
-
-if (window.innerWidth > 991 && swipeAnimationTrigger.length) {
-  let allowScroll = true; // sometimes we want to ignore scroll-related stuff, like when an Observer-based section is transitioning.
-  let scrollTimeout = gsap.delayedCall(0.1, () => (allowScroll = true)).pause(); // controls how long we should wait after an Observer-based animation is initiated before we allow another scroll-related action
-  let currentIndex = 0;
-  let swipePanels = gsap.utils.toArray(
-    ".swipe-animation-trigger .swipe-animation-element"
-  );
-
-  // set z-index & top levels for the swipe panels
-  gsap.set(swipePanels, {
-    zIndex: (i) => swipePanels.length - i,
-    top: (i) => swipePanels.length * i * (100 / swipePanels.length) + "%",
-  });
-
-  // create an observer and disable it to start
-  let intentObserver = ScrollTrigger.observe({
-    type: "wheel,touch",
-    onUp: () => allowScroll && gotoPanel(currentIndex - 1, false),
-    onDown: () => allowScroll && gotoPanel(currentIndex + 1, true),
-    tolerance: 10,
-    preventDefault: true,
-    onEnable(self) {
-      allowScroll = false;
-      scrollTimeout.restart(true);
-      // when enabling, we should save the scroll position and freeze it. This fixes momentum-scroll on Macs, for example.
-      let savedScroll = self.scrollY();
-      self._restoreScroll = () => self.scrollY(savedScroll); // if the native scroll repositions, force it back to where it should be
-      document.addEventListener("scroll", self._restoreScroll, {
-        passive: false,
-      });
-    },
-    onDisable: (self) =>
-      document.removeEventListener("scroll", self._restoreScroll),
-  });
-  intentObserver.disable();
-
-  // handle the panel swipe animations
-  function gotoPanel(index, isScrollingDown) {
-    // return to normal scroll if we're at the end or back up to the start
-    if (
-      (index === swipePanels.length && isScrollingDown) ||
-      (index === -1 && !isScrollingDown)
-    ) {
-      intentObserver.disable(); // resume native scroll
-      return;
-    }
-    allowScroll = false;
-    scrollTimeout.restart(true);
-
-    // let target = isScrollingDown ? swipePanels[currentIndex] : swipePanels[index];
-    gsap.to(swipePanels, {
-      yPercent: -100 * index,
-      duration: 0.75,
-    });
-
-    currentIndex = index;
-  }
-
-  // pin swipe section and initiate observer
-  ScrollTrigger.create({
-    trigger: ".swipe-animation-trigger",
-    pin: true,
-    //markers: true,
-    start: "top 20%",
-    end: "top 20%", // just needs to be enough to not risk vibration where a user's fast-scroll shoots way past the end
-    onEnter: (self) => {
-      if (intentObserver.isEnabled) {
-        return;
-      } // in case the native scroll jumped past the end and then we force it back to where it should be.
-      self.scroll(self.start + 1); // jump to just one pixel past the start of this section so we can hold there.
-      intentObserver.enable(); // STOP native scrolling
-    },
-    onEnterBack: (self) => {
-      if (intentObserver.isEnabled) {
-        return;
-      } // in case the native scroll jumped backward past the start and then we force it back to where it should be.
-      self.scroll(self.end - 1); // jump to one pixel before the end of this section so we can hold there.
-      intentObserver.enable(); // STOP native scrolling
-    },
-  });
-}
-// End Swipe Animation-----------------------------------------------------------------------------------------
-
-// Start Btn Hover Animation-----------------------------------------------------------------------------------------
-let btnHover = Array.from(document.querySelectorAll(".btn-hover"));
-
-if (btnHover.length) {
-  const buttons = gsap.utils.toArray(".btn-hover");
-  buttons.forEach((item) => {
-    let span = item.querySelector("span");
-    let tl = gsap.timeline({ paused: true });
-
-    tl.to(span, { duration: 0.2, yPercent: -150, ease: "power2.in" });
-    tl.set(span, { yPercent: 150 });
-    tl.to(span, { duration: 0.2, yPercent: 0 });
-
-    item.addEventListener("mouseenter", () => tl.play(0));
-  });
-}
-// End Btn Hover Animation-----------------------------------------------------------------------------------------
-
-// Start Icon Content New Page Animation-----------------------------------------------------------------------------------------
-let animationScrollSections = document.querySelectorAll(
-  ".animation-scroll-section"
-);
-
-if (animationScrollSections.length) {
-  if (window.innerWidth > 767) {
-    // Start set section height
-    animationScrollSections.forEach((animationScrollSection) => {
-      let contentLength = Array.from(
-        animationScrollSection.querySelectorAll(".hero-section")
-      ).length;
-
-      animationScrollSection.style.minHeight = 100 * contentLength + 100 + "vh";
-    });
-    // End set section height
-
-    const animationScrollItem = gsap.utils.toArray(
-      ".animation-scroll-section .hero-section"
-    );
-
-    // Set default values = Index 0
-    gsap.set(".bar-wrapper-1", { width: "0%" });
-    gsap.set(".animation-dot-wrapper", { left: "0%" });
-
-    // Set default values = Index 1
-    gsap.set(".animation-content-wrapper-2", {
-      transform: "translateY(100%)",
-      opacity: 0,
-    });
-    const contentItems = gsap.utils.toArray(
-      ".animation-content-wrapper-2 .content-item"
-    );
-    gsap.set(contentItems, {
-      transform: (index) => (index === 0 ? "" : "translateY(100%)"),
-    });
-    gsap.set(".bar-wrapper-2", { width: "0%" });
-    gsap.set(".dot-wrapper-2", { left: "0%" });
-
-    // Set default values = Index 2
-    gsap.set(".img-hide-wrapper-1", { width: "100%" });
-    gsap.set(".img-hide-wrapper-2", { width: "100%" });
-
-    animationScrollItem.forEach((title, i) => {
-      gsap.set(title, {
-        opacity: i === 0 ? 1 : 0, // First element visible initially
-      });
-
-      ScrollTrigger.create({
-        trigger: title,
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-        pinSpacing: false,
-        id: i + 1,
-        //markers: true,
-        toggleActions: "play reverse play reverse",
-
-        onEnter: () => {
-          gsap.to(title, {
-            opacity: 1,
-            zIndex: 1,
-            duration: 1,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
-
-        onLeave: () => {
-          gsap.to(title, {
-            opacity: animationScrollItem.length - 1 === i ? 1 : 0,
-            zIndex: animationScrollItem.length - 1 === i ? 1 : 0,
-            duration: 0,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
-
-        onEnterBack: () => {
-          gsap.to(title, {
-            opacity: 1,
-            zIndex: 1,
-            duration: 1,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
-
-        onLeaveBack: () => {
-          gsap.to(title, {
-            opacity: i === 0 ? 1 : 0,
-            zIndex: i === 0 ? 1 : 0,
-            duration: 0,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
-      });
-
-      if (i === 0) {
-        gsap.to(".bar-wrapper-1", {
-          width: "100%",
-          ease: "none", // Smoothly follows scroll
-          scrollTrigger: {
-            trigger: title,
-            start: "top top",
-            end: "bottom 30%",
-            scrub: 1, // Animates while scrolling
-            //   markers: true,
-          },
-        });
-
-        gsap.to(".animation-dot-wrapper", {
-          left: "100%",
-          ease: "none", // Smoothly follows scroll
-          scrollTrigger: {
-            trigger: title,
-            start: "top top",
-            end: "bottom 30%",
-            scrub: 1, // Animates while scrolling
-            // markers: true,
-          },
-        });
-      }
-
-      if (i === 1) {
-        gsap.to(".animation-content-wrapper-2", {
-          duration: 1,
-          y: 0,
-          opacity: 1,
-          stagger: 0.015,
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: title,
-            start: "top top",
-            end: "bottom bottom",
-            //markers: true,
-            toggleActions: "play none none reverse",
-          },
-        });
-
-        gsap.to(".bar-wrapper-2", {
-          width: "100%",
-          ease: "none", // Smoothly follows scroll
-          scrollTrigger: {
-            trigger: title,
-            start: "top top",
-            end: "bottom 30%",
-            scrub: 1, // Animates while scrolling
-            //markers: true,
-            onUpdate: (self) => {
-              let progress = self.progress; // Get the scroll progress (0 to 1)
-
-              console.log(progress);
-
-              // Calculate the progress for each dot
-              if (progress <= 0.33) {
-                gsap.to(".animation-2-dot-wrapper-2", {
-                  left: progress * 101 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-3", {
-                  left: progress * 101 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  left: progress * 101 + "%",
-                });
-              }
-
-              if (progress > 0.33 && progress <= 0.66) {
-                gsap.to(".animation-2-dot-wrapper-3", {
-                  left: progress * 101 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  left: progress * 101 + "%",
-                });
-              }
-
-              if (progress > 0.66 && progress <= 1) {
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  left: progress * 100 + "%",
-                });
-              }
-
-              // Handle visibility and translation based on progress
-              if (progress >= 0.33 && progress < 0.66) {
-                gsap.to(contentItems[1], {
-                  y: 0,
-                  opacity: 1,
-                  duration: 1,
-                });
-              } else if (progress >= 0.66 && progress < 1) {
-                gsap.to(contentItems[2], {
-                  y: 0,
-                  opacity: 1,
-                  duration: 1,
-                });
-              } else if (progress >= 1) {
-                gsap.to(contentItems[3], {
-                  y: 0,
-                  opacity: 1,
-                  duration: 1,
-                });
-              }
-
-              // Reverse the animation based on scroll progress
-              if (progress < 0.33) {
-                gsap.to(contentItems[1], {
-                  y: "100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              } else if (progress < 0.66) {
-                gsap.to(contentItems[2], {
-                  y: "100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              } else if (progress < 1) {
-                gsap.to(contentItems[3], {
-                  y: "100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              }
-            },
-          },
-        });
-      }
-
-      if (i === 2) {
-        // Create a GSAP timeline
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: title,
-            start: "top top",
-            end: "bottom 30%",
-            scrub: 1, // Animates while scrolling
-            //markers: true,
-          },
-        });
-
-        // Add the first animation to the timeline
-        tl.to(".img-hide-wrapper-1", {
-          width: "0%",
-          ease: "none", // Smoothly follows scroll
-        });
-
-        // Add the second animation to start after the first one finishes
-        tl.to(
-          ".img-hide-wrapper-2",
-          {
-            width: "0%",
-            ease: "none", // Smoothly follows scroll
-          },
-          "-=0"
-        ); // The second animation starts immediately after the first
-      }
-    });
-  } else {
-    const animationScrollItem = gsap.utils.toArray(
-      ".animation-scroll-section .hero-section"
-    );
-
-    // Set default values = Index 0
-    gsap.set(".bar-wrapper-1", { height: "0%" });
-    gsap.set(".animation-dot-wrapper", { top: "0%" });
-
-    // Set default values = Index 1
-    const contentItems = gsap.utils.toArray(
-      ".animation-content-wrapper-2 .content-item"
-    );
-    gsap.set(contentItems, {
-      transform: (index) => (index === 0 ? "" : "translateX(-100%)"),
-    });
-    gsap.set(".bar-wrapper-2", { height: "0%" });
-    gsap.set(".dot-wrapper-2", { top: "0%" });
-
-    // Set default values = Index 2
-    gsap.set(".img-hide-wrapper", { height: "100%" });
-
-    animationScrollItem.forEach((title, i) => {
-      ScrollTrigger.create({
-        trigger: title,
-        start: "top 50%",
-        end: "bottom 50%",
-        id: i + 1,
-        // markers: true,
-      });
-
-      if (i === 0) {
-        gsap.to(".bar-wrapper-1", {
-          height: "100%",
-          ease: "none", // Smoothly follows scroll
-          scrollTrigger: {
-            trigger: ".animation-content-wrapper",
-            start: "top 60%",
-            end: "bottom 60%",
-            scrub: 1, // Animates while scrolling
-            // markers: true,
-          },
-        });
-
-        gsap.to(".animation-dot-wrapper", {
-          top: "100%",
-          ease: "none", // Smoothly follows scroll
-          scrollTrigger: {
-            trigger: ".animation-content-wrapper",
-            start: "top 60%",
-            end: "bottom 60%",
-            scrub: 1, // Animates while scrolling
-            // markers: true,
-          },
-        });
-      }
-
-      if (i === 1) {
-        gsap.to(".bar-wrapper-2", {
-          height: "100%", // Change width to height for vertical animation
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".animation-content-wrapper-2",
-            start: "top 60%",
-            end: "bottom 60%",
-            scrub: 1,
-            // markers: true,
-            onUpdate: (self) => {
-              let progress = self.progress; // Get scroll progress (0 to 1)
-
-              console.log(progress);
-
-              // Move dots vertically instead of horizontally
-              if (progress < 0.33) {
-                gsap.to(".animation-2-dot-wrapper-2", {
-                  top: progress * 100 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-3", {
-                  top: progress * 100 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  top: progress * 100 + "%",
-                });
-              }
-
-              if (progress >= 0.33 && progress < 0.66) {
-                gsap.to(".animation-2-dot-wrapper-3", {
-                  top: progress * 100 + "%",
-                });
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  top: progress * 100 + "%",
-                });
-              }
-
-              if (progress >= 0.66 && progress <= 1) {
-                gsap.to(".animation-2-dot-wrapper-4", {
-                  top: progress * 100 + "%",
-                });
-              }
-
-              // Handle visibility and vertical movement of content items
-              if (progress >= 0.33 && progress < 0.66) {
-                gsap.to(contentItems[1], { x: 0, opacity: 1, duration: 1 });
-              } else if (progress >= 0.66 && progress < 1) {
-                gsap.to(contentItems[2], { x: 0, opacity: 1, duration: 1 });
-              } else if (progress >= 1) {
-                gsap.to(contentItems[3], { x: 0, opacity: 1, duration: 1 });
-              }
-
-              // Reverse the animation when scrolling back
-              if (progress < 0.33) {
-                gsap.to(contentItems[1], {
-                  x: "-100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              } else if (progress < 0.66) {
-                gsap.to(contentItems[2], {
-                  x: "-100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              } else if (progress < 1) {
-                gsap.to(contentItems[3], {
-                  x: "-100%",
-                  opacity: 0,
-                  duration: 1,
-                });
-              }
-            },
-          },
-        });
-      }
-
-      if (i === 2) {
-        gsap.utils.toArray(".img-hide-wrapper").forEach((element) => {
-          gsap.to(element, {
-            height: "0%",
-            ease: "none",
-            scrollTrigger: {
-              trigger: element, // Uses each wrapper as the trigger
-              start: "top 60%",
-              end: "bottom 60%",
-              scrub: 1,
-              // markers: true,
-            },
-          });
-        });
-      }
-    });
-  }
-}
-// End Icon Content New Page Animation-----------------------------------------------------------------------------------------
-
-import "https://rglhpcjp-5500.inc1.devtunnels.ms/createMe-animatiom.js";
+// <!-- End gsap animation--------------------------------------------------------------------------------------------->
 
 // /* <!-- Start Splide JS--------------------------------------------------------------------------------------------------> */
 import "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js";
@@ -1462,5 +937,4 @@ if (splide.length) {
     splide.mount();
   });
 }
-
 // /* <!-- End Splide JS--------------------------------------------------------------------------------------------------> */
