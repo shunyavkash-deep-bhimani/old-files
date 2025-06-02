@@ -912,3 +912,226 @@ if (themeBanner3.length) {
   }
 }
 // <!-- End banner animation 3------------------------------------------------------------------------>
+
+// <!-- Start tab with responsive accordion------------------------------------------------------------------------>
+if (window.innerWidth >= 768) {
+  let pixelTabsBodys = document.querySelectorAll(".pixel-tabs-body > *");
+  let pixelTabsDescriptions = document.querySelectorAll(
+    ".pixel-tabs-description > *"
+  );
+  let pixelTabsNavs = document.querySelectorAll(".pixel-tabs-nav > *");
+
+  pixelTabsNavs.forEach((pixelTabsNav, index) => {
+    pixelTabsNav.addEventListener("click", (e) => {
+      // if (!e.target.classList.contains("active")) {
+      pixelTabsNavs.forEach((pixelTabsNav) => {
+        pixelTabsNav.classList.remove("active");
+      });
+      pixelTabsBodys.forEach((pixelTabsBodys) => {
+        pixelTabsBodys.style.display = "none";
+      });
+      pixelTabsDescriptions.forEach((pixelTabsDescription) => {
+        pixelTabsDescription.style.display = "none";
+      });
+
+      e.target.classList.add("active");
+      pixelTabsBodys[index].style.display = "block";
+      pixelTabsDescriptions[index].style.display = "block";
+      // }
+    });
+  });
+} else {
+  $(".pixel-tabs-nav-item.active")
+    .siblings(".pixel-tabs-accordion-body")
+    .slideDown();
+  $(".pixel-tabs-nav-item").click(function () {
+    if ($(this).hasClass("active")) {
+      $(this).removeClass("active");
+      $(this).siblings(".pixel-tabs-accordion-body").slideUp();
+    } else {
+      $(".pixel-tabs-nav-item").removeClass("active");
+      $(".pixel-tabs-accordion-body").slideUp();
+      $(this).addClass("active");
+      $(this).siblings(".pixel-tabs-accordion-body").slideDown();
+    }
+  });
+}
+// <!-- End tab with responsive accordion------------------------------------------------------------------------>
+
+// <!-- Start scroll animation with responsive accordion------------------------------------------------------------------------>
+let currentMode = null;
+
+function setTabAccordion() {
+  const isDesktop = window.innerWidth >= 768;
+  const newMode = isDesktop ? "desktop" : "mobile";
+
+  if (newMode === currentMode) return;
+  currentMode = newMode;
+
+  if (isDesktop) {
+    $(".pixel-tabs-body .pixel-tabs-accordion-body").slideDown();
+
+    let pixelTabsBlock = document.querySelectorAll(".pixel-tabs-block");
+
+    function activateFirst(selector) {
+      pixelTabsBlock.forEach((section) => {
+        const elements = section.querySelectorAll(selector);
+        elements.forEach((el) => el.classList.remove("active"));
+        elements[0]?.classList.add("active");
+      });
+    }
+
+    activateFirst(".pixel-tabs-head .pixel-tabs-nav-item");
+    activateFirst(".pixel-tabs-content-item");
+    activateFirst(".pixel-tabs-head .pixel-tabs-description");
+
+    pixelTabsBlock.forEach((section) => {
+      const wrapper = section.closest(".pixel-tabs-block-wrapper");
+      const navItems = section.querySelectorAll(
+        ".pixel-tabs-head .pixel-tabs-nav-item"
+      );
+      const navImg = section.querySelectorAll(".pixel-tabs-content-item");
+      const navDescription = section.querySelectorAll(
+        ".pixel-tabs-head .pixel-tabs-description"
+      );
+      const totalTabs = navItems.length;
+
+      // Increase scroll amount change it
+      wrapper.style.height = totalTabs * 70 + "vh";
+
+      ScrollTrigger.create({
+        trigger: wrapper,
+        start: "top 9%",
+        end: "bottom bottom",
+        pin: section,
+        markers: true,
+
+        onUpdate: (self) => {
+          let index = Math.min(
+            totalTabs - 1,
+            Math.floor(self.progress * totalTabs)
+          );
+
+          navItems.forEach((el, i) =>
+            el.classList.toggle("active", i === index)
+          );
+          navImg.forEach((el, i) => el.classList.toggle("active", i === index));
+          navDescription.forEach((el, i) =>
+            el.classList.toggle("active", i === index)
+          );
+        },
+      });
+    });
+  } else {
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
+    $(".pixel-tabs-body .pixel-tabs-nav-item").removeClass("active");
+    $(".pixel-tabs-body .pixel-tabs-accordion-body").slideUp();
+
+    const $firstItem = $(
+      ".pixel-tabs-body .pixel-tabs-content-item:first-child"
+    );
+    $firstItem.find(".pixel-tabs-nav-item").addClass("active");
+    $firstItem.find(".pixel-tabs-accordion-body").slideDown();
+
+    $(".pixel-tabs-body .pixel-tabs-nav-item")
+      .off("click")
+      .on("click", function () {
+        const $this = $(this);
+        const $accordionBody = $this.siblings(".pixel-tabs-accordion-body");
+
+        if ($this.hasClass("active")) {
+          $this.removeClass("active");
+          $accordionBody.slideUp();
+        } else {
+          $(".pixel-tabs-body .pixel-tabs-nav-item").removeClass("active");
+          $(".pixel-tabs-body .pixel-tabs-accordion-body").slideUp();
+          $this.addClass("active");
+          $accordionBody.slideDown();
+        }
+      });
+  }
+}
+
+setTabAccordion();
+window.addEventListener("resize", setTabAccordion);
+// <!-- End scroll animation with responsive accordion------------------------------------------------------------------------>
+
+// <!-- Start scroll animation with slide------------------------------------------------------------------------>
+let simpleTextSliderSection = document.querySelectorAll(
+  ".simple-text-slider-section"
+);
+
+simpleTextSliderSection.forEach((section) => {
+  const elements = section.querySelectorAll(".simple-text-slide");
+  elements.forEach((el) => el.classList.remove("active"));
+  elements[0]?.classList.add("active");
+});
+
+simpleTextSliderSection.forEach((section) => {
+  const wrapper = section.querySelector(".simple-text-slider-section-wrapper");
+  const simpleTextSlide = section.querySelectorAll(".simple-text-slide");
+  const simpleTextSlideList = section.querySelector(".simple-text-slide-list");
+  const totalTabs = simpleTextSlide.length;
+
+  const simpleTextSliderDotsWrapper = section.querySelector(
+    ".simple-text-slider-dots-wrapper"
+  );
+
+  // Increase scroll amount change it
+  const totalSlide = simpleTextSlide.length;
+  section.style.height = totalSlide * 70 + "vh";
+
+  simpleTextSliderDotsWrapper.innerHTML = "";
+
+  // Create dot elements
+  simpleTextSlide.forEach((el, index) => {
+    const dot = document.createElement("div");
+    dot.classList.add("simple-text-slider-dot");
+    if (index === 0) dot.classList.add("active");
+
+    simpleTextSliderDotsWrapper.appendChild(dot);
+  });
+
+  // Create ScrollTrigger
+  const st = ScrollTrigger.create({
+    trigger: section,
+    start: "top top",
+    end: "bottom bottom",
+    scrub: 1,
+    pin: wrapper,
+    markers: true,
+
+    onUpdate: (self) => {
+      let index = Math.min(
+        totalTabs - 1,
+        Math.floor(self.progress * totalTabs)
+      );
+
+      const count = index * -100;
+      simpleTextSlideList.style.transform = `translateX(${count}%)`;
+
+      // Update dot active state
+      const dots = section.querySelectorAll(".simple-text-slider-dot");
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    },
+  });
+
+  // Handle dot click to scroll
+  const dots = section.querySelectorAll(".simple-text-slider-dot");
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      const progress = index / (totalTabs - 1);
+      const scrollY = st.start + (st.end - st.start) * progress;
+
+      gsap.to(window, {
+        scrollTo: scrollY,
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
+  });
+});
+// <!-- End scroll animation with slide------------------------------------------------------------------------>
