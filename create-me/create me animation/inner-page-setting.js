@@ -961,6 +961,12 @@ if (window.innerWidth >= 768) {
 // <!-- Start scroll animation with responsive accordion------------------------------------------------------------------------>
 let currentMode = null;
 
+$(window).on("resize", function () {
+  if (window.innerWidth > 767 || window.innerHeight >= 846) {
+    location.reload();
+  }
+});
+
 function setTabAccordion() {
   const isDesktop = window.innerWidth >= 768;
   const newMode = isDesktop ? "desktop" : "mobile";
@@ -971,57 +977,133 @@ function setTabAccordion() {
   if (isDesktop) {
     $(".pixel-tabs-body .pixel-tabs-accordion-body").slideDown();
 
-    let pixelTabsBlock = document.querySelectorAll(".pixel-tabs-block");
+    if (window.innerHeight >= 846) {
+      let pixelTabsBlock = document.querySelectorAll(".pixel-tabs-block");
 
-    function activateFirst(selector) {
+      function activateFirst(selector) {
+        pixelTabsBlock.forEach((section) => {
+          const elements = section.querySelectorAll(selector);
+          elements.forEach((el) => el.classList.remove("active"));
+          elements[0]?.classList.add("active");
+        });
+      }
+
+      activateFirst(".pixel-tabs-head .pixel-tabs-nav-item");
+      activateFirst(".pixel-tabs-content-item");
+      activateFirst(".pixel-tabs-head .pixel-tabs-description");
+
       pixelTabsBlock.forEach((section) => {
-        const elements = section.querySelectorAll(selector);
-        elements.forEach((el) => el.classList.remove("active"));
-        elements[0]?.classList.add("active");
+        const wrapper = section.closest(".pixel-tabs-block-wrapper");
+        const navItems = section.querySelectorAll(
+          ".pixel-tabs-head .pixel-tabs-nav-item"
+        );
+        const navImg = section.querySelectorAll(".pixel-tabs-content-item");
+        const navDescription = section.querySelectorAll(
+          ".pixel-tabs-head .pixel-tabs-description"
+        );
+        const totalTabs = navImg.length;
+
+        const allSlideScrollTime = 70;
+        const lastSlideScrollTime = 120;
+
+        const totalHeightVh =
+          (totalTabs - 1) * allSlideScrollTime + lastSlideScrollTime;
+        wrapper.style.height = `${totalHeightVh}vh`;
+
+        const thresholds = [];
+        let acc = 0;
+
+        // ScrollTrigger
+        const st = ScrollTrigger.create({
+          trigger: wrapper,
+          start: window.innerHeight > 860 ? "top 9%" : "top 6%",
+          end: "bottom bottom",
+          pin: section,
+          scrub: true,
+          //   markers: true,
+
+          onUpdate: (self) => {
+            const progress = self.progress;
+            let index;
+
+            for (let i = 0; i < totalTabs; i++) {
+              const vh =
+                i === totalTabs - 1 ? lastSlideScrollTime : allSlideScrollTime;
+              acc += vh;
+              thresholds.push(acc / totalHeightVh);
+            }
+
+            for (let i = 0; i < thresholds.length; i++) {
+              if (progress <= thresholds[i]) {
+                index = i;
+                break;
+              }
+              // Ensure last index is selected at 100% progress
+              if (progress >= 0.999) {
+                index = totalTabs - 1;
+              }
+            }
+
+            navItems.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+            navImg.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+            navDescription.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+          },
+        });
+
+        navItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            let vhSum = 0;
+            for (let i = 0; i <= index; i++) {
+              vhSum +=
+                i === totalTabs - 1 ? lastSlideScrollTime : allSlideScrollTime;
+            }
+
+            const progress = vhSum / totalHeightVh;
+            const scrollY = st.start + (st.end - st.start) * progress;
+
+            gsap.to(window, {
+              scrollTo: scrollY,
+              duration: 1,
+              ease: "power2.out",
+            });
+          });
+        });
+      });
+    } else {
+      let pixelTabsBlock = document.querySelectorAll(".pixel-tabs-block");
+
+      pixelTabsBlock.forEach((section) => {
+        const navItems = section.querySelectorAll(
+          ".pixel-tabs-head .pixel-tabs-nav-item"
+        );
+        const navImg = section.querySelectorAll(".pixel-tabs-content-item");
+        const navDescription = section.querySelectorAll(
+          ".pixel-tabs-head .pixel-tabs-description"
+        );
+
+        navItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            navItems.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+
+            navImg.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+
+            navDescription.forEach((el, i) =>
+              el.classList.toggle("active", i === index)
+            );
+          });
+        });
       });
     }
-
-    activateFirst(".pixel-tabs-head .pixel-tabs-nav-item");
-    activateFirst(".pixel-tabs-content-item");
-    activateFirst(".pixel-tabs-head .pixel-tabs-description");
-
-    pixelTabsBlock.forEach((section) => {
-      const wrapper = section.closest(".pixel-tabs-block-wrapper");
-      const navItems = section.querySelectorAll(
-        ".pixel-tabs-head .pixel-tabs-nav-item"
-      );
-      const navImg = section.querySelectorAll(".pixel-tabs-content-item");
-      const navDescription = section.querySelectorAll(
-        ".pixel-tabs-head .pixel-tabs-description"
-      );
-      const totalTabs = navItems.length;
-
-      // Increase scroll amount change it
-      wrapper.style.height = totalTabs * 70 + "vh";
-
-      ScrollTrigger.create({
-        trigger: wrapper,
-        start: "top 9%",
-        end: "bottom bottom",
-        pin: section,
-        markers: true,
-
-        onUpdate: (self) => {
-          let index = Math.min(
-            totalTabs - 1,
-            Math.floor(self.progress * totalTabs)
-          );
-
-          navItems.forEach((el, i) =>
-            el.classList.toggle("active", i === index)
-          );
-          navImg.forEach((el, i) => el.classList.toggle("active", i === index));
-          navDescription.forEach((el, i) =>
-            el.classList.toggle("active", i === index)
-          );
-        },
-      });
-    });
   } else {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
@@ -1074,13 +1156,19 @@ simpleTextSliderSection.forEach((section) => {
   const simpleTextSlideList = section.querySelector(".simple-text-slide-list");
   const totalTabs = simpleTextSlide.length;
 
+  const allSlideScrollTime = 70;
+  const lastSlideScrollTime = 120;
+
   const simpleTextSliderDotsWrapper = section.querySelector(
     ".simple-text-slider-dots-wrapper"
   );
 
-  // Increase scroll amount change it
-  const totalSlide = simpleTextSlide.length;
-  section.style.height = totalSlide * 70 + "vh";
+  const totalHeightVh =
+    (totalTabs - 1) * allSlideScrollTime + lastSlideScrollTime;
+  section.style.height = `${totalHeightVh}vh`;
+
+  const thresholds = [];
+  let acc = 0;
 
   simpleTextSliderDotsWrapper.innerHTML = "";
 
@@ -1100,18 +1188,34 @@ simpleTextSliderSection.forEach((section) => {
     end: "bottom bottom",
     scrub: 1,
     pin: wrapper,
-    markers: true,
+    // markers: true,
 
     onUpdate: (self) => {
-      let index = Math.min(
-        totalTabs - 1,
-        Math.floor(self.progress * totalTabs)
-      );
+      const progress = self.progress;
+      let index = 0;
+
+      for (let i = 0; i < totalTabs; i++) {
+        const vh =
+          i === totalTabs - 1 ? lastSlideScrollTime : allSlideScrollTime;
+        acc += vh;
+        thresholds.push(acc / totalHeightVh);
+      }
+
+      for (let i = 0; i < thresholds.length; i++) {
+        if (progress <= thresholds[i]) {
+          index = i;
+          break;
+        }
+        // Ensure last index is selected at 100% progress
+        if (progress >= 0.999) {
+          index = totalTabs - 1;
+        }
+      }
 
       const count = index * -100;
       simpleTextSlideList.style.transform = `translateX(${count}%)`;
 
-      // Update dot active state
+      // Update dots
       const dots = section.querySelectorAll(".simple-text-slider-dot");
       dots.forEach((dot, i) => {
         dot.classList.toggle("active", i === index);
@@ -1123,7 +1227,12 @@ simpleTextSliderSection.forEach((section) => {
   const dots = section.querySelectorAll(".simple-text-slider-dot");
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      const progress = index / (totalTabs - 1);
+      let vhSum = 0;
+      for (let i = 0; i <= index; i++) {
+        vhSum += i === totalTabs - 1 ? lastSlideScrollTime : allSlideScrollTime;
+      }
+
+      const progress = vhSum / totalHeightVh;
       const scrollY = st.start + (st.end - st.start) * progress;
 
       gsap.to(window, {
