@@ -1,5 +1,6 @@
-// <script src="https://rglhpcjp-5500.inc1.devtunnels.ms/createMe-animatiom.js"></script>
+// <script src="https://rglhpcjp-5500.inc1.devtunnels.ms/technology-page-new-click-animation.js"></script>
 
+// Start Second animation half Scroll + tab & slider click without scroll based-------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Start page on load--------------------------------------------------------------------------------
 window.addEventListener("load", () => {
   if ("scrollRestoration" in history) {
@@ -8,11 +9,11 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
-$(window).on("resize", function () {
-  if (window.innerWidth > 767 || window.innerHeight > 830) {
-    location.reload();
-  }
-});
+// $(window).on("resize", function () {
+//   if (window.innerWidth > 767 || window.innerHeight > 830) {
+//     location.reload();
+//   }
+// });
 // End page on load--------------------------------------------------------------------------------
 
 let processSection = document.querySelector(".process-section");
@@ -217,27 +218,16 @@ visibleLetters.forEach((char) => {
         duration: 2,
         onUpdate: function () {
           const wordWrapper = processSectionTitleWrapper.querySelector(".hero-title-word-wrapper");
-          const hiddenWrapper = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper");
-          const tmText = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper .tm-sup-text");
+          const hiddenWrapper = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters");
 
           if (this.progress() === 1) {
             wordWrapper.style.opacity = 0;
             hiddenWrapper.style.opacity = 1;
             hiddenWrapper.style.visibility = "visible";
-
-            gsap.to(tmText, {
-              opacity: 1,
-              duration: 0.5,
-            });
           } else {
             wordWrapper.style.opacity = 1;
             hiddenWrapper.style.opacity = 0;
             hiddenWrapper.style.visibility = "hidden";
-
-            gsap.to(tmText, {
-              opacity: 0,
-              duration: 0.5,
-            });
           }
         },
       },
@@ -581,6 +571,8 @@ processSection.querySelector(".process-tab-btn").addEventListener("click", (e) =
   document.body.classList.add("overflow-hidden");
   processImgSection.classList.add("active");
 
+  pauseAutoPlayTab();
+
   setTimeout(() => {
     processSliderMainImgs[0].classList.add("active", "show-shadow");
     sliderDots[0].classList.add("active");
@@ -600,9 +592,8 @@ processSection.querySelector(".process-tab-btn").addEventListener("click", (e) =
       duration: 1,
     });
 
-    pauseAutoPlayTab();
     startAutoPlaySlider();
-  }, 1500);
+  }, 1000);
 });
 // End tab to slider btn click animation--------------------------------------------------------------------------------
 
@@ -702,13 +693,13 @@ document.querySelector(".process-slider-btn").addEventListener("click", () => {
   processSection.querySelector(".process-tab-btn").classList.remove("active");
   document.body.classList.remove("overflow-hidden");
 
+  resumeAutoPlayTab();
+
   setTimeout(() => {
     if (currentSliderActiveIndex !== 0) {
       sliderDots[0].click();
     }
-
-    resumeAutoPlayTab();
-    clearInterval(autoPlayIntervalSlider);
+    stopAutoPlaySlider();
   }, 1000);
 });
 // End slider to tab btn click animation--------------------------------------------------------------------------------
@@ -737,3 +728,4 @@ window.addEventListener("load", () => {
 });
 window.addEventListener("resize", setContentOutOfContainer);
 // End set gray layer width & position--------------------------------------------------------------------------------
+// End Second animation half Scroll + tab & slider click without scroll based-------------------------------------------------------------------------------------------------------------------------------------------------------------

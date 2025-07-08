@@ -626,7 +626,7 @@ if (stickyGradientSections.length) {
       stickyGradientSection.querySelectorAll(".sticky-gradient-content")
     ).length;
 
-    stickyGradientSection.style.minHeight = 50 * contentLength + 50 + "vh";
+    stickyGradientSection.style.minHeight = 50 * contentLength + 50 + 50 + "vh";
   });
 
   if (stickyGradientSections.length) {
@@ -642,7 +642,7 @@ if (stickyGradientSections.length) {
       end: "bottom bottom",
       // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
       pin: ".sticky-gradient-wrapper",
-      //markers: true,
+      //   markers: true,
     });
 
     // Positions for sticky-gradient-2
@@ -694,85 +694,103 @@ if (stickyGradientSections.length) {
       });
     }
 
-    stickyGradientContent.forEach((title, i) => {
-      gsap.set(title, {
-        opacity: i === 0 ? 1 : 0, // First element visible initially
-      });
+    const stickyGradientSections = document.querySelectorAll(
+      ".sticky-gradient-section"
+    );
 
-      ScrollTrigger.create({
-        trigger: title,
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-        pinSpacing: false,
-        id: i + 1,
-        //markers: true,
-        toggleActions: "play reverse play reverse",
+    stickyGradientSections.forEach((stickyGradientSection) => {
+      // Select all sticky gradient content wrappers (slides)
+      const stickyGradientContentWrappers =
+        stickyGradientSection.querySelectorAll(
+          ".sticky-gradient-content-wrapper"
+        );
 
-        onUpdate: (self) => {
-          let progress = self.progress; // Get the scroll progress
+      // Calculate total slides
+      const totalSlides = stickyGradientContentWrappers.length;
 
-          let stickyGradient2 = gsap.utils.toArray(
-            ".sticky-gradient.sticky-gradient-2"
-          )[0];
-          let stickyGradientNot2 = gsap.utils.toArray(
-            ".sticky-gradient:not(.sticky-gradient-2)"
-          )[0];
+      stickyGradientContent.forEach((title, i) => {
+        gsap.set(title, {
+          opacity: i === 0 ? 1 : 0, // First element visible initially
+        });
 
-          // Animate the gradient positions based on scroll progress
-          animateGradientOnScroll(
-            stickyGradient2,
-            gradientGreen[i],
-            gradientGreen[(i + 1) % gradientGreen.length],
-            progress
-          );
-          animateGradientOnScroll(
-            stickyGradientNot2,
-            gradientBlue[i],
-            gradientBlue[(i + 1) % gradientBlue.length],
-            progress
-          );
-        },
+        let isLastSlide = i === totalSlides - 1; // Check if it's the last slide
 
-        onEnter: () => {
-          gsap.to(title, {
-            opacity: 1,
-            zIndex: 1,
-            duration: 1,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
+        ScrollTrigger.create({
+          trigger: title,
+          start: "top top",
+          end: "bottom top",
+          pin: true, // Pin all
+          //   pin: !isLastSlide, // Pin all except the last one
+          pinSpacing: isLastSlide, // Maintain spacing for the last slide
+          id: i + 1,
+          //   markers: true,
+          toggleActions: "play reverse play reverse",
 
-        onLeave: () => {
-          gsap.to(title, {
-            opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
-            zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
-            duration: 0,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
+          onUpdate: (self) => {
+            let progress = self.progress; // Get the scroll progress
 
-        onEnterBack: () => {
-          gsap.to(title, {
-            opacity: 1,
-            zIndex: 1,
-            duration: 1,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
+            let stickyGradient2 = gsap.utils.toArray(
+              ".sticky-gradient.sticky-gradient-2"
+            )[0];
+            let stickyGradientNot2 = gsap.utils.toArray(
+              ".sticky-gradient:not(.sticky-gradient-2)"
+            )[0];
 
-        onLeaveBack: () => {
-          gsap.to(title, {
-            opacity: i === 0 ? 1 : 0,
-            zIndex: i === 0 ? 1 : 0,
-            duration: 0,
-            ease: "power1.inOut",
-            overwrite: "auto",
-          });
-        },
+            // Animate the gradient positions based on scroll progress
+            animateGradientOnScroll(
+              stickyGradient2,
+              gradientGreen[i],
+              gradientGreen[(i + 1) % gradientGreen.length],
+              progress
+            );
+            animateGradientOnScroll(
+              stickyGradientNot2,
+              gradientBlue[i],
+              gradientBlue[(i + 1) % gradientBlue.length],
+              progress
+            );
+          },
+
+          onEnter: () => {
+            gsap.to(title, {
+              opacity: 1,
+              zIndex: 1,
+              duration: 1,
+              ease: "power2.inOut",
+              overwrite: "auto",
+            });
+          },
+
+          onLeave: () => {
+            gsap.to(title, {
+              opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
+              zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
+              duration: 0,
+              ease: "power1.inOut",
+              overwrite: "auto",
+            });
+          },
+
+          onEnterBack: () => {
+            gsap.to(title, {
+              opacity: 1,
+              zIndex: 1,
+              duration: 1,
+              ease: "power2.inOut",
+              overwrite: "auto",
+            });
+          },
+
+          onLeaveBack: () => {
+            gsap.to(title, {
+              opacity: i === 0 ? 1 : 0,
+              zIndex: i === 0 ? 1 : 0,
+              duration: 0,
+              ease: "power1.inOut",
+              overwrite: "auto",
+            });
+          },
+        });
       });
     });
   }
@@ -805,11 +823,12 @@ if (stickyGradientSections.length) {
         // Smoothly scroll to the section
         target.scrollIntoView({ behavior: "smooth" });
 
+        const direction = "down"; // or 'down'
         setTimeout(() => {
           setTimeout(() => {
-            window.scrollBy(0, 2); // Scroll 2px down
-          }, 1000); // 1 second delay
-        }, 1000); // Delay for the duration of the smooth scroll
+            window.scrollBy(0, 2);
+          }, 1000);
+        }, 1000);
       });
     });
 
