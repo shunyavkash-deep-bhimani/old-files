@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Bold.eot');
+    src: url('Sarabun-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-Bold.woff2') format('woff2'),
+        url('Sarabun-Bold.woff') format('woff'),
+        url('Sarabun-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-ExtraBold.eot');
+    src: url('Sarabun-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-ExtraBold.woff2') format('woff2'),
+        url('Sarabun-ExtraBold.woff') format('woff'),
+        url('Sarabun-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-ExtraLight.eot');
+    src: url('Sarabun-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-ExtraLight.woff2') format('woff2'),
+        url('Sarabun-ExtraLight.woff') format('woff'),
+        url('Sarabun-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Medium.eot');
+    src: url('Sarabun-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-Medium.woff2') format('woff2'),
+        url('Sarabun-Medium.woff') format('woff'),
+        url('Sarabun-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Regular.eot');
+    src: url('Sarabun-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-Regular.woff2') format('woff2'),
+        url('Sarabun-Regular.woff') format('woff'),
+        url('Sarabun-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Light.eot');
+    src: url('Sarabun-Light.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-Light.woff2') format('woff2'),
+        url('Sarabun-Light.woff') format('woff'),
+        url('Sarabun-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-SemiBold.eot');
+    src: url('Sarabun-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-SemiBold.woff2') format('woff2'),
+        url('Sarabun-SemiBold.woff') format('woff'),
+        url('Sarabun-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Thin.eot');
+    src: url('Sarabun-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Sarabun-Thin.woff2') format('woff2'),
+        url('Sarabun-Thin.woff') format('woff'),
+        url('Sarabun-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

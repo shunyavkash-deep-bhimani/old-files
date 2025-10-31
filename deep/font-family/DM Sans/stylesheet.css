@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Black.eot');
+    src: url('DMSans-Black.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Black.woff2') format('woff2'),
+        url('DMSans-Black.woff') format('woff'),
+        url('DMSans-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Bold.eot');
+    src: url('DMSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Bold.woff2') format('woff2'),
+        url('DMSans-Bold.woff') format('woff'),
+        url('DMSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-ExtraBold.eot');
+    src: url('DMSans-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-ExtraBold.woff2') format('woff2'),
+        url('DMSans-ExtraBold.woff') format('woff'),
+        url('DMSans-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-ExtraLight.eot');
+    src: url('DMSans-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-ExtraLight.woff2') format('woff2'),
+        url('DMSans-ExtraLight.woff') format('woff'),
+        url('DMSans-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Light.eot');
+    src: url('DMSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Light.woff2') format('woff2'),
+        url('DMSans-Light.woff') format('woff'),
+        url('DMSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Medium.eot');
+    src: url('DMSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Medium.woff2') format('woff2'),
+        url('DMSans-Medium.woff') format('woff'),
+        url('DMSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Regular.eot');
+    src: url('DMSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Regular.woff2') format('woff2'),
+        url('DMSans-Regular.woff') format('woff'),
+        url('DMSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-Thin.eot');
+    src: url('DMSans-Thin.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-Thin.woff2') format('woff2'),
+        url('DMSans-Thin.woff') format('woff'),
+        url('DMSans-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url('DMSans-SemiBold.eot');
+    src: url('DMSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('DMSans-SemiBold.woff2') format('woff2'),
+        url('DMSans-SemiBold.woff') format('woff'),
+        url('DMSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

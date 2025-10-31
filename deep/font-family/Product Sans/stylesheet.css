@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Bold.eot');
+    src: url('ProductSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Bold.woff2') format('woff2'),
+        url('ProductSans-Bold.woff') format('woff'),
+        url('ProductSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Black.eot');
+    src: url('ProductSans-Black.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Black.woff2') format('woff2'),
+        url('ProductSans-Black.woff') format('woff'),
+        url('ProductSans-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Thin.eot');
+    src: url('ProductSans-Thin.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Thin.woff2') format('woff2'),
+        url('ProductSans-Thin.woff') format('woff'),
+        url('ProductSans-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Light.eot');
+    src: url('ProductSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Light.woff2') format('woff2'),
+        url('ProductSans-Light.woff') format('woff'),
+        url('ProductSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Regular.eot');
+    src: url('ProductSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Regular.woff2') format('woff2'),
+        url('ProductSans-Regular.woff') format('woff'),
+        url('ProductSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('ProductSans-Medium.eot');
+    src: url('ProductSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('ProductSans-Medium.woff2') format('woff2'),
+        url('ProductSans-Medium.woff') format('woff'),
+        url('ProductSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

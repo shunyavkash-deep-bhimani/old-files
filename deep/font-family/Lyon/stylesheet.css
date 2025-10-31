@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Lyon';
+    src: url('Lyon.eot');
+    src: url('Lyon.eot?#iefix') format('embedded-opentype'),
+        url('Lyon.woff2') format('woff2'),
+        url('Lyon.woff') format('woff'),
+        url('Lyon.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

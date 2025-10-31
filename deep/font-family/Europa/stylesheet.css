@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Europa';
+    src: url('Europa-Bold.eot');
+    src: url('Europa-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Europa-Bold.woff2') format('woff2'),
+        url('Europa-Bold.woff') format('woff'),
+        url('Europa-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Europa';
+    src: url('Europa-Regular.eot');
+    src: url('Europa-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Europa-Regular.woff2') format('woff2'),
+        url('Europa-Regular.woff') format('woff'),
+        url('Europa-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EuropaNuova';
+    src: url('EuropaNuova-Regular.eot');
+    src: url('EuropaNuova-Regular.eot?#iefix') format('embedded-opentype'),
+        url('EuropaNuova-Regular.woff2') format('woff2'),
+        url('EuropaNuova-Regular.woff') format('woff'),
+        url('EuropaNuova-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

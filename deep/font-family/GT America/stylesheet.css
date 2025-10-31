@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Bold.eot');
+    src: url('GTAmerica-Bold.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Bold.woff2') format('woff2'),
+        url('GTAmerica-Bold.woff') format('woff'),
+        url('GTAmerica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Medium.eot');
+    src: url('GTAmerica-Medium.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Medium.woff2') format('woff2'),
+        url('GTAmerica-Medium.woff') format('woff'),
+        url('GTAmerica-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Black.eot');
+    src: url('GTAmerica-Black.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Black.woff2') format('woff2'),
+        url('GTAmerica-Black.woff') format('woff'),
+        url('GTAmerica-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Light.eot');
+    src: url('GTAmerica-Light.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Light.woff2') format('woff2'),
+        url('GTAmerica-Light.woff') format('woff'),
+        url('GTAmerica-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Regular.eot');
+    src: url('GTAmerica-Regular.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Regular.woff2') format('woff2'),
+        url('GTAmerica-Regular.woff') format('woff'),
+        url('GTAmerica-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url('GTAmerica-Thin.eot');
+    src: url('GTAmerica-Thin.eot?#iefix') format('embedded-opentype'),
+        url('GTAmerica-Thin.woff2') format('woff2'),
+        url('GTAmerica-Thin.woff') format('woff'),
+        url('GTAmerica-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

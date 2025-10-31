@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-ExtraBold.eot');
+    src: url('OpenSansSemiCondensed-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-ExtraBold.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-ExtraBold.woff') format('woff'),
+        url('OpenSansSemiCondensed-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-Bold.eot');
+    src: url('OpenSansSemiCondensed-Bold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-Bold.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-Bold.woff') format('woff'),
+        url('OpenSansSemiCondensed-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-Light.eot');
+    src: url('OpenSansSemiCondensed-Light.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-Light.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-Light.woff') format('woff'),
+        url('OpenSansSemiCondensed-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-Medium.eot');
+    src: url('OpenSansSemiCondensed-Medium.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-Medium.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-Medium.woff') format('woff'),
+        url('OpenSansSemiCondensed-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-SemiBold.eot');
+    src: url('OpenSansSemiCondensed-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-SemiBold.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-SemiBold.woff') format('woff'),
+        url('OpenSansSemiCondensed-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans SemiCondensed';
+    src: url('OpenSansSemiCondensed-Regular.eot');
+    src: url('OpenSansSemiCondensed-Regular.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansSemiCondensed-Regular.woff2') format('woff2'),
+        url('OpenSansSemiCondensed-Regular.woff') format('woff'),
+        url('OpenSansSemiCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

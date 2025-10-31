@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-Medium.eot');
+    src: url('OpenSansCondensed-Medium.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-Medium.woff2') format('woff2'),
+        url('OpenSansCondensed-Medium.woff') format('woff'),
+        url('OpenSansCondensed-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-SemiBold.eot');
+    src: url('OpenSansCondensed-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-SemiBold.woff2') format('woff2'),
+        url('OpenSansCondensed-SemiBold.woff') format('woff'),
+        url('OpenSansCondensed-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-Regular.eot');
+    src: url('OpenSansCondensed-Regular.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-Regular.woff2') format('woff2'),
+        url('OpenSansCondensed-Regular.woff') format('woff'),
+        url('OpenSansCondensed-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-Light.eot');
+    src: url('OpenSansCondensed-Light.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-Light.woff2') format('woff2'),
+        url('OpenSansCondensed-Light.woff') format('woff'),
+        url('OpenSansCondensed-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-ExtraBold.eot');
+    src: url('OpenSansCondensed-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-ExtraBold.woff2') format('woff2'),
+        url('OpenSansCondensed-ExtraBold.woff') format('woff'),
+        url('OpenSansCondensed-ExtraBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('OpenSansCondensed-Bold.eot');
+    src: url('OpenSansCondensed-Bold.eot?#iefix') format('embedded-opentype'),
+        url('OpenSansCondensed-Bold.woff2') format('woff2'),
+        url('OpenSansCondensed-Bold.woff') format('woff'),
+        url('OpenSansCondensed-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

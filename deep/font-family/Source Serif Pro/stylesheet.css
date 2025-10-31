@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: url('SourceSerifPro-Black.eot');
+    src: url('SourceSerifPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('SourceSerifPro-Black.woff2') format('woff2'),
+        url('SourceSerifPro-Black.woff') format('woff'),
+        url('SourceSerifPro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: url('SourceSerifPro-Light.eot');
+    src: url('SourceSerifPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('SourceSerifPro-Light.woff2') format('woff2'),
+        url('SourceSerifPro-Light.woff') format('woff'),
+        url('SourceSerifPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: url('SourceSerifPro-Regular.eot');
+    src: url('SourceSerifPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SourceSerifPro-Regular.woff2') format('woff2'),
+        url('SourceSerifPro-Regular.woff') format('woff'),
+        url('SourceSerifPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: url('SourceSerifPro-Bold.eot');
+    src: url('SourceSerifPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('SourceSerifPro-Bold.woff2') format('woff2'),
+        url('SourceSerifPro-Bold.woff') format('woff'),
+        url('SourceSerifPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: url('SourceSerifPro-SemiBold.eot');
+    src: url('SourceSerifPro-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('SourceSerifPro-SemiBold.woff2') format('woff2'),
+        url('SourceSerifPro-SemiBold.woff') format('woff'),
+        url('SourceSerifPro-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

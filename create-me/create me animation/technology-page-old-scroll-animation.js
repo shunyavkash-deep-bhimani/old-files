@@ -9,10 +9,24 @@ window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
 
+let prevWidth = window.innerWidth;
+let resizeTimeout;
+
 $(window).on("resize", function () {
-  if (window.innerWidth > 767 || window.innerHeight > 830) {
-    location.reload();
-  }
+  clearTimeout(resizeTimeout);
+
+  resizeTimeout = setTimeout(function () {
+    const currentWidth = window.innerWidth;
+
+    if (currentWidth > 767 && window.innerHeight > 830) {
+      location.reload();
+    }
+    if (currentWidth !== prevWidth) {
+      location.reload();
+    }
+
+    prevWidth = currentWidth;
+  }, 200); // Adjust debounce delay as needed
 });
 // End page on load--------------------------------------------------------------------------------
 
@@ -59,8 +73,6 @@ if (window.innerWidth > 991) {
 
 let processSectionDescriptionWrapper = processSection.querySelector(".process-section-description-wrapper");
 
-let processTabImgContents = processTabImgWrapper.querySelectorAll(".process-tab-img-content");
-
 const visibleLetters = processSection.querySelectorAll(".hero-title-word > .hero-title-letter");
 const hiddenLetters = processSection.querySelectorAll(".hero-title-hidden-letters .hero-title-letter");
 
@@ -90,17 +102,9 @@ if (window.innerWidth > 1024) {
 
 let processSliderGridContents = processSliderGridWrapper.querySelectorAll(".process-slider-grid-content");
 
-// Start create process slider dots--------------------------------------------------------------------------------
-const processSliderDots = processImgSection.querySelector(".process-slider-dots");
+const processTabBtn = document.querySelector(".process-tab-btn");
 
-processSliderDots.innerHTML = "";
-
-processSliderMainImgs.forEach((_, index) => {
-  const dot = document.createElement("div");
-  dot.classList.add("slider-dot");
-  processSliderDots.appendChild(dot);
-});
-// End create process slider dots--------------------------------------------------------------------------------
+const processSliderBtn = document.querySelector(".process-slider-btn");
 
 // Start animation--------------------------------------------------------------------------------
 // Start create trigger for scroll-----------------------------------------
@@ -117,12 +121,12 @@ ScrollTrigger.create({
     });
   },
   onLeave: () => {
-    gsap.to(processImgSection, { opacity: 0 });
     processImgSection.classList.remove("active");
+    gsap.to(processImgSection, { opacity: 0, duration: 0.5 });
   },
   onEnterBack: () => {
-    gsap.to(processImgSection, { opacity: 1 });
     processImgSection.classList.add("active");
+    gsap.to(processImgSection, { opacity: 1, duration: 0.5 });
   },
 });
 // End create trigger for scroll-----------------------------------------
@@ -206,16 +210,27 @@ visibleLetters.forEach((char) => {
         duration: 2,
         onUpdate: function () {
           const wordWrapper = processSectionTitleWrapper.querySelector(".hero-title-word-wrapper");
-          const hiddenWrapper = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters");
+          const hiddenWrapper = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper");
+          // const tmText = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper .tm-sup-text");
 
           if (this.progress() === 1) {
             wordWrapper.style.opacity = 0;
             hiddenWrapper.style.opacity = 1;
             hiddenWrapper.style.visibility = "visible";
+
+            // gsap.to(tmText, {
+            //   opacity: 1,
+            //   duration: 0.5,
+            // });
           } else {
             wordWrapper.style.opacity = 1;
             hiddenWrapper.style.opacity = 0;
             hiddenWrapper.style.visibility = "hidden";
+
+            // gsap.to(tmText, {
+            //   opacity: 0,
+            //   duration: 0.5,
+            // });
           }
         },
       },
@@ -275,6 +290,58 @@ if (window.innerWidth > 991) {
     duration: 1.5,
   });
   // End mera text bottom description opacity 0 to 1-----------------------------------------
+
+  // Start mera text change to another text-----------------------------------------
+  tl.to(processSectionTitleWrapper.querySelectorAll(".process-section-title"), {
+    delay: 1,
+    y: "-100%",
+    duration: 1.5,
+  });
+  // End mera text change to another text-----------------------------------------
+
+  // Start mera bottom 1st description opacity 1 to 0-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-section-description:first-child"),
+    {
+      opacity: 0,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End mera bottom 1st description opacity 1 to 0-----------------------------------------
+
+  // Start mera bottom 2nd description opacity 0 to 1-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-section-description:last-child"),
+    {
+      opacity: 1,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End mera bottom 1st description opacity 0 to 1-----------------------------------------
+
+  // Start images bottom content opacity 0 to 1-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-tab-content-wrapper"),
+    {
+      opacity: 1,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End images bottom content opacity 0 to 1-----------------------------------------
+
+  // Start mera bottom 2nd description move bottom to top-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-section-description:last-child"),
+    {
+      y: "-100%",
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End mera bottom 2nd description move bottom to top-----------------------------------------
 } else {
   // Start images opacity 0 to 1-----------------------------------------
   tl.to(
@@ -306,17 +373,50 @@ if (window.innerWidth > 991) {
   );
   // End mera bottom description opacity 0 to 1-----------------------------------------
 
+  // Start mera text change to another text-----------------------------------------
+  tl.to(processSectionTitleWrapper.querySelectorAll(".process-section-title"), {
+    delay: 1,
+    y: "-100%",
+    duration: 1.5,
+  });
+  // End mera text change to another text-----------------------------------------
+
+  // Start mera bottom 1st description opacity 1 to 0-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-section-description:first-child"),
+    {
+      opacity: 0,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End mera bottom 1st description opacity 1 to 0-----------------------------------------
+
+  // Start mera bottom 2nd description opacity 0 to 1-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-section-description:last-child"),
+    {
+      opacity: 1,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End mera bottom 1st description opacity 0 to 1-----------------------------------------
+
+  // Start images bottom content opacity 0 to 1-----------------------------------------
+  tl.to(
+    processSection.querySelector(".process-tab-content-wrapper"),
+    {
+      opacity: 1,
+      duration: 1.5,
+    },
+    "<"
+  );
+  // End images bottom content opacity 0 to 1-----------------------------------------
+
   // Start images parent div set width-----------------------------------------
   tl.to(processTabImgWrapper, {
-    width:
-      // window.innerWidth <= 375 && window.innerHeight <= 750
-      //   ? "265%"
-      //   : window.innerWidth <= 479 && window.innerHeight <= 750
-      //   ? "265%"
-      //   : window.innerWidth <= 479 && window.innerHeight <= 825
-      //   ? "260%"
-      //       :
-      window.innerWidth <= 479 ? "265%" : window.innerWidth <= 767 ? "150%" : "120%",
+    width: window.innerWidth <= 479 ? "265%" : window.innerWidth <= 767 ? "150%" : "120%",
     duration: 1.5,
     onComplete: () => {
       let processTabImgContentWidth = processTabImgContent[0].offsetWidth + "px";
@@ -330,60 +430,6 @@ if (window.innerWidth > 991) {
   // End images parent div set width-----------------------------------------
 }
 
-// Start mera text change to another text-----------------------------------------
-tl.to(processSectionTitleWrapper.querySelectorAll(".process-section-title"), {
-  delay: 1,
-  y: "-100%",
-  duration: 1.5,
-});
-// End mera text change to another text-----------------------------------------
-
-// Start mera bottom 1st description opacity 1 to 0-----------------------------------------
-tl.to(
-  processSection.querySelector(".process-section-description:first-child"),
-  {
-    opacity: 0,
-    duration: 1.5,
-  },
-  "<"
-);
-// End mera bottom 1st description opacity 1 to 0-----------------------------------------
-
-if (window.innerWidth > 991) {
-  // Start mera bottom 2nd description move bottom to top-----------------------------------------
-  tl.to(
-    processSection.querySelector(".process-section-description:last-child"),
-    {
-      y: "-100%",
-      duration: 1.5,
-    },
-    "<"
-  );
-  // End mera bottom 2nd description move bottom to top-----------------------------------------
-} else {
-  // Start mera bottom 2nd description opacity 0 to 1-----------------------------------------
-  tl.to(
-    processSection.querySelector(".process-section-description:last-child"),
-    {
-      opacity: 1,
-      duration: 1.5,
-    },
-    "<"
-  );
-  // End mera bottom 1st description opacity 0 to 1-----------------------------------------
-}
-
-// Start images bottom content opacity 0 to 1-----------------------------------------
-tl.to(
-  processSection.querySelector(".process-tab-content-wrapper"),
-  {
-    opacity: 1,
-    duration: 1.5,
-  },
-  "<"
-);
-// End images bottom content opacity 0 to 1-----------------------------------------
-
 // Start images on gray layer opacity 0 to 1-----------------------------------------
 tl.to(processImgLayer, {
   delay: 1,
@@ -392,14 +438,20 @@ tl.to(processImgLayer, {
   onUpdate: function () {
     if (this.progress() > 0) {
       gsap.to(processTabBarAnimation, { opacity: 1 });
-      processTabImgContents[0].classList.add("active");
+      processTabImgContent[0].classList.add("active");
       processSection.querySelector(".process-tab-content").classList.add("active");
       processTabs[0].classList.add("active");
     } else {
       gsap.to(processTabBarAnimation, { opacity: 0 });
-      processTabImgContents[0].classList.remove("active");
+      processTabImgContent[0].classList.remove("active");
       processSection.querySelector(".process-tab-content").classList.remove("active");
       processTabs[0].classList.remove("active");
+    }
+
+    if (this.progress() > 0.98) {
+      processSection.querySelector(".process-tab-content-wrapper").style.pointerEvents = "auto";
+    } else {
+      processSection.querySelector(".process-tab-content-wrapper").style.pointerEvents = "none";
     }
   },
 });
@@ -436,22 +488,47 @@ function tabChangeAnimation(item, index) {
 
   if (index === processTabs.length - 1) {
     processSection.querySelector(".process-slider-content").classList.add("active");
+    processSection.querySelector(".process-tab-content").classList.remove("active");
     processTabBarAnimation2.style.width = "100%";
+    setTimeout(() => {
+      if (processTabImgContent[processTabs.length - 1].classList.contains("active")) {
+        processTabImgContent[processTabs.length - 1].style.position = "relative";
+        processTabImgContent[processTabs.length - 1].style.zIndex = 1;
+        if (window.innerWidth < 992) {
+          gsap.to(processSection.querySelector(".process-img-layer-gray-right"), {
+            opacity: 0,
+            duration: 0.2,
+          });
+        }
+      }
+    }, 500);
   } else {
+    processSection.querySelector(".process-tab-content").classList.add("active");
     processSection.querySelector(".process-slider-content").classList.remove("active");
     processTabBarAnimation2.style.width = "0%";
+    setTimeout(() => {
+      if (!processTabImgContent[processTabs.length - 1].classList.contains("active")) {
+        processTabImgContent[processTabs.length - 1].style.position = "static";
+        processTabImgContent[processTabs.length - 1].style.zIndex = 0;
+        if (window.innerWidth < 992) {
+          gsap.to(processSection.querySelector(".process-img-layer-gray-right"), {
+            opacity: 1,
+          });
+        }
+      }
+    }, 10);
   }
 
-  processTabImgContents.forEach((img, i) => {
+  processTabImgContent.forEach((img, i) => {
     img.classList.toggle("active", i === index);
   });
 
-  const activeImg = processTabImgContents[index].querySelector("img");
+  const activeImg = processTabImgContent[index].querySelector("img");
   processImgLayerWhite.style.width = `${activeImg.offsetWidth}px`;
 
   let translateX = 0;
   for (let i = 0; i <= index; i++) {
-    translateX += processTabImgContents[i].offsetWidth;
+    translateX += processTabImgContent[i].offsetWidth;
   }
   if (window.innerWidth > 991) {
     processImgLayer.style.transform = `translateX(${translateX}px)`;
@@ -466,11 +543,14 @@ function tabChangeAnimation(item, index) {
 
 let tabSync = { progress: 0 };
 let lastTriggeredIndex = -1;
+let isManualScroll = false;
 
 tl.to(tabSync, {
   progress: 1,
   duration: 20,
   onUpdate: () => {
+    if (isManualScroll) return;
+
     const index = Math.round(tabSync.progress * (processTabs.length - 1));
     if (index !== lastTriggeredIndex) {
       tabChangeAnimation(processTabs[index], index);
@@ -485,47 +565,56 @@ tl.addLabel("imgEnd");
 // Start process img slider section opacity 0 to 1-----------------------------------------
 tl.to(processImgSection, {
   opacity: 1,
-  duration: 1,
+  duration: 5,
   onUpdate: function () {
     if (this.progress() > 0.1) {
-      processImgSection.classList.add("active");
+      if (!processImgSection.classList.contains("active")) {
+        processImgSection.classList.add("active");
+      }
     } else {
-      processImgSection.classList.remove("active");
+      if (processImgSection.classList.contains("active")) {
+        processImgSection.classList.remove("active");
+      }
     }
   },
 });
 // End process img slider section opacity 0 to 1-----------------------------------------
 
+tl.addLabel("imgSectionFadeInStart");
+
 // Start img slider section: main title move bottom to top-----------------------------------------
 tl.to(processSection.querySelector(".process-slider-main-title"), {
   delay: 2,
-  y: "-100%",
+  // y: "-100%",
+  opacity: 0,
   duration: 1.5,
   onUpdate: function () {
     if (this.progress() > 0) {
       processSliderMainImgs[0].classList.add("show-shadow");
-      processImgSection.querySelectorAll(".slider-dot")[0].classList.add("active");
     } else {
       gsap.to(processSliderTitles[0], {
-        top: "100%",
+        //   top: "100%",.
+        opacity: 0,
         duration: 1.5,
       });
       processSliderMainImgs[0].classList.remove("show-shadow");
-      processImgSection.querySelectorAll(".slider-dot")[0].classList.remove("active");
     }
   },
 });
 // End img slider section: main title move bottom to top-----------------------------------------
 
 // Start img slider section: 1st slide title move bottom to top-----------------------------------------
-tl.to(
-  processSliderTitles[0],
-  {
-    top: "0%",
-    duration: 1.5,
-  },
-  "<"
-);
+if (processSliderTitles[0]) {
+  tl.to(
+    processSliderTitles[0],
+    {
+      // top: "0%",
+      opacity: 1,
+      duration: 1.5,
+    },
+    "<"
+  );
+}
 // End img slider section: 1st slide title move bottom to top-----------------------------------------
 
 // Start img slider section: 1st slide sub title opacity 0 to 1-----------------------------------------
@@ -561,6 +650,24 @@ tl.to(
 );
 // End img slider section: 1st slide grid content opacity 0 to 1-----------------------------------------
 
+// Start img slider section: arrows opacity 0 to 1-----------------------------------------
+tl.fromTo(
+  processImgSection.querySelector(".process-slider-arrows"),
+  {
+    opacity: 0,
+    pointerEvents: "none",
+  },
+  {
+    opacity: 1,
+    duration: 1.5,
+    onComplete: function () {
+      processImgSection.querySelector(".process-slider-arrows").style.pointerEvents = "auto";
+    },
+  },
+  "<"
+);
+// End img slider section: arrows opacity 0 to 1-----------------------------------------
+
 // Start img slider section: slide change on scroll-----------------------------------------
 tl.addLabel("dotStart");
 const sliderStepSync = { step: 0 };
@@ -573,139 +680,157 @@ tl.to(sliderStepSync, {
     const stepIndex = Math.round(sliderStepSync.step);
 
     if (stepIndex !== currentSliderIndex) {
-      const direction = stepIndex > currentSliderIndex ? "forward" : "backward";
-
-      gsap.to(processSliderTitles[currentSliderIndex], {
-        top: direction === "forward" ? "-100%" : "100%",
-        duration: 1,
-      });
-
-      gsap.to(processSliderDescriptions[currentSliderIndex], {
+      gsap.to([processSliderTitles[currentSliderIndex], processSliderDescriptions[currentSliderIndex], processSliderGridContents[currentSliderIndex]], {
         opacity: 0,
-        duration: 1,
-      });
-
-      gsap.to(processSliderGridContents[currentSliderIndex], {
         zIndex: 0,
-        opacity: 0,
         duration: 1,
       });
 
-      gsap.to(processImgSection, {
-        "--processSliderImgWrapperWidth": processSliderImgWrapper.offsetWidth + "px",
-        duration: 0,
-      });
-
-      gsap.to(processSliderMainImgWrapper, {
-        width: "var(--processSliderImgWrapperWidth-" + stepIndex + ")",
-        duration: 0,
-      });
-
-      processSliderMainImgs.forEach((img) => img.classList.remove("active"));
-
-      gsap.set(processSliderTitles[stepIndex], {
-        top: direction === "forward" ? "100%" : "-100%",
-      });
-
-      gsap.to(processSliderTitles[stepIndex], {
-        top: "0%",
-        duration: 1,
-      });
-
-      gsap.to(processSliderDescriptions[stepIndex], {
+      gsap.to([processSliderTitles[stepIndex], processSliderDescriptions[stepIndex], processSliderGridContents[stepIndex]], {
         opacity: 1,
-        duration: 1,
-      });
-
-      gsap.to(processSliderGridContents[stepIndex], {
         zIndex: 1,
-        opacity: 1,
         duration: 1,
       });
 
+      processSliderMainImgs.forEach((img) => img.classList.remove("active", "show-shadow"));
+      setTimeout(() => processSliderMainImgs[stepIndex].classList.add("show-shadow"), 500);
       processSliderMainImgs[stepIndex].classList.add("active");
 
+      processImgSection.style.setProperty("--processSliderImgWrapperWidth", processSliderImgWrapper.offsetWidth + "px");
+      processSliderMainImgWrapper.style.width = `var(--processSliderImgWrapperWidth-${stepIndex})`;
       currentSliderIndex = stepIndex;
-
-      processSliderDots.querySelectorAll(".slider-dot").forEach((dot, i) => {
-        dot.classList.toggle("active", i === stepIndex);
-      });
     }
   },
 });
-// End img slider section: slide change on scroll-----------------------------------------
 // End animation--------------------------------------------------------------------------------
 
-// Start img click animation--------------------------------------------------------------------------------
+// Start img & content click animation--------------------------------------------------------------------------------
 const scrollStart = tl.scrollTrigger.labelToScroll("imgStart");
 const scrollEnd = tl.scrollTrigger.labelToScroll("imgEnd");
-const totalTabs = processTabImgContents.length;
+const totalTabs = processTabImgContent.length;
 
-processTabImgContents.forEach((item, index) => {
-  item.addEventListener("click", () => {
-    const progress = index / (totalTabs - 1);
-    const scrollToPos = scrollStart + (scrollEnd - scrollStart) * progress;
+const indexScrollPositions = [];
+for (let i = 0; i < totalTabs; i++) {
+  const progress = i / (totalTabs - 1);
+  indexScrollPositions.push(gsap.utils.interpolate(scrollStart, scrollEnd, progress));
+}
 
-    gsap.to(window, {
-      scrollTo: scrollToPos,
-      duration: 1,
-      ease: "power2.out",
-      onComplete: () => {
-        tabChangeAnimation(processTabs[index], index);
-        lastTriggeredIndex = index;
-      },
-    });
+function handleTabClick(index, isAutoClick = false) {
+  isManualScroll = true;
+  const scrollTarget = indexScrollPositions[index];
 
-    if (!item.classList.contains("auto-clicked")) {
-      item.classList.add("auto-clicked");
+  gsap.to(window, {
+    duration: 1,
+    scrollTo: {
+      y: scrollTarget,
+      autoKill: false,
+    },
+    onComplete: () => {
+      isManualScroll = false;
+    },
+  });
+
+  // Toggle active class on all tab images
+  processTabImgContent.forEach((img, i) => {
+    img.classList.toggle("active", i === index);
+  });
+
+  tabChangeAnimation(processTabs[index], index);
+  currentActiveIndex = index;
+
+  if (!isAutoClick) {
+    const imgContent = processTabImgContent[index];
+    if (!imgContent.classList.contains("auto-clicked")) {
+      imgContent.classList.add("auto-clicked");
 
       setTimeout(() => {
-        item.click();
-
+        handleTabClick(index, true);
         setTimeout(() => {
-          item.classList.remove("auto-clicked");
+          imgContent.classList.remove("auto-clicked");
         }, 100);
       }, 1000);
     }
+  }
+}
+
+processTabImgContent.forEach((imgContent, index) => {
+  imgContent.addEventListener("click", () => handleTabClick(index));
+});
+processTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => handleTabClick(index));
+});
+// End img & content click animation--------------------------------------------------------------------------------
+
+// Start tab to slider click animation--------------------------------------------------------------------------------
+processTabBtn.addEventListener("click", () => {
+  processSliderBtn.style.pointerEvents = "none";
+
+  const scrollToPos = tl.scrollTrigger.labelToScroll("imgSectionFadeInStart");
+
+  gsap.to(window, {
+    scrollTo: scrollToPos,
+    onComplete: () => {
+      gsap.to(processImgSection, {
+        opacity: 0,
+        duration: 0,
+        onComplete: () => {
+          processImgSection.classList.remove("active");
+          processSliderBtn.style.pointerEvents = "auto";
+          processTabImgContent[processTabImgContent.length - 1].style.position = "relative";
+          processTabImgContent[processTabImgContent.length - 1].style.zIndex = 1;
+        },
+      });
+    },
   });
 });
-// End img click animation--------------------------------------------------------------------------------
+// End tab to slider click animation--------------------------------------------------------------------------------
 
 // Start slider dots click animation--------------------------------------------------------------------------------
 const dotScrollStart = tl.scrollTrigger.labelToScroll("dotStart");
 const dotScrollEnd = tl.scrollTrigger.end;
-const dots = processSliderDots.querySelectorAll(".slider-dot");
+const nextArrow = document.querySelector(".slider-next-arrow");
+const prevArrow = document.querySelector(".slider-prev-arrow");
 
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    if (index === currentSliderIndex) return;
+function navigateToSlider(index) {
+  const totalSlides = processSliderMainImgs.length;
 
-    const progress = index / (processSliderMainImgs.length - 1);
-    const scrollToPos = dotScrollStart + (dotScrollEnd - dotScrollStart) * progress;
+  if (index >= totalSlides) {
+    index = 0;
+  } else if (index < 0) {
+    index = totalSlides - 1;
+  }
 
-    gsap.to(window, {
-      scrollTo: scrollToPos,
-      duration: 1,
-      ease: "power2.out",
-      onComplete: () => {
-        currentSliderIndex = index;
+  const progress = index / (totalSlides - 1);
+  const scrollToPos = dotScrollStart + (dotScrollEnd - dotScrollStart) * progress;
 
-        gsap.to(sliderStepSync, {
-          step: index,
-          duration: 0.5,
-          ease: "none",
-        });
-      },
-    });
+  gsap.to(window, {
+    scrollTo: scrollToPos,
+    duration: 1,
+    onComplete: () => {
+      currentSliderIndex = index;
+
+      gsap.to(sliderStepSync, {
+        step: index,
+        duration: 0.5,
+      });
+    },
   });
+}
+
+nextArrow.addEventListener("click", () => {
+  navigateToSlider(currentSliderIndex + 1);
+});
+
+prevArrow.addEventListener("click", () => {
+  navigateToSlider(currentSliderIndex - 1);
 });
 // End slider dots click animation--------------------------------------------------------------------------------
 
 // Start slider back to tab click animation--------------------------------------------------------------------------------
-const sliderBtn = document.querySelector(".process-slider-btn");
+processSliderBtn.addEventListener("click", () => {
+  processTabBtn.style.pointerEvents = "none";
 
-sliderBtn.addEventListener("click", () => {
-  const totalTabs = processTabImgContents.length;
+  const totalTabs = processTabImgContent.length;
   const lastIndex = totalTabs - 1;
 
   const progress = lastIndex / (totalTabs - 1);
@@ -713,9 +838,14 @@ sliderBtn.addEventListener("click", () => {
 
   gsap.to(window, {
     scrollTo: scrollToPos,
-    duration: 1.2,
-    ease: "power2.out",
     onComplete: () => {
+      gsap.to(processImgSection, {
+        opacity: 0,
+        duration: 0,
+        onComplete: () => {
+          processTabBtn.style.pointerEvents = "auto";
+        },
+      });
       tabChangeAnimation(processTabs[lastIndex], lastIndex);
       lastTriggeredIndex = lastIndex;
     },

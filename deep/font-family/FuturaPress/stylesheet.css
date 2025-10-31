@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "FuturaPress";
+  src: url("FuturaPress.eot");
+  src: url("FuturaPress.eot?#iefix") format("embedded-opentype"),
+    url("FuturaPress.woff2") format("woff2"),
+    url("FuturaPress.woff") format("woff"),
+    url("FuturaPress.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

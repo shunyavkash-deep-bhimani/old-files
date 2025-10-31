@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Kristopher';
+    src: url('KristopherRegular.eot');
+    src: url('KristopherRegular.eot?#iefix') format('embedded-opentype'),
+        url('KristopherRegular.woff2') format('woff2'),
+        url('KristopherRegular.woff') format('woff'),
+        url('KristopherRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

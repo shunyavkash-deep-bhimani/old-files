@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Afacad';
+    src: url('Afacad-Bold.eot');
+    src: url('Afacad-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Afacad-Bold.woff2') format('woff2'),
+        url('Afacad-Bold.woff') format('woff'),
+        url('Afacad-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Afacad';
+    src: url('Afacad-Regular.eot');
+    src: url('Afacad-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Afacad-Regular.woff2') format('woff2'),
+        url('Afacad-Regular.woff') format('woff'),
+        url('Afacad-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Afacad';
+    src: url('Afacad-Medium.eot');
+    src: url('Afacad-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Afacad-Medium.woff2') format('woff2'),
+        url('Afacad-Medium.woff') format('woff'),
+        url('Afacad-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Afacad';
+    src: url('Afacad-SemiBold.eot');
+    src: url('Afacad-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Afacad-SemiBold.woff2') format('woff2'),
+        url('Afacad-SemiBold.woff') format('woff'),
+        url('Afacad-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

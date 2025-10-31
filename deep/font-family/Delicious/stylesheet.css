@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Delicious';
+    src: url('Delicious.eot');
+    src: url('Delicious.eot?#iefix') format('embedded-opentype'),
+        url('Delicious.woff2') format('woff2'),
+        url('Delicious.woff') format('woff'),
+        url('Delicious.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

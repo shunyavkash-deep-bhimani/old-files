@@ -34,10 +34,7 @@ const header = document.querySelector("header");
 
 function updateHeaderHeight() {
   let headerHeight = header.offsetHeight;
-  document.documentElement.style.setProperty(
-    "--header-height",
-    headerHeight + "px"
-  );
+  document.documentElement.style.setProperty("--header-height", headerHeight + "px");
 }
 updateHeaderHeight();
 window.addEventListener("resize", updateHeaderHeight);
@@ -50,18 +47,11 @@ function initializeTabRotator() {
   const tabContainers = document.querySelectorAll("[ms-code-rotate-tabs]");
 
   tabContainers.forEach((container) => {
-    const interval = parseInt(
-      container.getAttribute("ms-code-rotate-tabs"),
-      10
-    );
+    const interval = parseInt(container.getAttribute("ms-code-rotate-tabs"), 10);
     const tabLinks = container.querySelectorAll(".w-tab-link");
-    const tabContent = container
-      .closest(".w-tabs")
-      .querySelector(".w-tab-content");
+    const tabContent = container.closest(".w-tabs").querySelector(".w-tab-content");
     const tabPanes = tabContent.querySelectorAll(".w-tab-pane");
-    let currentIndex = Array.from(tabLinks).findIndex((link) =>
-      link.classList.contains("w--current")
-    );
+    let currentIndex = Array.from(tabLinks).findIndex((link) => link.classList.contains("w--current"));
     let rotationTimer;
 
     // ANIMATION CONFIGURATION
@@ -99,9 +89,7 @@ function initializeTabRotator() {
 
     function switchToTab(index) {
       // Fade out current tab
-      tabPanes[
-        currentIndex
-      ].style.transition = `opacity ${FADE_OUT_DURATION}ms ${EASING_FUNCTION}`;
+      tabPanes[currentIndex].style.transition = `opacity ${FADE_OUT_DURATION}ms ${EASING_FUNCTION}`;
       tabPanes[currentIndex].style.opacity = "0";
 
       setTimeout(() => {
@@ -121,18 +109,13 @@ function initializeTabRotator() {
         tabPanes[currentIndex].classList.add("w--tab-active");
 
         // Fade in new tab
-        tabPanes[
-          currentIndex
-        ].style.transition = `opacity ${FADE_IN_DURATION}ms ${EASING_FUNCTION}`;
+        tabPanes[currentIndex].style.transition = `opacity ${FADE_IN_DURATION}ms ${EASING_FUNCTION}`;
         tabPanes[currentIndex].style.opacity = "1";
 
         // Update the data-current attribute on the parent w-tabs element
         const wTabsElement = container.closest(".w-tabs");
         if (wTabsElement) {
-          wTabsElement.setAttribute(
-            "data-current",
-            tabLinks[currentIndex].getAttribute("data-w-tab")
-          );
+          wTabsElement.setAttribute("data-current", tabLinks[currentIndex].getAttribute("data-w-tab"));
         }
       }, FADE_OUT_DURATION);
     }
@@ -182,10 +165,7 @@ $(".accordion-title").click(function (e) {
   } else {
     // Collapse only sibling accordion items at the same level
     currentItem.siblings(".accordion-item").removeClass("show");
-    currentItem
-      .siblings(".accordion-item")
-      .find(".accordion-content")
-      .slideUp();
+    currentItem.siblings(".accordion-item").find(".accordion-content").slideUp();
 
     // Expand the current accordion item
     currentItem.addClass("show");
@@ -208,9 +188,7 @@ $(".inner-accordion-title").click(function (e) {
   parentCollapsible.children(".accordion-content").first().slideDown();
 
   // Find the correct child collapsible
-  let selectedAccordionItem = $(
-    parentCollapsible.find(".accordion-item")[childCollapsibleId]
-  );
+  let selectedAccordionItem = $(parentCollapsible.find(".accordion-item")[childCollapsibleId]);
   selectedAccordionItem.addClass("show");
   selectedAccordionItem.children(".accordion-content").first().slideDown();
 });
@@ -225,15 +203,11 @@ import "https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js";
 gsap.registerPlugin(ScrollTrigger);
 
 // Start Parallax Animation-----------------------------------------------------------------------------------------
-let parallaxAnimationTrigger = document.querySelectorAll(
-  ".parallax-animation-trigger"
-);
+let parallaxAnimationTrigger = document.querySelectorAll(".parallax-animation-trigger");
 
 if (Array.from(parallaxAnimationTrigger).length) {
   parallaxAnimationTrigger.forEach((parallaxAnimationTrigger) => {
-    let parallaxAnimationElement = parallaxAnimationTrigger.querySelector(
-      ".parallax-animation-element"
-    );
+    let parallaxAnimationElement = parallaxAnimationTrigger.querySelector(".parallax-animation-element");
 
     if (parallaxAnimationElement) {
       gsap.fromTo(
@@ -300,9 +274,7 @@ if (textAnimation.length) {
 // End Text & icon Revel 1 Animation------------------------------------------
 
 // Start Text & icon Revel Animation On Full Section visible ------------------------------------------
-let textAnimationFullScreen = Array.from(
-  document.querySelectorAll(".textanimation-onfull-screen")
-);
+let textAnimationFullScreen = Array.from(document.querySelectorAll(".textanimation-onfull-screen"));
 
 if (textAnimationFullScreen.length) {
   let typeSplit = new SplitType(".textanimation-onfull-screen", {
@@ -345,9 +317,7 @@ if (textAnimationFullScreen.length) {
 // End Text & icon Revel Animation On Full Section visible ------------------------------------------
 
 // Home page Herosection Text Revel Animation------------------------------------------
-let heroTitleAnimation = Array.from(
-  document.querySelectorAll(".hero_title_animation")
-);
+let heroTitleAnimation = Array.from(document.querySelectorAll(".hero_title_animation"));
 
 if (heroTitleAnimation.length) {
   let typeSplitTitle = new SplitType(".hero_title_animation", {
@@ -514,18 +484,8 @@ if (textAnimation3.length) {
           //       : window.innerHeight <= 830
           //       ? "bottom 10%"
           //                     : "bottom bottom",
-          start:
-            i === 0
-              ? "top 60%"
-              : window.innerWidth <= 767
-              ? "top 60%"
-              : "top top",
-          end:
-            i === 0
-              ? "bottom 10%"
-              : window.innerWidth <= 767
-              ? "bottom 10%"
-              : "bottom bottom",
+          start: i === 0 ? "top 60%" : window.innerWidth <= 767 ? "top 60%" : "top top",
+          end: i === 0 ? "bottom 10%" : window.innerWidth <= 767 ? "bottom 10%" : "bottom bottom",
           //   markers: true,
           toggleActions: "play none none reverse",
         },
@@ -537,56 +497,43 @@ if (textAnimation3.length) {
 // End Text & icon Revel Animation---------------------------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------------
-let milestoneItemImgContent = Array.from(
-  document.querySelectorAll(".milestone-item-img-content")
-);
+let milestoneItemImgContent = Array.from(document.querySelectorAll(".milestone-item-img-content"));
 
 if (milestoneItemImgContent.length) {
-  document
-    .querySelectorAll(".milestone-item-img-content")
-    .forEach((element2) => {
-      element2.querySelectorAll(".milestone-item-img").forEach((element) => {
-        let targetHeight = element.scrollHeight;
-        gsap.set(element, { height: 0 });
+  document.querySelectorAll(".milestone-item-img-content").forEach((element2) => {
+    element2.querySelectorAll(".milestone-item-img").forEach((element) => {
+      let targetHeight = element.scrollHeight;
+      gsap.set(element, { height: 0 });
 
-        gsap.to(element, {
-          height: targetHeight,
-          duration: 1,
-          scrollTrigger: {
-            trigger: element2,
-            start: "top 75%",
-            end: "top 20%",
-            scrub: 1,
-            //markers: true,
-            onReverseComplete: () => {
-              gsap.set(element, { height: 0 });
-            },
+      gsap.to(element, {
+        height: targetHeight,
+        duration: 1,
+        scrollTrigger: {
+          trigger: element2,
+          start: "top 75%",
+          end: "top 20%",
+          scrub: 1,
+          //markers: true,
+          onReverseComplete: () => {
+            gsap.set(element, { height: 0 });
           },
-        });
+        },
       });
     });
+  });
 }
 //--------------------------------------------------------------------------------------------------
 
 // Start Video Revel Animation---------------------------------------------------------------------------------
-let revelVideoContent = Array.from(
-  document.querySelectorAll(".revel-video-content")
-);
+let revelVideoTargets = document.querySelectorAll(".revel-video-target");
 
-if (revelVideoContent.length) {
-  let videotypeSplit = new SplitType(".revel-video-content", {
-    types: "lines",
-    tagName: "span",
-  });
+if (revelVideoTargets.length) {
+  revelVideoTargets.forEach((revelVideoTarget) => {
+    let revelVideoContent = revelVideoTarget.querySelector(".revel-video-content");
 
-  let animatevideos = gsap.utils.toArray(".revel-video-content");
-
-  animatevideos.forEach((animatevideo, i) => {
-    let spanvideo = animatevideo.getElementsByTagName("span");
     gsap.fromTo(
-      spanvideo,
+      revelVideoContent,
       {
-        //"clip-path": "inset(10% 45% 20px 45%)",
         y: "30%",
         scaleX: 0,
         scaleY: 0,
@@ -594,7 +541,6 @@ if (revelVideoContent.length) {
         duration: 0.3,
       },
       {
-        //"clip-path": "inset(0px 0% 0px)",
         y: "0%",
         scaleX: 1,
         scaleY: 1,
@@ -602,10 +548,14 @@ if (revelVideoContent.length) {
         duration: 0.3,
         stagger: 0.01,
         scrollTrigger: {
-          trigger: animatevideo,
+          trigger: revelVideoTarget,
           start: "top 85%",
-          end: "top 30%",
+          end: "top 25%",
           scrub: 1,
+          // markers: true,
+
+          onEnter: () => revelVideoContent.classList.remove("pointer-events-none"),
+          onLeaveBack: () => revelVideoContent.classList.add("pointer-events-none"),
         },
       }
     );
@@ -614,148 +564,269 @@ if (revelVideoContent.length) {
 // End Video Revel Animation---------------------------------------------------------------------------------
 
 // Start Sticky Gradient change position Animation-----------------------------------------------------------------
-let stickyGradientSections = Array.from(
-  document.querySelectorAll(".sticky-gradient-section")
-);
+// let stickyGradientSections = Array.from(document.querySelectorAll(".sticky-gradient-section"));
+
+// if (stickyGradientSections.length) {
+//   stickyGradientSections.forEach((stickyGradientSection) => {
+//     stickyGradientSection.querySelectorAll(".sticky-gradient-content-wrapper");
+
+//     let contentLength = Array.from(stickyGradientSection.querySelectorAll(".sticky-gradient-content")).length;
+
+//     stickyGradientSection.style.minHeight = 50 * contentLength + 50 + 50 + "vh";
+//   });
+
+//   if (stickyGradientSections.length) {
+//     const stickyGradient = gsap.utils.toArray(".sticky-gradient");
+//     const stickyGradientContent = gsap.utils.toArray(".sticky-gradient-content-wrapper");
+
+//     // Pin the sticky section
+//     ScrollTrigger.create({
+//       trigger: ".sticky-gradient-section",
+//       start: "top top",
+//       end: "bottom bottom",
+//       // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
+//       pin: ".sticky-gradient-wrapper",
+//       //   markers: true,
+//     });
+
+//     // Positions for sticky-gradient-2
+//     const gradientGreen = [
+//       { top: "-30%", right: "-40%" }, // index 0
+//       { top: "30%", right: "-40%" }, // index 1
+//       { right: "0%", top: "30%" }, // index 2
+//       { right: "30%", top: "30%" }, // index 3
+//       { top: "-30%", right: "30%" }, // index 4
+//       { right: "0%", top: "-30%" }, // index 5
+//     ];
+
+//     // Positions for sticky-gradient:not(.sticky-gradient-2)
+//     const gradientBlue = [
+//       { top: "30%", left: "-40%" }, // index 0
+//       { top: "-30%", left: "-40%" }, // index 1
+//       { left: "0%", top: "-30%" }, // index 2
+//       { left: "30%", top: "-30%" }, // index 3
+//       { left: "30%", top: "30%" }, // index 4
+//       { left: "0%", top: "30%" }, // index 5
+//     ];
+
+//     // Common animation function to interpolate the positions
+//     function animateGradientOnScroll(stickyElement, startPos, endPos, progress) {
+//       gsap.to(stickyElement, {
+//         top: gsap.utils.interpolate(startPos.top, endPos.top, progress),
+//         [stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"]: gsap.utils.interpolate(startPos[stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"], endPos[stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"], progress),
+//         duration: 0.3,
+//         ease: "none",
+//       });
+//     }
+
+//     const stickyGradientSections = document.querySelectorAll(".sticky-gradient-section");
+
+//     stickyGradientSections.forEach((stickyGradientSection) => {
+//       // Select all sticky gradient content wrappers (slides)
+//       const stickyGradientContentWrappers = stickyGradientSection.querySelectorAll(".sticky-gradient-content-wrapper");
+
+//       // Calculate total slides
+//       const totalSlides = stickyGradientContentWrappers.length;
+
+//       stickyGradientContent.forEach((title, i) => {
+//         gsap.set(title, {
+//           opacity: i === 0 ? 1 : 0, // First element visible initially
+//         });
+
+//         let isLastSlide = i === totalSlides - 1; // Check if it's the last slide
+
+//         ScrollTrigger.create({
+//           trigger: title,
+//           start: "top top",
+//           end: "bottom top",
+//           pin: true, // Pin all
+//           //   pin: !isLastSlide, // Pin all except the last one
+//           pinSpacing: isLastSlide, // Maintain spacing for the last slide
+//           id: i + 1,
+//           //   markers: true,
+//           toggleActions: "play reverse play reverse",
+
+//           onUpdate: (self) => {
+//             let progress = self.progress; // Get the scroll progress
+
+//             let stickyGradient2 = gsap.utils.toArray(".sticky-gradient.sticky-gradient-2")[0];
+//             let stickyGradientNot2 = gsap.utils.toArray(".sticky-gradient:not(.sticky-gradient-2)")[0];
+
+//             // Animate the gradient positions based on scroll progress
+//             animateGradientOnScroll(stickyGradient2, gradientGreen[i], gradientGreen[(i + 1) % gradientGreen.length], progress);
+//             animateGradientOnScroll(stickyGradientNot2, gradientBlue[i], gradientBlue[(i + 1) % gradientBlue.length], progress);
+//           },
+
+//           onEnter: () => {
+//             gsap.to(title, {
+//               opacity: 1,
+//               zIndex: 1,
+//               duration: 1,
+//               ease: "power2.inOut",
+//               overwrite: "auto",
+//             });
+//           },
+
+//           onLeave: () => {
+//             gsap.to(title, {
+//               opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
+//               zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
+//               duration: 0,
+//               ease: "power1.inOut",
+//               overwrite: "auto",
+//             });
+//           },
+
+//           onEnterBack: () => {
+//             gsap.to(title, {
+//               opacity: 1,
+//               zIndex: 1,
+//               duration: 1,
+//               ease: "power2.inOut",
+//               overwrite: "auto",
+//             });
+//           },
+
+//           onLeaveBack: () => {
+//             gsap.to(title, {
+//               opacity: i === 0 ? 1 : 0,
+//               zIndex: i === 0 ? 1 : 0,
+//               duration: 0,
+//               ease: "power1.inOut",
+//               overwrite: "auto",
+//             });
+//           },
+//         });
+//       });
+//     });
+//   }
+
+//   document.addEventListener("DOMContentLoaded", () => {
+//     const stickySection = document.querySelector(".sticky-gradient-section");
+//     const contentWrappers = stickySection.querySelectorAll(".sticky-gradient-section .w-container > div");
+//     const navDotsContainer = stickySection.querySelector(".sticky-gradient-nav-dots");
+
+//     // Create navigation dots dynamically
+//     contentWrappers.forEach((wrapper, index) => {
+//       // Assign unique ID to each .sticky-gradient-content-wrapper
+//       wrapper.setAttribute("id", `sticky-gradient-${index + 1}`);
+
+//       // Create navigation dot
+//       const navDot = document.createElement("a");
+//       navDot.classList.add("nav-dots-items");
+//       navDot.setAttribute("href", `#sticky-gradient-${index + 1}`);
+//       navDotsContainer.appendChild(navDot);
+
+//       // Add click event to scroll to the section smoothly
+//       navDot.addEventListener("click", (event) => {
+//         event.preventDefault(); // Prevent default anchor link behavior
+//         const target = document.querySelector(navDot.getAttribute("href"));
+
+//         // Smoothly scroll to the section
+//         target.scrollIntoView({ behavior: "smooth" });
+
+//         const direction = "down"; // or 'down'
+//         setTimeout(() => {
+//           setTimeout(() => {
+//             window.scrollBy(0, 2);
+//           }, 1000);
+//         }, 1000);
+//       });
+//     });
+
+//     // Intersection Observer to track visibility
+//     const observer = new IntersectionObserver(
+//       (entries) => {
+//         entries.forEach((entry) => {
+//           const id = entry.target.getAttribute("id");
+//           const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
+
+//           // Trigger when 100% of the section is in view
+//           if (entry.isIntersecting && entry.intersectionRatio === 1) {
+//             navDotsContainer.querySelectorAll(".nav-dots-items").forEach((dot) => {
+//               dot.classList.remove("active");
+//             });
+//             navDot.classList.add("active");
+//           }
+//         });
+//       },
+//       {
+//         root: null, // Use the viewport as the root
+//         threshold: 1, // Trigger when 100% of the section is visible
+//       }
+//     );
+
+//     // Observe each .sticky-gradient-content-wrapper
+//     contentWrappers.forEach((wrapper) => observer.observe(wrapper));
+
+//     // Update active nav dot on scroll (even for partial visibility)
+//     window.addEventListener("scroll", () => {
+//       let activeDotFound = false; // Flag to prevent multiple active dots
+
+//       contentWrappers.forEach((wrapper) => {
+//         const rect = wrapper.getBoundingClientRect();
+//         const id = wrapper.getAttribute("id");
+//         const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
+
+//         if (rect.top <= window.innerHeight && rect.bottom >= 0 && !activeDotFound) {
+//           // Section is visible (even partially)
+//           navDotsContainer.querySelectorAll(".nav-dots-items").forEach((dot) => {
+//             dot.classList.remove("active");
+//           });
+//           navDot.classList.add("active");
+
+//           activeDotFound = true; // Stop once we find the first active dot
+//         }
+//       });
+//     });
+//   });
+// }
+
+let stickyGradientSections = Array.from(document.querySelectorAll(".sticky-gradient-section"));
 
 if (stickyGradientSections.length) {
   stickyGradientSections.forEach((stickyGradientSection) => {
     stickyGradientSection.querySelectorAll(".sticky-gradient-content-wrapper");
-
-    let contentLength = Array.from(
-      stickyGradientSection.querySelectorAll(".sticky-gradient-content")
-    ).length;
-
+    let contentLength = Array.from(stickyGradientSection.querySelectorAll(".sticky-gradient-content")).length;
     stickyGradientSection.style.minHeight = 50 * contentLength + 50 + 50 + "vh";
   });
 
   if (stickyGradientSections.length) {
-    const stickyGradient = gsap.utils.toArray(".sticky-gradient");
-    const stickyGradientContent = gsap.utils.toArray(
-      ".sticky-gradient-content-wrapper"
-    );
+    const stickyGradientContent = gsap.utils.toArray(".sticky-gradient-content-wrapper");
 
-    // Pin the sticky section
     ScrollTrigger.create({
       trigger: ".sticky-gradient-section",
       start: "top top",
       end: "bottom bottom",
-      // end: () => `bottom-=${window.innerHeight}px`, // Bottom reaches screen height
       pin: ".sticky-gradient-wrapper",
-      //   markers: true,
+      //markers: true,
     });
 
-    // Positions for sticky-gradient-2
-    const gradientGreen = [
-      { top: "-30%", right: "-40%" }, // index 0
-      { top: "30%", right: "-40%" }, // index 1
-      { right: "0%", top: "30%" }, // index 2
-      { right: "30%", top: "30%" }, // index 3
-      { top: "-30%", right: "30%" }, // index 4
-      { right: "0%", top: "-30%" }, // index 5
-    ];
-
-    // Positions for sticky-gradient:not(.sticky-gradient-2)
-    const gradientBlue = [
-      { top: "30%", left: "-40%" }, // index 0
-      { top: "-30%", left: "-40%" }, // index 1
-      { left: "0%", top: "-30%" }, // index 2
-      { left: "30%", top: "-30%" }, // index 3
-      { left: "30%", top: "30%" }, // index 4
-      { left: "0%", top: "30%" }, // index 5
-    ];
-
-    // Common animation function to interpolate the positions
-    function animateGradientOnScroll(
-      stickyElement,
-      startPos,
-      endPos,
-      progress
-    ) {
+    function animateGradientOnScroll(stickyElement, startPos, endPos, progress) {
       gsap.to(stickyElement, {
         top: gsap.utils.interpolate(startPos.top, endPos.top, progress),
-        [stickyElement.classList.contains("sticky-gradient-2")
-          ? "right"
-          : "left"]: gsap.utils.interpolate(
-          startPos[
-            stickyElement.classList.contains("sticky-gradient-2")
-              ? "right"
-              : "left"
-          ],
-          endPos[
-            stickyElement.classList.contains("sticky-gradient-2")
-              ? "right"
-              : "left"
-          ],
-          progress
-        ),
+        [stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"]: gsap.utils.interpolate(startPos[stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"], endPos[stickyElement.classList.contains("sticky-gradient-2") ? "right" : "left"], progress),
         duration: 0.3,
         ease: "none",
       });
     }
 
-    const stickyGradientSections = document.querySelectorAll(
-      ".sticky-gradient-section"
-    );
+    const stickyGradientSections = document.querySelectorAll(".sticky-gradient-section");
 
     stickyGradientSections.forEach((stickyGradientSection) => {
-      // Select all sticky gradient content wrappers (slides)
-      const stickyGradientContentWrappers =
-        stickyGradientSection.querySelectorAll(
-          ".sticky-gradient-content-wrapper"
-        );
-
-      // Calculate total slides
-      const totalSlides = stickyGradientContentWrappers.length;
-
       stickyGradientContent.forEach((title, i) => {
-        gsap.set(title, {
-          opacity: i === 0 ? 1 : 0, // First element visible initially
-        });
-
-        let isLastSlide = i === totalSlides - 1; // Check if it's the last slide
-
         ScrollTrigger.create({
           trigger: title,
-          start: "top top",
-          end: "bottom top",
-          pin: true, // Pin all
-          //   pin: !isLastSlide, // Pin all except the last one
-          pinSpacing: isLastSlide, // Maintain spacing for the last slide
+          start: i === 0 ? "top top" : "top 40%",
+          end: "bottom 35%",
           id: i + 1,
-          //   markers: true,
           toggleActions: "play reverse play reverse",
-
-          onUpdate: (self) => {
-            let progress = self.progress; // Get the scroll progress
-
-            let stickyGradient2 = gsap.utils.toArray(
-              ".sticky-gradient.sticky-gradient-2"
-            )[0];
-            let stickyGradientNot2 = gsap.utils.toArray(
-              ".sticky-gradient:not(.sticky-gradient-2)"
-            )[0];
-
-            // Animate the gradient positions based on scroll progress
-            animateGradientOnScroll(
-              stickyGradient2,
-              gradientGreen[i],
-              gradientGreen[(i + 1) % gradientGreen.length],
-              progress
-            );
-            animateGradientOnScroll(
-              stickyGradientNot2,
-              gradientBlue[i],
-              gradientBlue[(i + 1) % gradientBlue.length],
-              progress
-            );
-          },
 
           onEnter: () => {
             gsap.to(title, {
               opacity: 1,
               zIndex: 1,
-              duration: 1,
+              duration: 0.5,
               ease: "power2.inOut",
               overwrite: "auto",
             });
@@ -765,7 +836,7 @@ if (stickyGradientSections.length) {
             gsap.to(title, {
               opacity: stickyGradientContent.length - 1 === i ? 1 : 0,
               zIndex: stickyGradientContent.length - 1 === i ? 1 : 0,
-              duration: 0,
+              duration: 0.5,
               ease: "power1.inOut",
               overwrite: "auto",
             });
@@ -775,7 +846,7 @@ if (stickyGradientSections.length) {
             gsap.to(title, {
               opacity: 1,
               zIndex: 1,
-              duration: 1,
+              duration: 0.5,
               ease: "power2.inOut",
               overwrite: "auto",
             });
@@ -785,7 +856,7 @@ if (stickyGradientSections.length) {
             gsap.to(title, {
               opacity: i === 0 ? 1 : 0,
               zIndex: i === 0 ? 1 : 0,
-              duration: 0,
+              duration: 0.5,
               ease: "power1.inOut",
               overwrite: "auto",
             });
@@ -794,98 +865,6 @@ if (stickyGradientSections.length) {
       });
     });
   }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const stickySection = document.querySelector(".sticky-gradient-section");
-    const contentWrappers = stickySection.querySelectorAll(
-      ".sticky-gradient-section .w-container > div"
-    );
-    const navDotsContainer = stickySection.querySelector(
-      ".sticky-gradient-nav-dots"
-    );
-
-    // Create navigation dots dynamically
-    contentWrappers.forEach((wrapper, index) => {
-      // Assign unique ID to each .sticky-gradient-content-wrapper
-      wrapper.setAttribute("id", `sticky-gradient-${index + 1}`);
-
-      // Create navigation dot
-      const navDot = document.createElement("a");
-      navDot.classList.add("nav-dots-items");
-      navDot.setAttribute("href", `#sticky-gradient-${index + 1}`);
-      navDotsContainer.appendChild(navDot);
-
-      // Add click event to scroll to the section smoothly
-      navDot.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent default anchor link behavior
-        const target = document.querySelector(navDot.getAttribute("href"));
-
-        // Smoothly scroll to the section
-        target.scrollIntoView({ behavior: "smooth" });
-
-        const direction = "down"; // or 'down'
-        setTimeout(() => {
-          setTimeout(() => {
-            window.scrollBy(0, 2);
-          }, 1000);
-        }, 1000);
-      });
-    });
-
-    // Intersection Observer to track visibility
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute("id");
-          const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
-
-          // Trigger when 100% of the section is in view
-          if (entry.isIntersecting && entry.intersectionRatio === 1) {
-            navDotsContainer
-              .querySelectorAll(".nav-dots-items")
-              .forEach((dot) => {
-                dot.classList.remove("active");
-              });
-            navDot.classList.add("active");
-          }
-        });
-      },
-      {
-        root: null, // Use the viewport as the root
-        threshold: 1, // Trigger when 100% of the section is visible
-      }
-    );
-
-    // Observe each .sticky-gradient-content-wrapper
-    contentWrappers.forEach((wrapper) => observer.observe(wrapper));
-
-    // Update active nav dot on scroll (even for partial visibility)
-    window.addEventListener("scroll", () => {
-      let activeDotFound = false; // Flag to prevent multiple active dots
-
-      contentWrappers.forEach((wrapper) => {
-        const rect = wrapper.getBoundingClientRect();
-        const id = wrapper.getAttribute("id");
-        const navDot = navDotsContainer.querySelector(`a[href="#${id}"]`);
-
-        if (
-          rect.top <= window.innerHeight &&
-          rect.bottom >= 0 &&
-          !activeDotFound
-        ) {
-          // Section is visible (even partially)
-          navDotsContainer
-            .querySelectorAll(".nav-dots-items")
-            .forEach((dot) => {
-              dot.classList.remove("active");
-            });
-          navDot.classList.add("active");
-
-          activeDotFound = true; // Stop once we find the first active dot
-        }
-      });
-    });
-  });
 }
 // End Sticky Gradient change position Animation---------------------------------------------------------------------
 

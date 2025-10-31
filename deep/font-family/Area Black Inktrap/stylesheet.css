@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Area Black Inktrap';
+    src: url('Area-BlackInktrap.eot');
+    src: url('Area-BlackInktrap.eot?#iefix') format('embedded-opentype'),
+        url('Area-BlackInktrap.woff2') format('woff2'),
+        url('Area-BlackInktrap.woff') format('woff'),
+        url('Area-BlackInktrap.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+

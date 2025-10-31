@@ -1,0 +1,49 @@
+Deep's Works
+
+Webflow————————————————————————————————————————————————————————————
+- CreateMe: Scratch design & Gsap animation & JQuery fictionality
+https://www.createme.com/
+
+- Reload Logistics: Scratch design & webflow animation & JQuery fictionality
+https://www.reloadlogistics.com/
+
+- Nebarex: Scratch design & webflow animation & JQuery fictionality
+https://www.nebarex.com/
+
+- C-Link: Scratch design & webflow animation & JQuery fictionality
+https://www.clink-drc.com/
+
+- Kommodity Trading: Webpage Scratch design & webflow animation & JQuery fictionality
+https://www.kommoditytrading.com/
+
+- Sixth Sense: Scratch design & webflow animation & JQuery fictionality
+https://sixth-sense-0e9524.webflow.io/
+
+- PatternIQ: Scratch design & webflow animations & AOS animations & Jquery fictionality & Search using API
+https://www.patterniq.com/
+
+- Raleigh Laser Aesthetics: Scratch design & webflow animations with created complicated CMS & Jquery fictionality & Search using API
+https://www.raleighlaseraesthetics.com/
+
+- Shunyavkash: Scratch design & webflow animations with CMS fictionality
+https://www.shunyavkash.com/
+
+Hubspot————————————————————————————————————————————————————————————
+- TM-Engineering: Scratch design & Theme setup & JQuery fictionality
+https://tm-engineering.com/
+
+- Jurish Growth: Scratch design & Theme setup & JQuery fictionality
+https://jurisgrowth.me/
+
+Custom HTML-CSS——————————————————————————————————————————————————————
+- Play Company: Webpage Scratch design & Gsap animation & Javascript fictionality
+https://playcompany.com/home
+- Home V1: https://play-company.vercel.app/home.html
+
+Laravel————————————————————————————————————————————————————————————
+- Paper Admin Panel: Scratch design & Theme Setup & Alpine Js fictionality
+
+- Rethread: Scratch design & Theme Setup & Alpine Js fictionality
+https://rethread.com.au/
+
+- Rethread Admin Panel: Scratch design & Theme Setup & Alpine Js fictionality
