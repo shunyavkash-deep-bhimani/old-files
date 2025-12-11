@@ -41,8 +41,7 @@
 
 .top-bar-wrapper {
   transform: translateY(-100%);
-  animation: 1.5s cubic-bezier(0.26, 1, 0.48, 1) 1s 1 normal forwards
-    top-bar-animation;
+  animation: 1.5s cubic-bezier(0.26, 1, 0.48, 1) 1s 1 normal forwards top-bar-animation;
 }
 
 @keyframes top-bar-animation {
@@ -176,19 +175,11 @@ iframe {
 }
 
 .sticky-gradient {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(55, 96, 229, 0.45) 0%,
-    var(--transparent) 100%
-  );
+  background: radial-gradient(50% 50% at 50% 50%, rgba(55, 96, 229, 0.45) 0%, var(--transparent) 100%);
 }
 
 .sticky-gradient-2 {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(130, 213, 207, 0.3) 0%,
-    var(--transparent) 100%
-  );
+  background: radial-gradient(50% 50% at 50% 50%, rgba(130, 213, 207, 0.3) 0%, var(--transparent) 100%);
 }
 
 .splide__arrow {

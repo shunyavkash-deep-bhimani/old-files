@@ -1,0 +1,387 @@
+.diagram-wrapper:not(.active) .diagram-item-1 {
+  transform: translateX(-240%);
+}
+
+.diagram-wrapper:not(.active) .diagram-item-2 {
+  transform: translateX(240%);
+}
+
+.diagram-wrapper:not(.active) .diagram-item-3 {
+  transform: translateY(240%);
+}
+
+.diagram-wrapper .diagram-item {
+  animation: 1.75s ease-in-out;
+}
+
+.diagram-wrapper.active .diagram-item-1 {
+  animation-name: bounce-left;
+}
+
+.diagram-wrapper.active .diagram-item-1.active .diagram-item-text {
+  background-color: rgba(155, 164, 233, 90%);
+  box-shadow: 0 0 70px 70px rgb(155 164 233 / 60%);
+}
+
+.diagram-wrapper.active .diagram-item-2 {
+  animation-name: bounce-right;
+}
+
+.diagram-wrapper.active .diagram-item-2.active .diagram-item-text {
+  background-color: rgba(103, 188, 171, 90%);
+  box-shadow: 0 0 70px 70px rgb(103 188 171 / 60%);
+}
+
+.diagram-wrapper.active .diagram-item-3 {
+  animation-name: bounce-bottom;
+}
+
+.diagram-wrapper.active .diagram-item-3.active .diagram-item-text {
+  background-color: rgba(51, 73, 239, 90%);
+  box-shadow: 0 0 70px 70px rgb(51 73 239 / 60%);
+}
+
+.diagram-white-layer-img.diagram-white-layer-img-v2 {
+  opacity: 0;
+}
+
+.diagram-tab-item.active .diagram-tab-icon {
+  color: currentColor;
+}
+
+.diagram-tab-item.active .diagram-tab-icon-active {
+  transform: rotate(-90deg);
+}
+
+.diagram-tab-wrapper.active > *:not(.active) {
+  opacity: 20%;
+}
+
+.diagram-tab-links::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth bounce-left */
+@keyframes bounce-left {
+  0% {
+    transform: translateX(-240%);
+  }
+  60% {
+    transform: translateX(4%);
+  }
+  80% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Smooth bounce-right */
+@keyframes bounce-right {
+  0% {
+    transform: translateX(240%);
+  }
+  60% {
+    transform: translateX(-4%);
+  }
+  80% {
+    transform: translateX(2%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Smooth bounce-bottom */
+@keyframes bounce-bottom {
+  0% {
+    transform: translateY(240%);
+  }
+  60% {
+    transform: translateY(-4%);
+  }
+  80% {
+    transform: translateY(2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .diagram-wrapper.active .diagram-item-1.active {
+    box-shadow: 0 0 60px 60px rgb(155 164 233 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-2.active {
+    box-shadow: 0 0 60px 60px rgb(103 188 171 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-3.active {
+    box-shadow: 0 0 60px 60px rgb(51 73 239 / 60%);
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 480px) {
+  .diagram-wrapper.active .diagram-item-1.active {
+    box-shadow: 0 0 50px 50px rgb(155 164 233 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-2.active {
+    box-shadow: 0 0 50px 50px rgb(103 188 171 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-3.active {
+    box-shadow: 0 0 50px 50px rgb(51 73 239 / 60%);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .diagram-wrapper.active .diagram-item-1.active {
+    box-shadow: 0 0 30px 30px rgb(155 164 233 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-2.active {
+    box-shadow: 0 0 30px 30px rgb(103 188 171 / 60%);
+  }
+
+  .diagram-wrapper.active .diagram-item-3.active {
+    box-shadow: 0 0 30px 30px rgb(51 73 239 / 60%);
+  }
+}
+
+@media screen and (max-width: 1099px) and (min-width: 992px) {
+  .diagram-section-v2 .diagram-tab-title {
+    font-size: 40px;
+  }
+
+  .diagram-section-v2 .diagram-tab-sub-title {
+    font-size: 20px;
+  }
+
+  .diagram-section-v2 .diagram-tab-description {
+    font-size: 18px;
+    margin-top: 28px;
+  }
+
+  .diagram-section-v2 .diagram-tab-content {
+    grid-column-gap: 30px;
+  }
+
+  .diagram-section-v2 .diagram-tab-item-title {
+    font-size: 40px;
+  }
+
+  .diagram-section-v2 .diagram-tab-item-description {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-height: 900px) {
+  .diagram-section-v2 {
+    padding-block: 80px;
+  }
+
+  .diagram-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .diagram-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .diagram-wrapper .diagram-item.diagram-item-1 {
+    margin-right: -32px;
+  }
+
+  .diagram-wrapper .diagram-item.diagram-item-2 {
+    margin-left: -32px;
+  }
+
+  .diagram-wrapper .diagram-item.diagram-item-3 {
+    margin-top: -116.5px;
+  }
+
+  .diagram-white-layer-img.diagram-white-layer-img-v2 {
+    width: 44px;
+    margin-top: -84.5px;
+  }
+
+  @media screen and (min-width: 800px) {
+    .diagram-wrapper {
+      max-width: 950px;
+    }
+
+    .diagram-wrapper .diagram-item {
+      max-width: 350px;
+    }
+  }
+
+  @media screen and (max-height: 799px) {
+    .diagram-section-v2 {
+      padding-block: 50px;
+    }
+
+    .diagram-section-v2 .theme-section-title.theme-section-title-3 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .diagram-wrapper {
+      max-width: 850px;
+      padding-bottom: 64px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-3 {
+      margin-top: -112.5px;
+    }
+
+    .diagram-white-layer-img.diagram-white-layer-img-v2 {
+      width: 47px;
+      margin-top: -66.5px;
+    }
+
+    @media screen and (min-width: 700px) {
+      .diagram-wrapper .diagram-item {
+        max-width: 330px;
+      }
+    }
+  }
+
+  @media screen and (max-height: 699px) {
+    .diagram-wrapper {
+      max-width: 835px;
+    }
+
+    .diagram-wrapper .diagram-item {
+      max-width: 300px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-3 {
+      margin-top: -108px;
+    }
+
+    .diagram-white-layer-img.diagram-white-layer-img-v2 {
+      width: 52px;
+      margin-top: -61px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) and (max-height: 900px) {
+  .diagram-section-v2 {
+    padding-block: 80px;
+  }
+
+  @media screen and (min-height: 800px) {
+    .diagram-wrapper .diagram-item {
+      max-width: 300px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-1 {
+      margin-right: -32px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-2 {
+      margin-left: -32px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-3 {
+      margin-top: -100px;
+    }
+
+    .diagram-white-layer-img.diagram-white-layer-img-v2 {
+      width: 45px;
+      margin-top: -66px;
+    }
+  }
+
+  @media screen and (max-height: 799px) {
+    .diagram-section-v2 {
+      padding-block: 50px;
+    }
+
+    .diagram-wrapper {
+      padding-bottom: 64px;
+    }
+
+    .diagram-section-v2 .theme-section-title.theme-section-title-3 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-1 {
+      margin-right: -28px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-2 {
+      margin-left: -28px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-3 {
+      margin-top: -98px;
+    }
+
+    .diagram-white-layer-img.diagram-white-layer-img-v2 {
+      width: 44px;
+      margin-top: -61px;
+    }
+
+    @media screen and (min-height: 700px) {
+      .diagram-wrapper .diagram-item {
+        max-width: 280px;
+      }
+    }
+  }
+
+  @media screen and (min-height: 700px) {
+    .diagram-wrapper {
+      max-width: 700px;
+    }
+  }
+
+  @media screen and (max-height: 699px) {
+    .diagram-wrapper {
+      max-width: 600px;
+    }
+
+    .diagram-wrapper .diagram-item {
+      max-width: 240px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-1 {
+      margin-right: -24px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-2 {
+      margin-left: -24px;
+    }
+
+    .diagram-wrapper .diagram-item.diagram-item-3 {
+      margin-top: -84px;
+    }
+
+    .diagram-white-layer-img.diagram-white-layer-img-v2 {
+      width: 37.5px;
+      margin-top: -57px;
+    }
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .diagram-section-v2 .diagram-section-v2-wrapper {
+    position: static;
+  }
+}

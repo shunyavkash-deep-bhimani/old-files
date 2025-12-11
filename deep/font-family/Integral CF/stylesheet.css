@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "FONTSPRING DEMO - Integral CF";
+  src: url("Integral-CF-Medium.eot");
+  src: url("Integral-CF-Medium.eot?#iefix") format("embedded-opentype"), url("Integral-CF-Medium.woff2") format("woff2"), url("Integral-CF-Medium.woff") format("woff"), url("Integral-CF-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FONTSPRING DEMO - Integral CF";
+  src: url("Integral-CF-Bold.eot");
+  src: url("Integral-CF-Bold.eot?#iefix") format("embedded-opentype"), url("Integral-CF-Bold.woff2") format("woff2"), url("Integral-CF-Bold.woff") format("woff"), url("Integral-CF-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FONTSPRING DEMO - Integral CF Demi";
+  src: url("Integral-CF-DemiBold.eot");
+  src: url("Integral-CF-DemiBold.eot?#iefix") format("embedded-opentype"), url("Integral-CF-DemiBold.woff2") format("woff2"), url("Integral-CF-DemiBold.woff") format("woff"), url("Integral-CF-DemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FONTSPRING DEMO - Integral CF";
+  src: url("Integral-CF-Regular.eot");
+  src: url("Integral-CF-Regular.eot?#iefix") format("embedded-opentype"), url("Integral-CF-Regular.woff2") format("woff2"), url("Integral-CF-Regular.woff") format("woff"), url("Integral-CF-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
