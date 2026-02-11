@@ -1,13 +1,218 @@
 /* <link href="https://rglhpcjp-5500.inc1.devtunnels.ms/css-js/createMe-style.css" rel="stylesheet" type="text/css"> */
 
-@keyframes rotate {
-  0% {
-    stroke-dashoffset: 63;
+.splide {
+  visibility: visible !important;
+}
+.hero-slider-section .splide__slide {
+  width: 100%;
+}
+
+img.hero-section-poster {
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  height: 100vh;
+  width: 177.78vh;
+  min-height: 56.25vw;
+  min-width: 100vw;
+  object-fit: cover;
+}
+
+video.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  height: 100vh;
+  width: 177.78vh; /* 16:9 */
+  min-height: 56.25vw;
+  min-width: 100vw;
+}
+
+/* Placeholder on top initially */
+.video-slide img.placeholder {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  /* filter: brightness(70%); */
+  z-index: 2;
+  transition: opacity 0.4s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+}
+
+/* Native video & iframes full cover */
+.video-slide video,
+.video-slide .iframe-holder,
+.video-slide iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* hero video slide poster CSS */
+
+.hero-slider-section .iframe-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  min-width: calc(177.78vh * var(--size, 1));
+  height: calc(56.25vw * var(--size, 1));
+  min-height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.hero-slider-section .iframe-video.device-rotate {
+  --size: 1.7;
+}
+
+.hero-slider-section .splide__slide:not(.is-active) .btn-outline {
+  pointer-events: none;
+}
+
+.hero-slider-section .splide__pagination {
+  padding: 0;
+  gap: 38px;
+  bottom: -100px;
+}
+
+.hero-slider-section .splide__pagination li {
+  line-height: 0;
+}
+
+.hero-slider-section .splide__pagination button {
+  margin: 0;
+  background-color: var(--white);
+  opacity: 1 !important;
+  transform: none !important;
+  height: auto;
+  width: 20px;
+  aspect-ratio: 1;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.hero-slider-section .splide__pagination button.is-active {
+  background-color: var(--skyblue);
+}
+
+.hero-slider-section .splide__pagination button svg {
+  position: absolute;
+  top: -9px;
+  left: -12px;
+  width: 41px;
+  height: 41px;
+  transform: rotate(-90deg); /* Start progress at top */
+  transition: 0.3s all ease-in-out;
+  opacity: 0;
+}
+
+.hero-slider-section .splide__pagination button.is-active svg {
+  opacity: 1;
+}
+
+/* Background ring */
+circle.bg {
+  stroke: #ffffff;
+  stroke-width: 2.5;
+  fill: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Blue progress ring */
+circle.progress {
+  stroke: var(--skyblue);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 63; /* 2 * π * r (≈ 2 * 3.14 * 10) */
+  stroke-dashoffset: 63;
+  transition: stroke-dashoffset linear;
+}
+/* Slider Dot */
+
+.splide.is-focus-in .splide__pagination__page:focus {
+  outline: none;
+}
+
+.features-list-body > img {
+  zoom: 0.5;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-slider-section .hero-description {
+    font-size: 28px;
   }
-  100% {
-    stroke-dashoffset: 0;
+
+  .hero-slider-section .splide__pagination {
+    bottom: -70px;
+    gap: 28px;
+  }
+
+  .hero-slider-section .splide__pagination button {
+    width: 20px;
   }
 }
-.splide__pagination .splide__pagination__page.is-active .progress {
-  animation: rotate 8s 1 linear;
+
+@media screen and (max-width: 767px) {
+  .hero-slider-section .hero-description {
+    font-size: 26px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .hero-slider-section .hero-description {
+    font-size: 22px;
+  }
+
+  .hero-slider-section .splide__pagination button {
+    width: 18px;
+  }
+  .hero-slider-section .splide__pagination button svg {
+    width: 39px;
+    height: 39px;
+  }
+}
+
+.features-list-item:hover .features-list-title {
+  color: var(--skyblue);
+}
+
+.features-list-item:hover .features-list-body {
+  transform: translateY(-20px);
+}
+
+@media screen and (min-width: 1401px) {
+  .features-list-body > img {
+    zoom: 1.4;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .features-list-body > img {
+    zoom: 0.3;
+  }
 }
