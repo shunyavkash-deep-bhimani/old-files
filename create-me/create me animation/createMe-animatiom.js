@@ -90,15 +90,20 @@ let processSectionWrapper = processSection.querySelector(".process-section-wrapp
 // Start set process-section-sub-title height--------------------------------------------------------------------------------
 const processSectionHeading = processSection.querySelector(".process-section-heading");
 const currentProcessSectionHeadingHeight = processSectionHeading.offsetHeight;
-const processSectionTitleHeight = processSection.querySelector(".process-section-sub-title").offsetHeight;
+const processSectionTitleHeight = processSection.querySelector(
+  ".process-section-sub-title",
+).offsetHeight;
 if (innerWidth > 991 && innerHeight > 850) {
-  processSectionHeading.style.height = currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
+  processSectionHeading.style.height =
+    currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
 }
 // End set process-section-sub-title height--------------------------------------------------------------------------------
 
 let processSectionTitleWrapper = processSection.querySelector(".process-section-title-wrapper");
 let processTabImgWrapper = processSection.querySelector(".process-tab-img-wrapper");
-let processTabImgContentWrapper = processTabImgWrapper.querySelector(".process-tab-img-content-wrapper");
+let processTabImgContentWrapper = processTabImgWrapper.querySelector(
+  ".process-tab-img-content-wrapper",
+);
 
 const tabArrow = processTabImgWrapper.querySelector(".tab-arrow");
 tabArrow.style.opacity = 0;
@@ -137,16 +142,22 @@ if (window.innerWidth > 991) {
 }
 // End process-tab-bar-animation width--------------------------------------------------------------------------------
 
-let processSectionDescriptionWrapper = processSection.querySelector(".process-section-description-wrapper");
+let processSectionDescriptionWrapper = processSection.querySelector(
+  ".process-section-description-wrapper",
+);
 
 const visibleLetters = processSection.querySelectorAll(".hero-title-word > .hero-title-letter");
-const hiddenLetters = processSection.querySelectorAll(".hero-title-hidden-letters .hero-title-letter");
+const hiddenLetters = processSection.querySelectorAll(
+  ".hero-title-hidden-letters .hero-title-letter",
+);
 
 const processImgSection = processSection.querySelector(".process-img-section");
 const processTabSliderContent = processImgSection.querySelector(".process-tab-slider-content");
 const processSliderImgWrapper = processImgSection.querySelector(".process-slider-img-wrapper");
 
-const processSliderMainImgWrapper = processImgSection.querySelector(".process-slider-main-img-wrapper");
+const processSliderMainImgWrapper = processImgSection.querySelector(
+  ".process-slider-main-img-wrapper",
+);
 processSliderMainImgWrapper.style.setProperty("width", "var(--processSliderImgWrapperWidth-0)");
 
 let processSliderMainImgs = processImgSection.querySelectorAll(".process-slider-main-img");
@@ -158,13 +169,19 @@ let processSliderDescriptions = processImgSection.querySelectorAll(".process-sli
 let processSliderGridWrapper;
 if (window.innerWidth > 991) {
   // Desktop---------
-  processSliderGridWrapper = processImgSection.querySelector(".process-slider-grid-wrapper.max-lg-d-none");
+  processSliderGridWrapper = processImgSection.querySelector(
+    ".process-slider-grid-wrapper.max-lg-d-none",
+  );
 } else {
   // Mobile---------
-  processSliderGridWrapper = processImgSection.querySelector(".process-slider-grid-wrapper.lg-d-none");
+  processSliderGridWrapper = processImgSection.querySelector(
+    ".process-slider-grid-wrapper.lg-d-none",
+  );
 }
 
-let processSliderGridContents = processSliderGridWrapper.querySelectorAll(".process-slider-grid-content");
+let processSliderGridContents = processSliderGridWrapper.querySelectorAll(
+  ".process-slider-grid-content",
+);
 
 const processTabBtn = document.querySelector(".process-tab-btn");
 
@@ -524,8 +541,12 @@ function mainAnimation() {
           scaleY: height / bounds.height,
           duration: 2,
           onUpdate: function () {
-            const wordWrapper = processSectionTitleWrapper.querySelector(".hero-title-word-wrapper");
-            const hiddenWrapper = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper");
+            const wordWrapper = processSectionTitleWrapper.querySelector(
+              ".hero-title-word-wrapper",
+            );
+            const hiddenWrapper = processSectionTitleWrapper.querySelector(
+              ".hero-title-hidden-letters-wrapper",
+            );
             // const tmText = processSectionTitleWrapper.querySelector(".hero-title-hidden-letters-wrapper .tm-sup-text");
 
             if (this.progress() === 1) {
@@ -549,7 +570,7 @@ function mainAnimation() {
             }
           },
         },
-        "<"
+        "<",
       );
     }
   });
@@ -591,11 +612,12 @@ function mainAnimation() {
           if (this.progress() === 1) {
             processSectionHeading.style.height = "auto";
           } else {
-            processSectionHeading.style.height = currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
+            processSectionHeading.style.height =
+              currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
           }
         },
       },
-      "<0.2"
+      "<0.2",
     );
     // End images move bottom to top-----------------------------------------
 
@@ -622,7 +644,7 @@ function mainAnimation() {
         opacity: 0,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom 1st description opacity 1 to 0-----------------------------------------
 
@@ -633,7 +655,7 @@ function mainAnimation() {
         opacity: 1,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom 1st description opacity 0 to 1-----------------------------------------
 
@@ -644,7 +666,7 @@ function mainAnimation() {
         opacity: 1,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End images bottom content opacity 0 to 1-----------------------------------------
 
@@ -655,7 +677,7 @@ function mainAnimation() {
         y: "-100%",
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom 2nd description move bottom to top-----------------------------------------
   } else {
@@ -671,11 +693,12 @@ function mainAnimation() {
           if (this.progress() === 1) {
             processSectionHeading.style.height = "auto";
           } else {
-            processSectionHeading.style.height = currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
+            processSectionHeading.style.height =
+              currentProcessSectionHeadingHeight + processSectionTitleHeight + "px";
           }
         },
       },
-      "<"
+      "<",
     );
     // End images opacity 0 to 1-----------------------------------------
 
@@ -687,7 +710,7 @@ function mainAnimation() {
         opacity: 1,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom description opacity 0 to 1-----------------------------------------
 
@@ -706,7 +729,7 @@ function mainAnimation() {
         opacity: 0,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom 1st description opacity 1 to 0-----------------------------------------
 
@@ -717,7 +740,7 @@ function mainAnimation() {
         opacity: 1,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End mera bottom 1st description opacity 0 to 1-----------------------------------------
 
@@ -728,7 +751,7 @@ function mainAnimation() {
         opacity: 1,
         duration: 1.5,
       },
-      "<"
+      "<",
     );
     // End images bottom content opacity 0 to 1-----------------------------------------
 
@@ -801,7 +824,8 @@ function mainAnimation() {
 
     if (window.innerWidth > 991) {
       processTabBarAnimationWidth += widthChange;
-      processTabBarAnimation.style.width = processTabBarAnimationWidth + (index * processTabContentListGap) / 2 + "px";
+      processTabBarAnimation.style.width =
+        processTabBarAnimationWidth + (index * processTabContentListGap) / 2 + "px";
     }
 
     if (window.innerWidth < 992 && tabArrow) {
@@ -997,10 +1021,18 @@ processSection.querySelector(".process-tab-btn").addEventListener("click", (e) =
       duration: 1,
     });
 
-    gsap.to([processSliderTitles[0], processImgSection.querySelector(".process-slider-sub-title"), processSection.querySelector(".process-slider-description-wrapper"), processSliderGridWrapper], {
-      opacity: 1,
-      duration: 1,
-    });
+    gsap.to(
+      [
+        processSliderTitles[0],
+        processImgSection.querySelector(".process-slider-sub-title"),
+        processSection.querySelector(".process-slider-description-wrapper"),
+        processSliderGridWrapper,
+      ],
+      {
+        opacity: 1,
+        duration: 1,
+      },
+    );
 
     if (innerWidth > 991 && innerHeight <= 850) {
       pauseAutoPlayTab();
@@ -1044,21 +1076,38 @@ function switchSlider(index) {
 
   resetAutoPlaySliderAfterClick();
 
-  gsap.to([processSliderTitles[currentSliderActiveIndex], processSliderDescriptions[currentSliderActiveIndex], processSliderGridContents[currentSliderActiveIndex]], {
-    opacity: 0,
-    duration: 1,
-  });
+  gsap.to(
+    [
+      processSliderTitles[currentSliderActiveIndex],
+      processSliderDescriptions[currentSliderActiveIndex],
+      processSliderGridContents[currentSliderActiveIndex],
+    ],
+    {
+      opacity: 0,
+      duration: 1,
+    },
+  );
 
-  gsap.to([processSliderTitles[index], processSliderDescriptions[index], processSliderGridContents[index]], {
-    opacity: 1,
-    duration: 1,
-  });
+  gsap.to(
+    [
+      processSliderTitles[index],
+      processSliderDescriptions[index],
+      processSliderGridContents[index],
+    ],
+    {
+      opacity: 1,
+      duration: 1,
+    },
+  );
 
   processSliderMainImgs.forEach((el) => el.classList.remove("active", "show-shadow"));
   setTimeout(() => processSliderMainImgs[index].classList.add("show-shadow"), 500);
   processSliderMainImgs[index].classList.add("active");
 
-  processImgSection.style.setProperty("--processSliderImgWrapperWidth", processSliderImgWrapper.clientWidth + "px");
+  processImgSection.style.setProperty(
+    "--processSliderImgWrapperWidth",
+    processSliderImgWrapper.clientWidth + "px",
+  );
   processSliderMainImgWrapper.style.width = `var(--processSliderImgWrapperWidth-${index})`;
   currentSliderActiveIndex = index;
 }
@@ -1069,7 +1118,8 @@ const prevBtn = processImgSection.querySelector(".slider-prev-arrow");
 const nextBtn = processImgSection.querySelector(".slider-next-arrow");
 
 prevBtn.addEventListener("click", () => {
-  let prevIndex = (currentSliderActiveIndex - 1 + processSliderMainImgs.length) % processSliderMainImgs.length;
+  let prevIndex =
+    (currentSliderActiveIndex - 1 + processSliderMainImgs.length) % processSliderMainImgs.length;
   switchSlider(prevIndex);
   resetAutoPlaySliderAfterClick();
 });
@@ -1178,20 +1228,32 @@ processSection.querySelector(".process-slider-btn").addEventListener("click", (e
 
 // Start set gray layer width & position--------------------------------------------------------------------------------
 function setContentOutOfContainer() {
-  processImgSection.style.setProperty("--containerWidth", `${processImgSection.querySelector(".container").clientWidth}px`);
+  processImgSection.style.setProperty(
+    "--containerWidth",
+    `${processImgSection.querySelector(".container").clientWidth}px`,
+  );
 
   setTimeout(() => {
     processSliderMainImgWrapper.style.setProperty("width", "var(--processSliderImgWrapperWidth-0)");
 
     processSliderMainImgs.forEach((processSliderMainImg, index) => {
-      processImgSection.style.setProperty("--processSliderImgWrapperWidth-" + index, `${processSliderMainImg.clientWidth}px`);
+      processImgSection.style.setProperty(
+        "--processSliderImgWrapperWidth-" + index,
+        `${processSliderMainImg.clientWidth}px`,
+      );
     });
   }, 1000);
 
   if (window.innerWidth > 991) {
-    processImgSection.style.setProperty("--processSliderImgWrapperWidth", `${processSliderImgWrapper.clientWidth}px`);
+    processImgSection.style.setProperty(
+      "--processSliderImgWrapperWidth",
+      `${processSliderImgWrapper.clientWidth}px`,
+    );
   } else {
-    processImgSection.style.setProperty("--processSliderImgWrapperWidth", `${processTabSliderContent.clientWidth}px`);
+    processImgSection.style.setProperty(
+      "--processSliderImgWrapperWidth",
+      `${processTabSliderContent.clientWidth}px`,
+    );
   }
 }
 
