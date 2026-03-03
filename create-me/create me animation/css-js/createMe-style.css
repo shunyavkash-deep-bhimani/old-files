@@ -1,8 +1,33 @@
 /* <link href="https://rglhpcjp-5500.inc1.devtunnels.ms/css-js/createMe-style.css" rel="stylesheet" type="text/css"> */
 
+body.overlay-lock {
+  padding-right: var(--scrollbar-width, 0px) !important;
+}
+
+body.overlay-lock .header {
+  z-index: -1 !important;
+}
+
+body.video-loaded
+  :where(.hero-animation-overlay, .hero-animation-line, .hero-animation-logo-content) {
+  display: none;
+}
+
+/* header css */
+body.body.home-page .header {
+  position: fixed;
+  width: 100%;
+}
+
+body.body.home-page .hero-slider-section.bg-video-section.theme-text-shadow {
+  min-height: 100dvh;
+}
+/* END header css */
+
 .splide {
   visibility: visible !important;
 }
+
 .hero-slider-section .splide__slide {
   width: 100%;
 }
@@ -28,9 +53,6 @@ video.hero-video {
 }
 
 .video-slide {
-  position: relative;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
   position: absolute;
   top: 50%;
@@ -47,16 +69,16 @@ video.hero-video {
 .video-slide img.placeholder {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  /* filter: brightness(70%); */
+  filter: brightness(70%);
   z-index: 2;
   transition: opacity 0.4s ease;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  height: 100%;
-  width: 100%;
 }
 
 /* Native video & iframes full cover */
@@ -116,6 +138,7 @@ video.hero-video {
 
 .hero-slider-section .splide__pagination button.is-active {
   background-color: var(--skyblue);
+  pointer-events: none;
 }
 
 .hero-slider-section .splide__pagination button svg {
@@ -147,12 +170,15 @@ circle.progress {
   stroke: var(--skyblue);
   stroke-width: 2.5;
   fill: none;
-  stroke-linecap: round;
   stroke-dasharray: 63; /* 2 * π * r (≈ 2 * 3.14 * 10) */
   stroke-dashoffset: 63;
-  transition: stroke-dashoffset linear;
+  transition: none;
 }
-/* Slider Dot */
+
+.splide__pagination__page.is-active circle.progress {
+  transition-delay: 100ms;
+  transition: stroke-dashoffset 200ms linear !important;
+}
 
 .splide.is-focus-in .splide__pagination__page:focus {
   outline: none;
@@ -191,6 +217,7 @@ circle.progress {
   .hero-slider-section .splide__pagination button {
     width: 18px;
   }
+
   .hero-slider-section .splide__pagination button svg {
     width: 39px;
     height: 39px;

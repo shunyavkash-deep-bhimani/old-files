@@ -1,5 +1,3 @@
-// <script src="https://rglhpcjp-5500.inc1.devtunnels.ms/css-js/createMe-js.js"></script>
-
 // Disable browser automatic scroll restoration
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -26,54 +24,7 @@ window.addEventListener("load", () => {
   setTimeout(forceScrollTop, 50);
 });
 
-// Header animation
-document.addEventListener("DOMContentLoaded", function () {
-  if (sessionStorage.getItem("heroVideoLoaded") !== "true") {
-    // // ✅ Run only on homepage
-    // var path = window.location.pathname.replace(/\/$/, "");
-    // var isHome = path === "" || path === "/" || path === "/home-4";
-    // if (!isHome) return;
-
-    // ✅ Change this selector to your navbar wrapper
-    var nav = document.querySelector(".navbar");
-    if (!nav) return;
-
-    var hasShown = false;
-
-    // --- Initially hide nav ---
-    nav.style.opacity = "0";
-    nav.style.visibility = "hidden";
-    nav.style.pointerEvents = "none";
-    nav.style.transition = "opacity 300ms ease, visibility 300ms ease";
-
-    function showNavOnce() {
-      if (hasShown) return;
-
-      hasShown = true;
-
-      nav.style.opacity = "1";
-      nav.style.visibility = "visible";
-      nav.style.pointerEvents = "auto";
-
-      // Remove listeners after first trigger (cleaner performance)
-      window.removeEventListener("mousemove", showNavOnce);
-      window.removeEventListener("scroll", showNavOnce);
-    }
-
-    // Show on first interaction
-    window.addEventListener("mousemove", showNavOnce);
-    window.addEventListener("scroll", showNavOnce, { passive: true });
-  }
-});
-// END Header animation
-
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Skip intro if video was already loaded before
-  if (sessionStorage.getItem("heroVideoLoaded") === "true") {
-    document.body.classList.add("video-loaded");
-    document.body.classList.remove("overlay-lock");
-  }
-
   const split = new SplitText(".hero-slider-section .hero-title", {
     type: "lines",
   });
@@ -107,9 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.overflow = "";
   }
 
-  if (sessionStorage.getItem("heroVideoLoaded") !== "true") {
-    lockBodyScroll();
-  }
+  lockBodyScroll();
 
   const tl = gsap.timeline();
 
@@ -165,8 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
  VIMEO + RING SYNC - COMPLETE REWRITE FOR CROSS-BROWSER
 ========================================================= */
 
-  // const SEGMENT_DURATION = 8.042;
-  const SEGMENT_DURATION = 8.08; // for steraming
+  const SEGMENT_DURATION = 8.042;
   const SEGMENT_COUNT = 3;
   const TOTAL_DURATION = SEGMENT_DURATION * SEGMENT_COUNT;
 
@@ -178,10 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Core state
   let player = null;
-  let media = null;
   let dots = [];
   let currentSegment = 0;
-  let hasLoggedDot0Start = false;
 
   // Playback state
   let isPlaying = false;
@@ -202,15 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function tryStartVideo() {
     if (introDone && playerReady && player) {
-      // Only Vimeo has setVolume
-      if (player.setVolume) {
-        player.setVolume(0).catch(() => {});
-      }
+      player.setVolume(0).catch(() => {});
 
       // Small delay for Safari
       setTimeout(() => {
-        media.play().catch((err) => {
-          console.warn("Autoplay blocked:", err);
+        player.play().catch((err) => {
+          console.warn("Vimeo play blocked:", err);
         });
       }, 100);
     }
@@ -275,13 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!circle) return;
 
       if (index === activeSegment) {
-        // ✅ Log only first time when dot index 0 progress starts
-        if (!hasLoggedDot0Start && activeSegment === 0 && progress > 0) {
-          hasLoggedDot0Start = true;
-          document.querySelector(".hero-section-poster").style.opacity = 0;
-          console.log("Dot index 0 progress started (first time only)");
-        }
-
         // Active segment shows progress
         const offset = EMPTY_OFFSET + (FULL_OFFSET - EMPTY_OFFSET) * progress;
         circle.style.strokeDashoffset = String(offset);
@@ -304,10 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================================================
 
   function seekToTime(seconds) {
-    if (!media) return Promise.reject("No media");
+    if (!player) return Promise.reject("No player");
 
     return new Promise((resolve, reject) => {
-      media
+      player
         .setCurrentTime(seconds)
         .then(() => {
           currentTime = seconds;
@@ -337,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (introDone && playerReady) {
           // Small delay for Firefox
           setTimeout(() => {
-            media.play().catch(() => {});
+            player.play().catch(() => {});
           }, 50);
         }
       })
@@ -365,19 +301,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isPlaying || isBuffering || hasEnded) return;
 
-    media
-      .getCurrentTime()
-      .then((time) => {
-        currentTime = time;
+    // Increment time based on real elapsed time
+    const now = performance.now();
+    const elapsed = (now - lastUpdateTime) / 1000;
+    lastUpdateTime = now;
 
-        if (currentTime >= TOTAL_DURATION) {
-          handleVideoEnd();
-          return;
-        }
+    // Update current time
+    currentTime += elapsed;
 
-        updateDotsFromTime(currentTime);
-      })
-      .catch(() => {});
+    // Check if we've reached the end
+    if (currentTime >= TOTAL_DURATION) {
+      handleVideoEnd();
+      return;
+    }
+
+    // Update UI based on current time
+    updateDotsFromTime(currentTime);
   }
 
   // =========================================================
@@ -389,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.stopPropagation();
 
     const dot = event.currentTarget;
-    if (!media) return;
+    if (!player) return;
 
     const index = dots.indexOf(dot);
     if (index < 0) return;
@@ -404,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(() => {
         // Ensure video is playing
         if (introDone && playerReady) {
-          return media.play();
+          return player.play();
         }
       })
       .then(() => {
@@ -473,20 +412,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================================================
 
   function setupPlayer(iframe) {
-    const vimeoPlayer = new Vimeo.Player(iframe);
-    player = vimeoPlayer;
-    media = {
-      play: () => vimeoPlayer.play(),
-      pause: () => vimeoPlayer.pause(),
-      setCurrentTime: (time) => vimeoPlayer.setCurrentTime(time),
-      getCurrentTime: () => vimeoPlayer.getCurrentTime(),
-    };
+    player = new Vimeo.Player(iframe);
     player.setVolume(0).catch(() => {});
 
     player.on("loaded", async () => {
       playerReady = true;
-      // ✅ Save that video has been loaded once
-      sessionStorage.setItem("heroVideoLoaded", "true");
 
       try {
         await player.pause();
@@ -547,99 +477,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     player.on("seeked", () => {
       // Force UI update after seek
-      media.getCurrentTime().then((time) => {
+      player.getCurrentTime().then((time) => {
         currentTime = time;
         hasEnded = false;
         updateDotsFromTime(time);
       });
     });
-  }
-
-  function setupHTMLVideo(video) {
-    player = video; // Make HTML video behave like Vimeo player
-    media = {
-      play: () => video.play(),
-      pause: () => video.pause(),
-      setCurrentTime: (time) =>
-        new Promise((resolve) => {
-          video.currentTime = time;
-          resolve();
-        }),
-      getCurrentTime: () =>
-        new Promise((resolve) => {
-          resolve(video.currentTime);
-        }),
-    };
-
-    buildDots();
-    resetUI();
-
-    // Do NOT mark as loaded immediately.
-    // We only mark as loaded after the video has actually loaded once.
-    playerReady = true;
-
-    // Remove placeholder when video is ready
-    video.addEventListener("loadeddata", async () => {
-      const poster = document.querySelector(".hero-section-poster");
-      if (poster) poster.style.opacity = 0;
-
-      // ✅ Mark as loaded ONLY after first successful load
-      if (sessionStorage.getItem("heroVideoLoaded") !== "true") {
-        sessionStorage.setItem("heroVideoLoaded", "true");
-      }
-
-      try {
-        await video.pause();
-      } catch (e) {}
-
-      // ✅ If intro already finished (refresh case), start playback now
-      if (introDone) {
-        setTimeout(() => {
-          video.play().catch(() => {});
-        }, 50);
-      }
-    });
-
-    video.addEventListener("play", () => {
-      isPlaying = true;
-      hasEnded = false;
-      lastUpdateTime = performance.now();
-      startRaf();
-    });
-
-    video.addEventListener("pause", () => {
-      isPlaying = false;
-      stopRaf();
-    });
-
-    video.addEventListener("timeupdate", () => {
-      currentTime = video.currentTime;
-
-      if (currentTime >= TOTAL_DURATION - 0.1) {
-        handleVideoEnd();
-        return;
-      }
-
-      updateDotsFromTime(currentTime);
-    });
-
-    video.addEventListener("ended", () => {
-      handleVideoEnd();
-    });
-
-    video.addEventListener("waiting", () => {
-      isBuffering = true;
-      stopRaf();
-    });
-
-    video.addEventListener("playing", () => {
-      isBuffering = false;
-      if (isPlaying && !hasEnded) {
-        lastUpdateTime = performance.now();
-        startRaf();
-      }
-    });
-    // tryStartVideo(); // Removed as per instruction
   }
 
   function loadVimeo() {
@@ -654,7 +497,6 @@ document.addEventListener("DOMContentLoaded", () => {
     videoUrl.searchParams.set("muted", "1");
     videoUrl.searchParams.set("playsinline", "1");
     videoUrl.searchParams.set("autopause", "0");
-    videoUrl.searchParams.set("background", "1");
     iframe.src = videoUrl.toString();
     iframe.allow = "autoplay; fullscreen";
     iframe.frameBorder = "0";
@@ -670,97 +512,23 @@ document.addEventListener("DOMContentLoaded", () => {
     setupPlayer(iframe);
   }
 
-  function loadHTMLVideo() {
-    const existingVideo = wrapper.querySelector("video");
-    if (existingVideo) {
-      setupHTMLVideo(existingVideo);
-      return;
-    }
-
-    const video = document.createElement("video");
-
-    video.muted = true;
-    video.setAttribute("muted", "");
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    video.autoplay = true;
-    video.setAttribute("autoplay", "");
-    video.preload = "auto";
-
-    const streamUrl = wrapper.dataset.video;
-
-    // HLS Support (Chrome, Edge, etc.)
-    if (window.Hls && Hls.isSupported()) {
-      const hls = new Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-      });
-
-      hls.loadSource(streamUrl);
-      hls.attachMedia(video);
-
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        if (introDone) {
-          setTimeout(() => {
-            video.play().catch(() => {});
-          }, 50);
-        }
-      });
-
-      hls.on(Hls.Events.ERROR, (_, data) => {
-        if (data?.fatal) {
-          console.error("HLS fatal error:", data?.details);
-        }
-      });
-    }
-    // Safari native HLS support
-    else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = streamUrl;
-    } else {
-      console.error("HLS not supported in this browser.");
-    }
-
-    const holder = document.createElement("div");
-    holder.className = "video-holder";
-    holder.appendChild(video);
-
-    wrapper.appendChild(holder);
-    wrapper.dataset.loaded = "true";
-
-    setupHTMLVideo(video);
-  }
-
   // =========================================================
   // INITIALIZATION
   // =========================================================
 
   if (wrapper.dataset.type === "vimeo") {
-    // ✅ Only load Vimeo if not already initialized
-    if (!wrapper.dataset.loaded) {
-      loadVimeo();
-    }
-  }
-
-  if (wrapper.dataset.type === "video") {
-    if (!wrapper.dataset.loaded) {
-      loadHTMLVideo();
-    }
+    loadVimeo();
   }
 
   // Start video near the end of intro animation
-  if (sessionStorage.getItem("heroVideoLoaded") !== "true") {
-    tl.call(
-      () => {
-        introDone = true;
-        tryStartVideo();
-      },
-      null,
-      "-=0.7",
-    );
-  } else {
-    introDone = true;
-    tryStartVideo();
-  }
+  tl.call(
+    () => {
+      introDone = true;
+      tryStartVideo();
+    },
+    null,
+    "-=0.7",
+  );
 
   // Handle visibility changes
   document.addEventListener("visibilitychange", () => {
@@ -782,7 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Force periodic sync for Safari (every 500ms)
   setInterval(() => {
     if (player && isPlaying && !hasEnded) {
-      media
+      player
         .getCurrentTime()
         .then((time) => {
           // Check if we need to sync (for Safari backward navigation)
